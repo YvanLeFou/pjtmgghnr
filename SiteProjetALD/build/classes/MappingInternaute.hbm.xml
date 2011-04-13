@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+							"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+<class name="metier.Internaute" table="internaute" lazy="false">
+	<id name="pseudo" type="string" column="pseudo"/>
+	<property name="nom" type="string" column="nom"/>
+	<property name="prenom" type="string" column="prenom"/>
+	<property name="numeroRue" type="integer" column="noRue"/>
+	<property name="ville" type="string" column="ville"/>
+	<property name="cp" type="string" column="cp"/>
+	<property name="email" type="string" column="email"/>
+	<property name="telephone" type="string" column="telephone"/>
+	<property name="mdp" type="string" column="mdp"/>
+	<many-to-one name="departement" column="idDepartement" class="metier.Departement"/>
+	<many-to-one name="droit" column="idDroit" class="metier.Droit"/>
+	
+	<set name="encherit" inverse="true" cascade="all" lazy="false">
+		<key column="pseudo"/>
+		<one-to-many class="metier.Encherit"/>
+	</set>
+	
+	<set name="offre" cascade="all" lazy="false">
+		<key column="idOffre"/>
+		<one-to-many class="metier.Offre"/>
+	</set>
+	
+</class>
+</hibernate-mapping>
