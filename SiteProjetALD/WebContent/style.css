@@ -1,0 +1,74 @@
+div#entete {
+	float: left;
+	width: 100%;
+	min-height:110px;
+	margin-bottom: 2%;
+ 	/*background-color: purple;/**/
+}
+
+div#banniere {
+	float: left;
+	width: 65%;
+	min-height:110px;
+	text-align: center;
+	font-size: 90px;
+	font-family: cursive; /**/
+ 	/*background-color: blue; /**/
+}
+
+label
+{
+	display:block;
+	width:40%;
+	float:left;
+}
+
+input, select
+{
+	width: 50%;
+	float: left;
+}
+
+div#formuRapide {
+	float: left;
+	width: 35%;
+ 	/*background-color: orange; /**/
+}
+
+div#menu {
+	float: left;
+ 	/*background-color: red;/**/
+	width: 30%; /*taille 30% de la taille de l'écran*/
+	margin-right: 5%;
+}
+
+div#corps {
+	/*height: 800px;*/
+}
+
+div#corps {
+	float: left; /*pour mettre le corps a gauche*/
+	width: 65%; /*taille de 65% de la taille de la page*/
+	/*background-color: yellow;/**/
+}
+
+span#erreur, div#erreur {
+	color: red; /*pour faire ressortir les erreurs ont les met en rouge*/
+}
+
+body {
+	width: 80%; /*sur la page on ne va utiliser que 80% de l'espace disponible*/
+	margin: auto; /*pour centrer le contenu au milieu de la page*/
+	margin-top: 2%; /*pour faire l'espace avec le bord supérieur de la page*/
+	color: gray; /*couleur grise pour tout le texte*/
+	font-family: fantasy; /**/
+}
+
+a {
+	color: gray;
+}
+
+a:HOVER {
+	color: appworkspace;
+	text-decoration: underline overline ;
+}
