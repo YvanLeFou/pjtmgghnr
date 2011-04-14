@@ -8,6 +8,9 @@
 		<form-bean name="formuRapide" type="action.form.ActionFormFormuRapide"></form-bean>
 		<form-bean name="formuRecherche" type="action.form.ActionFormFormuRecherche"></form-bean>
 		<form-bean name="formuInscription" type="action.form.ActionFormFormuInscription"></form-bean>
+		<form-bean name="signalerAnnonce" type="action.form.ActionFormFormuSignaler"></form-bean>
+		<form-bean name="encherir" type="action.form.ActionFormFormuEncherir"></form-bean>
+		<form-bean name="identiteInternaute" type="action.form.ActionFormFormuIdentiteInternaute"></form-bean>
 	</form-beans>
 	
 	<global-exceptions></global-exceptions>
@@ -57,6 +60,42 @@
 			name="formuInscription" 
 			validate="true" 
 			input="/inscription.jsp">
+		</action>
+		
+		<!-- pour signaler l'annonce -->
+		<action 
+			scope="request" 
+			path="/signaler" 
+			type="action.action.Signaler" 
+			validate="true" 
+			name="signalerAnnonce">
+		</action>
+		
+		<!-- pour encherir sur une offre -->
+		<action
+			scope="request" 
+			path="/proposeenchere" 
+			type="action.action.Encherir"  
+			name="encherir" 
+			validate="true" 
+			input="/erreur.jsp">
+		</action>
+		
+		<!-- mapping vers la fiche person d'un internaute -->
+		<action
+			scope="request" 
+			path="/identiteIntenaute" 
+			type="action.action.IdentiteInternaute" 
+			name="identiteInternaute" 
+			validate="true" 
+			input="erreur.jsp">
+			<forward name="identiteInternaute" path="/indentiteInternaute.jsp"></forward>
+		</action>
+		 		
+		
+		<!-- mapping de la fiche d'identite de l'annonce -->
+		<action scope="request" path="/identiteAnnonce" type="action.action.IdentiteAnnonce" input="/resultatRecherche.jsp">
+			<forward name="identiteAnnonce" path="/ficheAnnonce.jsp"></forward>
 		</action>
 		
 		<!-- mapping du lien vers la déconnexion -->
