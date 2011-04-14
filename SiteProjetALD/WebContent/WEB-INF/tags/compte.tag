@@ -19,7 +19,7 @@
 		</ul>
 	</li>
 	
-	<li><bean:message key="compte.lien.posterAnnonce"/></li>
-	<li><bean:message key="compte.lien.supprimerCompte"/></li>
+	<li><html:link action="/posterannonce.do?prior"><bean:message key="compte.lien.posterAnnonce"/></html:link></li>
+	<li><html:link action="/suppressionCompte.do"><bean:message key="compte.lien.supprimerCompte"/></html:link></li>
 	<li><html:link action="/index.do"><bean:message key="compte.lien.index"/></html:link></li>
 </ul>
