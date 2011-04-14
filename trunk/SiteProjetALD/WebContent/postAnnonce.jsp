@@ -13,7 +13,15 @@
 		<tags:lateral/>
 		
 		<div id="corps">
-			<tags:tableauRecherche nom="Résultat de la recherche" nomAttribute="listRecherche"></tags:tableauRecherche>
+			Poster une annonce<br/>
+			<label>Photo</label> Parcourir Ajouter<br/>
+			<label>Nom</label><br/>
+			<label>Description</label><br/>
+			<label>Photo</label><br/>
+			<label>Date de Fin</label><br/>
+			<label>Prix de départ</label><br/>
+			<label>Voir numéro de téléphone</label><br/>
+			Enregistrer
 		</div>
 	</body>
 </html>

@@ -91,12 +91,19 @@
 			input="erreur.jsp">
 			<forward name="identiteInternaute" path="/indentiteInternaute.jsp"></forward>
 		</action>
-		 		
 		
 		<!-- mapping de la fiche d'identite de l'annonce -->
 		<action scope="request" path="/identiteAnnonce" type="action.action.IdentiteAnnonce" input="/resultatRecherche.jsp">
 			<forward name="identiteAnnonce" path="/ficheAnnonce.jsp"></forward>
 		</action>
+		
+		<!-- mapping du lien vers le postage d'une annonce -->
+		<action scope="request" path="/posterannonce" type="action.action.PostAnnonce">
+			<forward name="postAnnonce" path="/postAnnonce.jsp"></forward>
+		</action>
+		
+		<!-- mapping du lien vers la déconnexion -->
+		<action scope="request" path="/suppressionCompte" type="action.action.SuppressionCompte" input="/index.jsp" />
 		
 		<!-- mapping du lien vers la déconnexion -->
 		<action scope="request" path="/deconnexion" type="action.action.Deconnexion" input="/index.jsp" />

@@ -70,4 +70,11 @@ public class Departement implements Serializable, Comparable<Departement> {
 		return Double.compare(this.idDepartement, o.idDepartement);
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return this.libelleDepartement;
+	}
 }
