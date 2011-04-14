@@ -32,12 +32,12 @@ public class AjouterAnnonce extends Action {
 		System.out.println(f.getFileList().getFileName());
 		FormFile myFile = f.getFileList();
 
-		String contentType = myFile.getContentType();
+		//String contentType = myFile.getContentType();
 		
 		// recuperer le nom du fichier
 		String fileName = myFile.getFileName();
-		int fileSize = myFile.getFileSize();
-		byte[] fileData = myFile.getFileData();
+		//int fileSize = myFile.getFileSize();
+		//byte[] fileData = myFile.getFileData();
 		// ca permet de retourne le chemin où sera sauvegarder le fichier
 		String filePath = getServlet().getServletContext().getRealPath("/") + "ImageUpload";
 		/* Sauvegarde du fichier dans le serveur */
