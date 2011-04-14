@@ -2,7 +2,7 @@ package metier;
 
 import java.io.Serializable;
 
-public class Image implements Serializable{
+public class Image implements Serializable, Comparable<Image>{
     /**
 	 * 
 	 */
@@ -49,6 +49,11 @@ public class Image implements Serializable{
 
 	public void setLibelleImage(String libelleImage) {
 		this.libelleImage = libelleImage;
+	}
+
+	@Override
+	public int compareTo(Image a) {
+		return Double.compare(idImage, a.idImage);
 	}
 
 }

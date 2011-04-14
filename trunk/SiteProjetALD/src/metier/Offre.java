@@ -3,6 +3,7 @@ package metier;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 public class Offre  implements Serializable{
     /**
@@ -20,7 +21,7 @@ public class Offre  implements Serializable{
     private Categorie categorie = null;
     private Departement departement = null;
     private HashSet<Encherit> encherit = null;
-    private HashSet<Image> image = null;
+    private TreeSet<Image> image = null;
     private int suspecte = 0;
     private Internaute internaute = null;
 
@@ -30,7 +31,7 @@ public class Offre  implements Serializable{
 	public Offre(String titre, String description, double miseAPrix,
 			int joignable, Date dateDebut, Date dateFin, Date dateDepot,
 			int idOffre, Categorie categorie, Departement departement,
-			HashSet<Encherit> encherit, HashSet<Image> image, int suspecte,
+			HashSet<Encherit> encherit, TreeSet<Image> image, int suspecte,
 			Internaute internaute) {
 		super();
 		this.titre = titre;
@@ -138,11 +139,11 @@ public class Offre  implements Serializable{
 		this.encherit = encherit;
 	}
 
-	public HashSet<Image> getImage() {
+	public TreeSet<Image> getImage() {
 		return image;
 	}
 
-	public void setImage(HashSet<Image> image) {
+	public void setImage(TreeSet<Image> image) {
 		this.image = image;
 	}
 

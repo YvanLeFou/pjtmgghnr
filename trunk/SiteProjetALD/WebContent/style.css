@@ -64,6 +64,40 @@ body {
 	font-family: fantasy; /**/
 }
 
+div#image, div#infoAnnonce, div#infoVendeur
+{
+	float: left;
+	margin-bottom: 70px;
+	height: 100px;
+}
+
+div#image
+{
+	width: 10%;
+	/*background-color: blue;/**/
+}
+
+div#infoAnnonce
+{
+	width: 40%;
+	margin-left:5%;
+	margin-right:10%;
+	/*background-color: red;/**/
+}
+
+div#infoVendeur
+{
+	width:35%;
+	/*background-color: yellow;/**/
+}
+
+div#enchere, div#description
+{
+	clear: left;
+	margin-bottom: 2%;
+	width:100%;
+}
+
 a {
 	color: gray;
 }
