@@ -5,7 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel=stylesheet type="text/css" href="style.css"/>
-		<title><bean:message key="resultat.title"/></title>
+		<title><bean:message key="postAnnonce.title"/></title>
 	</head>
 	
 	<body>
@@ -13,15 +13,31 @@
 		<tags:lateral/>
 		
 		<div id="corps">
-			Poster une annonce<br/>
-			<label>Photo</label> Parcourir Ajouter<br/>
-			<label>Nom</label><br/>
-			<label>Description</label><br/>
-			<label>Photo</label><br/>
-			<label>Date de Fin</label><br/>
-			<label>Prix de départ</label><br/>
-			<label>Voir numéro de téléphone</label><br/>
-			Enregistrer
+			<bean:message key="postAnnonce.titre"/><br/>
+			<html:form action="/posterAnnonce.do?prior" enctype="multipart/form-data">
+				<label><bean:message key="postAnnonce.photo"/></label><html:file property="fileList"></html:file><br/>
+				<div id="erreur"><html:errors property="postAnnonce.img.vide"/></div>
+				
+				<label><bean:message key="postAnnonce.nom"/></label><html:text property="titre"></html:text><br/>
+				<div id="erreur"><html:errors property="postAnnonce.titre.vide"/></div>
+				
+				<label><bean:message key="postAnnonce.description"/></label><html:text property="description"></html:text><br/>
+				<div id="erreur"><html:errors property="postAnnonce.description.vide"/></div>
+				
+				<label><bean:message key="postAnnonce.datefin"/></label><html:text property="dateFin"></html:text><br/>
+				<div id="erreur">
+					<html:errors property="postAnnonce.date.vide"/>
+					<html:errors property="postAnnonce.date.invalideFormat"/>
+				</div>
+				
+				<label><bean:message key="postAnnonce.miseaprix"/></label><html:text property="miseAPrix"></html:text><br/>
+				<div id="erreur"><html:errors property="postAnnonce.map.vide"/></div>
+				
+				<label><bean:message key="postAnnonce.voirtel"/></label><html:checkbox property="joignable"></html:checkbox><br/>
+				
+				<html:submit><bean:message key="bouton.submit.inscription"/></html:submit>
+				<html:reset><bean:message key="bouton.reset"/></html:reset>
+			</html:form>
 		</div>
 	</body>
 </html>
