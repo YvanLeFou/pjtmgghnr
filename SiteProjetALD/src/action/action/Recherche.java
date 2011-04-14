@@ -34,9 +34,9 @@ public class Recherche extends Action {
 		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
 		
 		TreeSet<Image> img = new TreeSet<Image>();
-		img.add(new Image("ImageUpload/AcceuilModeConnecte.png"));
-		img.add(new Image("ImageUpload/AdminGestionAnnonces.png"));
-		img.add(new Image("ImageUpload/EncheresEnCours.png"));
+		img.add(new Image("ImageUpload/mpd.png"));
+		img.add(new Image("ImageUpload/mpd.png"));
+		img.add(new Image("ImageUpload/mpd.png"));
 		
 		Offre o = new Offre("machin", "bidule", 3, 0, new Date(), new Date(), new Date(), 10, new Categorie("bidule"), new Departement("Machin"), new HashSet<Encherit>(), img, 0, i);
 		
