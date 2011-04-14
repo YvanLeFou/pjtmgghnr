@@ -11,6 +11,7 @@
 		<form-bean name="signalerAnnonce" type="action.form.ActionFormFormuSignaler"></form-bean>
 		<form-bean name="encherir" type="action.form.ActionFormFormuEncherir"></form-bean>
 		<form-bean name="identiteInternaute" type="action.form.ActionFormFormuIdentiteInternaute"></form-bean>
+		<form-bean name="postAnnonce" type="action.form.ActionFormFormuPostAnnonce"></form-bean>
 	</form-beans>
 	
 	<global-exceptions></global-exceptions>
@@ -52,7 +53,7 @@
 			input="/inscription.jsp">
 		</action>
 		
-		<!-- mapping de l'inscription -->
+		<!-- mapping de la modification de compte -->
 		<action
 			scope="request" 
 			path="/modificationCompte" 
@@ -78,18 +79,31 @@
 			type="action.action.Encherir"  
 			name="encherir" 
 			validate="true" 
-			input="/erreur.jsp">
+			input="/identiteAnnonce.do">
+			<!-- ici rajouter un parameter qui permettrait de retourner à l'annonce encherit -->
+			<!-- http://javaweb.developpez.com/faq/struts/?page=form#dispatchAction -->
 		</action>
 		
-		<!-- mapping vers la fiche person d'un internaute -->
+		<!-- mapping vers la fiche personnel d'un internaute -->
 		<action
 			scope="request" 
 			path="/identiteIntenaute" 
 			type="action.action.IdentiteInternaute" 
 			name="identiteInternaute" 
 			validate="true" 
-			input="erreur.jsp">
+			input="/erreur.jsp">
 			<forward name="identiteInternaute" path="/indentiteInternaute.jsp"></forward>
+		</action>
+		
+		<!-- mapping pour poster le formulaire de post d'une annonce-->
+		<action
+			scope="request" 
+			path="/posterAnnonce"
+			type="action.action.AjouterAnnonce" 
+			name="postAnnonce" 
+			validate="true" 
+			input="/postAnnonce.jsp">
+			<forward name="retour" path="/postAnnonce.jsp"></forward>
 		</action>
 		
 		<!-- mapping de la fiche d'identite de l'annonce -->

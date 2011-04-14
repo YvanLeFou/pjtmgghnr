@@ -7,7 +7,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel=stylesheet type="text/css" href="style.css"/>
 		
-		<title><bean:message key="index.title"/></title>
+		<title><bean:message key="identiteInternaute.title"/></title>
 	</head>
 	
 	<body>
@@ -15,17 +15,17 @@
 		<tags:lateral/>
 		
 		<div id="corps">
-			<label>Pseudo</label><bean:write name="internaute" property="pseudo"/><br/>
-			<label>Département</label><bean:write name="internaute" property="departement" /><br/>
-			<label>nombre de Ventes</label><bean:write name="nbVente"/><br/>
-			<label>nombre d'Achats</label><bean:write name="nbAchat"/><br/>
-			<label>Encours</label><br/>
+			<label><bean:message key="identiteInternaute.pseudo"/></label><bean:write name="internaute" property="pseudo"/><br/>
+			<label><bean:message key="identiteInternaute.departement"/></label><bean:write name="internaute" property="departement" /><br/>
+			<label><bean:message key="identiteInternaute.nbvente"/></label><bean:write name="nbVente"/><br/>
+			<label><bean:message key="identiteInternaute.nbachat"/></label><bean:write name="nbAchat"/><br/>
+			<label><bean:message key="identiteInternaute.encours"/></label><br/>
 			<table border="1">
 				<tr>
 					<th></th>
-					<th>Nom</th>
-					<th>Date</th>
-					<th>Prix</th>
+					<th><bean:message key="tableau.nom"/></th>
+					<th><bean:message key="tableau.date"/></th>
+					<th><bean:message key="tableau.prix"/></th>
 				</tr>
 				<logic:iterate id="list" name="internaute" property="offre">
 					<tr>

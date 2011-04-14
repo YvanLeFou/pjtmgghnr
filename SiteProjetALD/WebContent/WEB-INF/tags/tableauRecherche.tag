@@ -9,9 +9,9 @@ ${pageScope.nom}
 <table border="1">
 	<tr>
 		<th></th>
-		<th>Nom</th>
-		<th>Date</th>
-		<th>Prix</th>
+		<th><bean:message key="tableau.nom"/></th>
+		<th><bean:message key="tableau.date"/></th>
+		<th><bean:message key="tableau.prix"/></th>
 	</tr>
 	<logic:iterate id="list" name="${pageScope.nomAttribute}" >
 	<tr>

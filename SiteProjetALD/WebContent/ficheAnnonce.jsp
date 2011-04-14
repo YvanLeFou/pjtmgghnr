@@ -6,7 +6,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel=stylesheet type="text/css" href="style.css"/>
 		
-		<title><bean:message key="index.title"/></title>
+		<title><bean:message key="ficheAnnonce.title"/></title>
 	</head>
 	
 	<body>
@@ -22,23 +22,23 @@
 			
 			<div id="infoAnnonce">
 				<bean:write name="annonce" property="titre" /><br/>
-				<label>Prix min</label><bean:write name="annonce" property="miseAPrix" /><br/>
-				<label>Prix actuel</label>	<logic:iterate id="list" name="annonce" property="encherit">
+				<label><bean:message key="ficheAnnonce.prixmin"/></label><bean:write name="annonce" property="miseAPrix" /><br/>
+				<label><bean:message key="ficheAnnonce.prixactu"/></label>	<logic:iterate id="list" name="annonce" property="encherit">
 												<label><bean:write name="list" property="prix" /></label>
 											</logic:iterate><br/>
-				<label>Date fin</label><bean:write name="annonce" property="dateFin" /><br/>
+				<label><bean:message key="ficheAnnonce.datefin"/></label><bean:write name="annonce" property="dateFin" format="EEEEE dd MMMM yyyy HH:mm:ss"/><br/>
 			</div>
 			
 			<div id="infoVendeur">
-				<label>Vendeur</label>
+				<label><bean:message key="ficheAnnonce.vendeur"/></label>
 				<html:form action="/identiteIntenaute.do">
 					<label><bean:write name="internaute" property="pseudo" /></label>
 					<html:hidden property="idOffre" write="idOffre" name="annonce"/>
 					<html:submit value="Information Complémentaire" style="width:100%;"></html:submit><br/>
 				</html:form><br/>
 				
-				<label>tel</label><bean:write name="internaute" property="telephone" /><br/>
-				<label>email</label><bean:write name="internaute" property="email" /><br/>
+				<label><bean:message key="ficheAnnonce.tel"/></label><bean:write name="internaute" property="telephone" /><br/>
+				<label><bean:message key="ficheAnnonce.mail"/></label><bean:write name="internaute" property="email" /><br/>
 				<html:form action="/signaler.do">
 					<html:hidden property="idOffre" write="idOffre" name="annonce" />
 					<html:submit value="Signaler cette annonce" style="width:100%;"/><br/>
@@ -49,17 +49,17 @@
 			<div id="enchere">
 				<logic:present name="pseudo" scope="session">
 					<html:form action="/proposeenchere.do">
-						<label style="width:20%;">Enchere</label>
+						<label style="width:20%;"><bean:message key="ficheAnnonce.enchere"/></label>
 						<html:text property="enchere" style="width:20%; margin-right:5%;" value=""/>
 						<html:hidden property="idOffre" write="idOffre" name="annonce"/>
 						<html:submit value="Encherir" style="width:30%"/><br/>
-						<html:errors property="enchere.invalide"/>
+						<div id="erreur"><html:errors property="enchere.invalide"/></div>
 					</html:form>
 				</logic:present>
 			</div>
 			
 			<div id="description">
-				Description<br/>
+				<bean:message key="ficheAnnonce.description"/><br/>
 				<bean:write name="annonce" property="description"/><br/>
 			</div>
 		</div>
