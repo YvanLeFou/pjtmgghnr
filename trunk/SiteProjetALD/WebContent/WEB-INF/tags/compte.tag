@@ -8,14 +8,14 @@
 	<li><html:link action="/modificationCompte.do?prior"><bean:message key="compte.lien.modifierCompte"/></html:link></li>
 	<li><bean:message key="compte.lien.encours"/>
 		<ul>
-			<li><bean:message key="compte.lien.encours.enchere"/></li>
-			<li><bean:message key="compte.lien.encours.vente"/></li>
+			<li><html:link action="/enchereEncours.do?prior"><bean:message key="compte.lien.encours.enchere"/></html:link></li>
+			<li><html:link action="/venteEncours.do?prior"><bean:message key="compte.lien.encours.vente"/></html:link></li>
 		</ul>
 	</li>
 	<li><bean:message key="compte.lien.historique"/>
 		<ul>
-			<li><bean:message key="compte.lien.historique.achat"/></li>
-			<li><bean:message key="compte.lien.historique.vente"/></li>
+			<li><html:link action="/historiqueAchat.do?prior"><bean:message key="compte.lien.historique.achat"/></html:link></li>
+			<li><html:link action="/historiqueVente.do?prior"><bean:message key="compte.lien.historique.vente"/></html:link></li>
 		</ul>
 	</li>
 	
