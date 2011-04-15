@@ -116,6 +116,26 @@
 			<forward name="postAnnonce" path="/postAnnonce.jsp"></forward>
 		</action>
 		
+		<!-- mapping du lien vers l'enchere en cours -->
+		<action scope="request" path="/enchereEncours" type="action.action.EnchereEncours" input="/index.jsp">
+			<forward name="resultatRecherche" path="/resultatRecherche.jsp"></forward>
+		</action>
+		
+		<!-- mapping du lien vers la vente en cours -->
+		<action scope="request" path="/venteEncours" type="action.action.VenteEncours" input="/index.jsp">
+			<forward name="resultatRecherche" path="/resultatRecherche.jsp"></forward>
+		</action>
+		
+		<!-- mapping du lien vers l'enchere en cours -->
+		<action scope="request" path="/historiqueAchat" type="action.action.HistoriqueAchat" input="/index.jsp">
+			<forward name="resultatRecherche" path="/resultatRecherche.jsp"></forward>
+		</action>
+		
+		<!-- mapping du lien vers la vente en cours -->
+		<action scope="request" path="/historiqueVente" type="action.action.HistoriqueVente" input="/index.jsp">
+			<forward name="resultatRecherche" path="/resultatRecherche.jsp"></forward>
+		</action>
+		
 		<!-- mapping du lien vers la déconnexion -->
 		<action scope="request" path="/suppressionCompte" type="action.action.SuppressionCompte" input="/index.jsp" />
 		
