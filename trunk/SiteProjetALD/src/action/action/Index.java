@@ -30,21 +30,29 @@ public class Index extends Action {
 		
 		request.getSession().setMaxInactiveInterval(Integer.MAX_VALUE);
 		
-		ArrayList<Departement> listDep = null;
-		DAODepartementHibernate dao = new DAODepartementHibernate();
-		listDep = dao.loadAll();
-		request.getSession().setAttribute("listDepartement", listDep);
+		if (request.getServletContext().getAttribute("listDepartement") == null)
+		{
+			ArrayList<Departement> listDep = null;
+			DAODepartementHibernate dao = new DAODepartementHibernate();
+			listDep = dao.loadAll();
+			request.getServletContext().setAttribute("listDepartement", listDep);
+		}
 		
-		ArrayList<Categorie> listCat = null;
-		DAOCategorieHibernate daoc = new DAOCategorieHibernate();
-		listCat = daoc.loadAll();
-		request.getSession().setAttribute("listCategorie", listCat);
+		if (request.getServletContext().getAttribute("listCategorie") == null)
+		{
+			ArrayList<Categorie> listCat = null;
+			DAOCategorieHibernate daoc = new DAOCategorieHibernate();
+			listCat = daoc.loadAll();
+			request.getServletContext().setAttribute("listCategorie", listCat);
+		}
 		
-		ArrayList<Region> listRegion = null;
-		DAORegionHibernate daoReg = new DAORegionHibernate();
-		listRegion = daoReg.loadAll();
-		request.getSession().setAttribute("listRegion", listRegion);
-		
+		if (request.getServletContext().getAttribute("listRegion") == null)
+		{
+			ArrayList<Region> listRegion = null;
+			DAORegionHibernate daoReg = new DAORegionHibernate();
+			listRegion = daoReg.loadAll();
+			request.getServletContext().setAttribute("listRegion", listRegion);
+		}
 		return mapping.findForward("index");
 	}
 
