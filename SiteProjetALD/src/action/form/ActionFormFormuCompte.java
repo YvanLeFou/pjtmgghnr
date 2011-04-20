@@ -1,5 +1,8 @@
 package action.form;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,19 +23,17 @@ public class ActionFormFormuCompte extends ActionForm {
 	protected String numeroRue = "";
 	protected HttpSession session = null;
 	protected Internaute i = null;
-	
+
 	protected String lien = "";
-	
-	public String getLien()
-	{
+
+	public String getLien() {
 		return lien;
 	}
-	
-	public void setLien(String lien)
-	{
+
+	public void setLien(String lien) {
 		this.lien = lien;
 	}
-	
+
 	/**
 	 * @return the pseudo
 	 */
@@ -54,8 +55,8 @@ public class ActionFormFormuCompte extends ActionForm {
 	 * @return the mdp1
 	 */
 	public String getMdp() {
-		//if (i != null)
-		//	return i.getMdp();
+		// if (i != null)
+		// return i.getMdp();
 		return mdp;
 	}
 
@@ -239,7 +240,7 @@ public class ActionFormFormuCompte extends ActionForm {
 	 * @return the numeroRue
 	 */
 	public String getNumeroRue() {
-		if ( i!=null )
+		if (i != null)
 			return "" + i.getNumeroRue();
 		return numeroRue;
 	}
@@ -251,7 +252,7 @@ public class ActionFormFormuCompte extends ActionForm {
 	public void setNumeroRue(String numeroRue) {
 		this.numeroRue = numeroRue;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -262,83 +263,82 @@ public class ActionFormFormuCompte extends ActionForm {
 	@Override
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
-		
-		ActionErrors errors = null;
+
+		ActionErrors errors = new ActionErrors();
 		if (session == null)
 		{
 			session = request.getSession();
-			try
+			try 
 			{
 				i = (Internaute) session.getAttribute("pseudo");
 			}
-			catch (Exception ex)
+			catch (Exception ex) 
 			{
-				errors = new ActionErrors();
 				errors.add("", new ActionMessage(""));
 			}
 		}
-		
-		if (getPseudo().trim().isEmpty() || getNom().trim().isEmpty()
-				|| getPrenom().trim().isEmpty() || getMdp().trim().isEmpty()
-				|| getMdp2().trim().isEmpty() || getNumeroRue().trim().isEmpty()
-				|| getNomRue().trim().isEmpty() || getCp().trim().isEmpty()
-				|| getVille().trim().isEmpty() || getEmail().trim().isEmpty()
-				|| getTelephone().trim().isEmpty()
-				|| getDepartement().trim().isEmpty()
-				|| getRegion().trim().isEmpty()) {
-			
-			if (errors == null)
-				errors = new ActionErrors();
-			
-			if (getPseudo().trim().isEmpty())
-				errors.add("inscription.pseudo.vide", new ActionMessage("inscription.pseudo.vide"));
-			if (getNom().trim().isEmpty())
-				errors.add("inscription.nom.vide", new ActionMessage("inscription.nom.vide"));
-			if (getPrenom().trim().isEmpty())
-				errors.add("inscription.prenom.vide", new ActionMessage("inscription.prenom.vide"));
-			if (getMdp().trim().isEmpty())
-				errors.add("inscription.mdp.vide", new ActionMessage("inscription.mdp.vide"));
-			if (getMdp2().trim().isEmpty())
-				errors.add("inscription.mdp2.vide", new ActionMessage("inscription.mdp2.vide"));
-			if (getNumeroRue().trim().isEmpty())
-				errors.add("inscription.numrue.vide", new ActionMessage("inscription.numrue.vide"));
-			else
-			{
-				try
-				{
-					Integer.parseInt(getNumeroRue().trim());
-				}
-				catch(NumberFormatException nfe)
-				{
-					errors.add("inscription.numrue.invalide", new ActionMessage("inscription.numrue.invalide"));
-				}
+
+		if (getPseudo().trim().isEmpty())
+			errors.add("inscription.pseudo.vide", new ActionMessage("inscription.pseudo.vide"));
+		if (getNom().trim().isEmpty())
+			errors.add("inscription.nom.vide", new ActionMessage("inscription.nom.vide"));
+		if (getPrenom().trim().isEmpty())
+			errors.add("inscription.prenom.vide", new ActionMessage("inscription.prenom.vide"));
+		if (getMdp().trim().isEmpty())
+			errors.add("inscription.mdp.vide", new ActionMessage("inscription.mdp.vide"));
+		if (getMdp2().trim().isEmpty())
+			errors.add("inscription.mdp2.vide", new ActionMessage("inscription.mdp2.vide"));
+		if (getNumeroRue().trim().isEmpty())
+			errors.add("inscription.numrue.vide", new ActionMessage("inscription.numrue.vide"));
+		else {
+			try {
+				Integer.parseInt(getNumeroRue().trim());
+			} catch (NumberFormatException nfe) {
+				errors.add("inscription.numrue.invalide", new ActionMessage("inscription.numrue.invalide"));
 			}
-			
-			if (getNomRue().trim().isEmpty())
-				errors.add("inscription.nomrue.vide", new ActionMessage("inscription.nomrue.vide"));
-			if (getCp().trim().isEmpty())
-				errors.add("inscription.cp.vide", new ActionMessage("inscription.cp.vide"));
-			if (getVille().trim().isEmpty())
-				errors.add("inscription.ville.vide", new ActionMessage("inscription.ville.vide"));
-			if (getEmail().trim().isEmpty())
-				errors.add("inscription.mail.vide", new ActionMessage("inscription.mail.vide"));
-			if (getTelephone().trim().isEmpty())
-				errors.add("inscription.tel.vide", new ActionMessage("inscription.tel.vide"));
-			if (getDepartement().trim().isEmpty())
-				errors.add("inscription.dpt.vide", new ActionMessage("inscription.dpt.vide"));
-			if (getRegion().trim().isEmpty())
-				errors.add("inscription.region.vide", new ActionMessage("inscription.region.vide"));
 		}
+
+		if (getNomRue().trim().isEmpty())
+			errors.add("inscription.nomrue.vide", new ActionMessage("inscription.nomrue.vide"));
+		if (getCp().trim().isEmpty())
+			errors.add("inscription.cp.vide", new ActionMessage("inscription.cp.vide"));
+
+		String regex = "^[0-9]{5,5}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(getCp().trim());
+		if (!matcher.find())
+			errors.add("inscription.cp.invalide", new ActionMessage("inscription.cp.invalide"));
+
+		if (getVille().trim().isEmpty())
+			errors.add("inscription.ville.vide", new ActionMessage("inscription.ville.vide"));
 		
+		if (getEmail().trim().isEmpty())
+			errors.add("inscription.mail.vide", new ActionMessage("inscription.mail.vide"));
+		
+		regex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.(?:[A-Z]{2,2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$";
+		pattern = Pattern.compile(regex);
+		matcher = pattern.matcher(getEmail().trim());
+		if (!matcher.find())
+			errors.add("inscription.mail.invalide", new ActionMessage("inscription.mail.invalide"));
+		
+		if (getTelephone().trim().isEmpty())
+			errors.add("inscription.tel.vide", new ActionMessage("inscription.tel.vide"));
+		regex = "^0\\d\\d{2,2}\\d{2,2}\\d{2,2}\\d{2,2}$";
+		pattern = Pattern.compile(regex);
+		matcher = pattern.matcher(getTelephone().trim());
+		if (!matcher.find())
+			errors.add("inscription.tel.invalide", new ActionMessage("inscription.tel.invalide"));
+
+		if (getDepartement().trim().isEmpty())
+			errors.add("inscription.dpt.vide", new ActionMessage("inscription.dpt.vide"));
+
+		if (getRegion().trim().isEmpty())
+			errors.add("inscription.region.vide", new ActionMessage("inscription.region.vide"));
+
 		if (!getMdp().trim().equals(getMdp2().trim()))
-		{
-			if (errors == null)
-				errors = new ActionErrors();
 			errors.add("inscription.mdp.identique", new ActionMessage("inscription.mdp.identique"));
-		}
-		
-		//il faut aussi vérifier que le pseudo n'est pas utilisé
-		
+		// il faut aussi vérifier que le pseudo n'est pas utilisé
+
 		return errors;
 	}
 }

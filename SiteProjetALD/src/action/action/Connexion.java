@@ -11,6 +11,10 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
+
+import daoHibernate.DAOInternauteHibernate;
 
 import action.form.ActionFormFormuRapide;
 
@@ -21,31 +25,20 @@ public class Connexion extends Action
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ActionFormFormuRapide fm = (ActionFormFormuRapide) form;
-		//si la personne existe dans la base de données
 		
-		//if () //si resultat dans la base 
+		DAOInternauteHibernate dao = new DAOInternauteHibernate();
+		Internaute i = dao.get(fm.getPseudo());
+		
+		if (i != null && i.getMdp().equals(fm.getMdp())) 
 		{
-			Internaute i = new Internaute();
-			i.setNom("reitz");
-			i.setPrenom("nicolas");
-			i.setPseudo(fm.getPseudo());
-			i.setCp("57700");
-			Region r = new Region("Lorraine");
-			Departement p = new Departement(55, "Moselle", r);
-			r.setIdRegion(13);
-			r.getListeDepartements().add(p);
-			i.setDepartement(p);
-			i.setEmail("nicolas.reitz@gmx.fr");
-			i.setMdp("truc");
-			i.setNomRue("rue des pommiers");
-			i.setNumeroRue(28);
-			i.setTelephone("haha");
-			i.setVille("Hayange");
 			request.getSession().setAttribute("pseudo", i);
 		}
-		//else // pas de resultat
+		else // pas de resultat
 		{
-			
+			ActionMessages erreur = null;
+			erreur = new ActionMessages();
+			erreur.add("entete.client.introuvable", new ActionMessage("entete.client.introuvable"));
+			this.addErrors(request, erreur);
 		}
 		
 		return mapping.findForward("index");
