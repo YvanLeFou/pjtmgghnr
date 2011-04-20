@@ -19,7 +19,6 @@ public class DAOInternauteHibernate extends DAOHibernate implements DAOInternaut
 		Session	session = connect();
 		
 		session.delete(i);
-		i.setPseudo(null);
 		
 		close(session);
 	}

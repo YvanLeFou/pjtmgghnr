@@ -2,31 +2,31 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 							"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
-<class name="metier.Offre" table="offre" lazy="false">
-	<id name="idOffre" type="integer" column="idOffre"/>
-	<property name="titre" type="string" column="titre"/>
-	<property name="descriptif" type="string" column="descriptif"/>
-	<property name="miseAPrix" type="double" column="miseAPrix"/>
-	<property name="joignable" type="integer" column="joignable"/>
-	<property name="dateDepot" type="date" column="dateDepot"/>
-	<property name="dateDebut" type="date" column="dateDebut"/>
-	<property name="dateFin" type="date" column="dateFin"/>
-	<property name="suspecte" type="integer" column="suspecte"/>
+	<class name="metier.Offre" table="offre" lazy="false">
+		<id name="idOffre" type="integer" column="idOffre">
+			<generator class="increment" />
+		</id>
+		<property name="titre" type="string" column="titre" />
+		<property name="descriptif" type="string" column="descriptif" />
+		<property name="miseAPrix" type="double" column="miseAPrix" />
+		<property name="joignable" type="integer" column="joignable" />
+		<property name="dateDepot" type="date" column="dateDepot" />
+		<property name="dateDebut" type="date" column="dateDebut" />
+		<property name="dateFin" type="date" column="dateFin" />
+		<property name="suspecte" type="integer" column="suspecte" />
 		
-	<many-to-one name="departement" column="idDepartement" class="metier.Departement"/>
-	<many-to-one name="internaute" column="pseudo" class="metier.Internaute"/>
-	<many-to-one name="categorie" column="idCategorie" class="metier.Categorie"/>
-	
-	<set name="encherit" inverse="true" cascade="all" lazy="false">
-		<key column="idOffre"/>
-		<one-to-many class="metier.Encherit"/>
-	</set>
-	
-	<set name="image" cascade="all" lazy="false">
-		<key column="idImage"/>
-		<one-to-many class="metier.Image"/>
-	</set>
-	
-</class>
+		<many-to-one name="departement" column="idDepartement" class="metier.Departement" />
+		<many-to-one name="categorie" column="idCategorie" class="metier.Categorie" />
+		<many-to-one name="internaute" column="pseudo" class="metier.Internaute" />
+		
+		<set name="image" cascade="all" lazy="false" inverse="true">
+			<key column="idOffre" />
+			<one-to-many class="metier.Image" />
+		</set>
+		
+		<set name="encherit" cascade="all" lazy="false" inverse="true">
+			<key column="idOffre" />
+			<one-to-many class="metier.Encherit" />
+		</set>
+	</class>
 </hibernate-mapping>

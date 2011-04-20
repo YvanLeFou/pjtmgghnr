@@ -47,7 +47,7 @@ public class DAOMotClefHibernate extends DAOHibernate implements DAOMotClef{
 		ArrayList<MotClef>	tab = null;
 		Session session = connect();
 		
-		tab = (ArrayList<MotClef>) session.createQuery("FROM Motclef")
+		tab = (ArrayList<MotClef>) session.createQuery("FROM MotClef")
 				.list();
 		
 		close(session);

@@ -57,8 +57,8 @@ public class IdentiteInternaute extends Action {
 		img.add(new Image("ImageUpload/mpd.png"));
 		img.add(new Image("ImageUpload/mpd.png"));
 		
-		Offre o = new Offre("machin", "bidule", 3, 0, new Date(), new Date(), new Date(), 10, new Categorie("bidule"), new Departement("Machin"), new HashSet<Encherit>(), img, 0, i);
-		
+		Offre o = new Offre("machin", "bidule", 3, 0, new Date(), new Date(), new Date(), 10, new Categorie("bidule"), new Departement("Machin"), 0, i);
+		o.setImage(img);
 		HashSet<Encherit> e = new HashSet<Encherit>();
 		e.add(new Encherit(3., i, o));
 		o.setEncherit(e);
@@ -66,8 +66,11 @@ public class IdentiteInternaute extends Action {
 		
 		Calendar c = Calendar.getInstance();
 		c.set(2011, 10, 21, 21, 24, 32);
-		Offre oo = new Offre("truc", "bidule", 3, 0, c.getTime(), c.getTime(), c.getTime(), 10, new Categorie("bidule"), new Departement("Machin"), new HashSet<Encherit>(), img, 0, i);
-		Offre ooo = new Offre("bidule", "bidule", 3, 0, new Date(), new Date(), new Date(), 11, new Categorie("bidule"), new Departement("Machin"), new HashSet<Encherit>(), img, 0, i);
+		Offre oo = new Offre("truc", "bidule", 3, 0, c.getTime(), c.getTime(), c.getTime(), 10, new Categorie("bidule"), new Departement("Machin"), 0, i);
+		Offre ooo = new Offre("bidule", "bidule", 3, 0, new Date(), new Date(), new Date(), 11, new Categorie("bidule"), new Departement("Machin"),0, i);
+		oo.setImage(img);
+		ooo.setImage(img);
+		
 		oo.setInternaute(i);
 		ooo.setInternaute(i);
 		

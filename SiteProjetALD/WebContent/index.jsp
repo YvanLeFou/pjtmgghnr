@@ -16,7 +16,7 @@
 		<div id="corps">
 			<p>
 				Bonjour, bienvenue sur la copie inconforme de e-Bay ^^<br/>
-				Veuillez ne pas critiqué, ce site n'est pas en développement. Veuillez ne pas excuser le fautes d'aurtograffes, merci de retrait<br/>
+				Veuillez ne pas critiqué, ce site n'est pas en développement. Veuillez ne pas excuser les fautes d'aurtograffes, merci de retrait<br/>
 				pour achat aller sur 3615 code ailleur<br/>
 			</p>
 		</div>

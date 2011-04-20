@@ -5,7 +5,7 @@
 	<session-factory>
 	<!-- propriétés -->
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/projetald</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/projetaldtest</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password"></property>
@@ -16,11 +16,11 @@
 		<mapping resource="MappingDroit.hbm.xml"/>
 		<mapping resource="MappingDepartement.hbm.xml"/>
 		<mapping resource="MappingRegion.hbm.xml"/>
-		<!--  <mapping resource="MappingImage.hbm.xml"/>
+		<mapping resource="MappingImage.hbm.xml"/>
 		<mapping resource="MappingMotClef.hbm.xml"/>
 		
 		<mapping resource="MappingEncherit.hbm.xml"/>
 		<mapping resource="MappingInternaute.hbm.xml"/>		
-		<mapping resource="MappingOffre.hbm.xml"/> -->
+		<mapping resource="MappingOffre.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

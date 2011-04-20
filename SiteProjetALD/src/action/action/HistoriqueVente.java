@@ -38,11 +38,11 @@ ArrayList<Offre> offre = new ArrayList<Offre>();
 		img.add(new Image("ImageUpload/mpd.png"));
 		img.add(new Image("ImageUpload/mpd.png"));
 		
-		Offre o = new Offre("machin", "bidule", 3, 0, new Date(), new Date(), new Date(), 10, new Categorie("bidule"), new Departement("Machin"), new HashSet<Encherit>(), img, 0, i);
+		Offre o = new Offre("machin", "bidule", 3, 0, new Date(), new Date(), new Date(), 10, new Categorie("bidule"), new Departement("Machin"), 0, i);
 		
 		HashSet<Encherit> e = new HashSet<Encherit>();
 		e.add(new Encherit(3., i, o));
-		
+		o.setImage(img);
 		o.setEncherit(e);
 		
 		

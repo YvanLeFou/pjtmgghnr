@@ -2,14 +2,12 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 							"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
+	<class name="metier.Departement" table="departement" lazy="false">
+		<id name="idDepartement" type="integer" column="idDepartement">
+		</id>
+		<property name="libelleDepartement" type="string" column="libelleDepartement" />
+		<property name="code" type="string" column="code" />
 
-<class name="metier.Departement" table="departement" lazy="false">
-	<id name="idDepartement" type="integer" column="idDepartement">
-	</id>
-	<property name="libelleDepartement" type="string" column="libelleDepartement"/>
-	<property name="code" type="string" column="code"/>
-	
-    <many-to-one name="region" column="idRegion" class="metier.Region"/>
-</class>
-
+		<many-to-one name="region" column="idRegion" class="metier.Region" />
+	</class>
 </hibernate-mapping>

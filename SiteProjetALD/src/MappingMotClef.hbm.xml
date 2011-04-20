@@ -2,12 +2,10 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 							"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
-<class name="metier.MotClef" table="motclef" lazy="false">
-	<id name="idMotClef" type="integer" column="idMotClef">
-		<generator class="increment"/>
-	</id>
-	<property name="libelleMotClef" type="string" column="libelleMotClef"/>
-</class>
-
+	<class name="metier.MotClef" table="motclef" lazy="false">
+		<id name="idMotClef" type="integer" column="idMotClef">
+			<generator class="increment" />
+		</id>
+		<property name="libelleMotClef" type="string" column="libelleMotClef" />
+	</class>
 </hibernate-mapping>

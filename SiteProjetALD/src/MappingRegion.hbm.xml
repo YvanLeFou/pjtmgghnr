@@ -2,17 +2,15 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 							"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
-<class name="metier.Region" table="region" lazy="false">
-	<id name="idRegion" type="integer" column="idRegion">
-		<generator class="native"/>
-	</id>
-	<property name="libelle" type="string" column="libelleRegion"/>
-	
-	<set name="listeDepartements" cascade="all" inverse="true" lazy="false">
-		<key column="idRegion"/>
-		<one-to-many class="metier.Departement"/>
-	</set>
-</class>
-
+	<class name="metier.Region" table="region" lazy="false">
+		<id name="idRegion" type="integer" column="idRegion">
+			<generator class="native" />
+		</id>
+		<property name="libelle" type="string" column="libelleRegion" />
+		
+		<set name="listeDepartements" cascade="all" inverse="true" lazy="false">
+			<key column="idRegion" />
+			<one-to-many class="metier.Departement" />
+		</set>
+	</class>
 </hibernate-mapping>

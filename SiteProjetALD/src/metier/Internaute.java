@@ -2,26 +2,27 @@ package metier;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 
 public class Internaute implements Serializable{
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String nom = null;
-    private String prenom = null;
-    private String pseudo = null;
-    private String mdp = null;
+	private String nom = "";
+    private String prenom = "";
+    private String pseudo = "";
+    private String mdp = "";
     private int numeroRue = 0;
-    private String nomRue = null;
-    private String ville = null;
-    private String cp =null;
-    private String telephone = null;
-    private String email = null;
+    private String nomRue = "";
+    private String ville = "";
+    private String cp = "";
+    private String telephone = "";
+    private String email = "";
     private Droit droit = null;
     private Departement departement = null;
-    private HashSet<Encherit> encherit = null;
-    private HashSet<Offre> offre = null;
+    private Set<Encherit> encherit = new HashSet<Encherit>();
+    private Set<Offre> offre = new HashSet<Offre>();
 
     public Internaute(){
     }
@@ -29,8 +30,7 @@ public class Internaute implements Serializable{
 	public Internaute(String nom, String prenom, String pseudo, String mdp,
 			int numeroRue, String nomRue, String ville, String cp,
 			String telephone, String email, Droit droit,
-			Departement departement, HashSet<Encherit> encherit,
-			HashSet<Offre> offre) {
+			Departement departement) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -44,11 +44,8 @@ public class Internaute implements Serializable{
 		this.email = email;
 		this.droit = droit;
 		this.departement = departement;
-		this.encherit = encherit;
-		this.offre = offre;
 	}
-
-
+	
 	public String getNom() {
 		return nom;
 	}
@@ -145,19 +142,25 @@ public class Internaute implements Serializable{
 		this.departement = departement;
 	}
 
-	public HashSet<Encherit> getEncherit() {
+	public Set<Encherit> getEncherit() {
 		return encherit;
 	}
 
-	public void setEncherit(HashSet<Encherit> encherit) {
+	public void setEncherit(Set<Encherit> encherit) {
 		this.encherit = encherit;
 	}
 
-	public HashSet<Offre> getOffre() {
+	/**
+	 * @return the offre
+	 */
+	public Set<Offre> getOffre() {
 		return offre;
 	}
 
-	public void setOffre(HashSet<Offre> offre) {
+	/**
+	 * @param offre the offre to set
+	 */
+	public void setOffre(Set<Offre> offre) {
 		this.offre = offre;
 	}
 
@@ -170,6 +173,7 @@ public class Internaute implements Serializable{
 				+ pseudo + ", mdp=" + mdp + ", numeroRue=" + numeroRue
 				+ ", nomRue=" + nomRue + ", ville=" + ville + ", cp=" + cp
 				+ ", telephone=" + telephone + ", email=" + email
-				+ ", departement=" + departement + "]";
+				+ ", departement=" + departement + "] nbOffre : " + getOffre().size()
+				+ ", nbEnchere : " + getEncherit().size();
 	}
 }

@@ -9,7 +9,7 @@ public class Image implements Serializable, Comparable<Image>{
 	private static final long serialVersionUID = 1L;
 	private int idImage = -1;
     private String libelleImage = null;
-    private int idOffre = -1;
+    private Offre idOffre = null;
     
 	public Image(){
 	}
@@ -20,18 +20,18 @@ public class Image implements Serializable, Comparable<Image>{
 	}
 
 
-	public Image(int id, String libelle, int idOffre) {
+	public Image(int id, String libelle, Offre idOffre) {
 		super();
 		this.idImage = id;
 		this.libelleImage= libelle;
 		this.idOffre = idOffre;
 	}
 
-    public int getIdOffre() {
+    public Offre getIdOffre() {
 		return idOffre;
 	}
 
-	public void setIdOffre(int idOffre) {
+	public void setIdOffre(Offre idOffre) {
 		this.idOffre = idOffre;
 	}
 
@@ -54,6 +54,12 @@ public class Image implements Serializable, Comparable<Image>{
 	@Override
 	public int compareTo(Image a) {
 		return Double.compare(idImage, a.idImage);
+	}
+
+	@Override
+	public String toString() {
+		return "Image [idImage=" + idImage + ", libelleImage=" + libelleImage
+				+ "]";
 	}
 
 }
