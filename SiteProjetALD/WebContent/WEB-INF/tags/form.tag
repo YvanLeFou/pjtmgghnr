@@ -74,6 +74,6 @@
 		<div id="erreur"><html:errors property="inscription.tel.vide"/></div>
 	</fieldset>
 
-	<html:submit><bean:message key="bouton.submit.inscription"/></html:submit>
-	<html:reset><bean:message key="bouton.reset"/></html:reset>
+	<html:submit styleClass="btn"><bean:message key="bouton.submit.inscription"/></html:submit>
+	<html:reset styleClass="btn"><bean:message key="bouton.reset"/></html:reset>
 </html:form>
