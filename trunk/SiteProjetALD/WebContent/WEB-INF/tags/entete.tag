@@ -3,7 +3,9 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"%>
 
 <div id="entete">
-	<div id="banniere"><html:link action="/index.do">Chez Olive</html:link></div>
+	<div id="banniere"><html:link action="/index.do">Chez Olive</html:link>
+	<img src="olive.gif" height="145px"/>
+	</div>
 	<div id="formuRapide">
 		<logic:empty name="pseudo" scope="session">
 			<html:form action="/connexion.do">
@@ -15,8 +17,8 @@
 				<html:password property="mdp" styleId="mdp"></html:password><br/>
 				<div id="erreur"><html:errors property="connexion.mdp.vide"/></div>
 				
-				<html:submit><bean:message key="bouton.submit.connexion"/></html:submit>
-				<html:reset><bean:message key="bouton.reset"/></html:reset><br/>
+				<html:submit styleClass="btn"><bean:message key="bouton.submit.connexion"/></html:submit>
+				<html:reset  styleClass="btn"><bean:message key="bouton.reset"/></html:reset><br/>
 				
 				<html:link action="/inscription.do"><bean:message key="entete.lien.inscription"/></html:link>
 			</html:form>

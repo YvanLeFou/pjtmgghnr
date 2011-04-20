@@ -34,8 +34,8 @@
 		<div id="erreur"><html:errors property="recherche.max.invalide"/></div>
 	</fieldset>
 	
-	<html:submit><bean:message key="bouton.submit.rechercher"/></html:submit>
-	<html:reset><bean:message key="bouton.reset"/></html:reset>
+	<html:submit styleClass="btn"><bean:message key="bouton.submit.rechercher"/></html:submit>
+	<html:reset styleClass="btn"><bean:message key="bouton.reset"/></html:reset>
 	
 </html:form>
 

@@ -3,19 +3,46 @@ div#entete {
 	width: 100%;
 	min-height:110px;
 	margin-bottom: 2%;
- 	/*background-color: purple;/**/
+ 	background-color: #FBFBD3;
 }
 
 div#banniere {
 	float: left;
-	width: 65%;
+	width: 60%;
 	min-height:110px;
 	text-align: center;
 	font-size: 90px;
 	font-family: cursive; /**/
- 	/*background-color: blue; /**/
+ 	background-color: #FBFBD3;
+ 	vertical-align: top;
+ }
+
+.btn{
+	background-color: #5AB318;
+	color: #FBFBD3;
+	border: none;
+    padding: 2px 8px;
+    padding-top: 5px;
+ 	padding-bottom: 5px;
+ 	margin-right: 3px;
+ 	margin-left: 3px;
+ 	margin-bottom: 3px;
+ 	margin-top: 3px;
 }
 
+.btn:hover {
+    border: none;
+    background-color: #FBFBD3;
+    color: #5AB318;
+    padding: 2px 8px;
+    padding-top: 5px;
+ 	padding-bottom: 5px;
+ 	margin-right: 3px;
+ 	margin-left: 3px;
+ 	margin-bottom: 3px;
+ 	margin-top: 3px;
+}
+	
 label
 {
 	display:block;
@@ -25,21 +52,30 @@ label
 
 input, select
 {
-	width: 50%;
+	width: 48%;
 	float: left;
 }
 
+
+	
 div#formuRapide {
 	float: left;
 	width: 35%;
- 	/*background-color: orange; /**/
+ 	background-color: #CEFFAA;
+ 	color :#5AB318;
+ 	border: 2px solid #5AB318;
+ 	padding-left: 10px;
+ 	padding-right: 10px;
+ 	padding-top: 10px;
+ 	padding-bottom: 10px;
 }
 
 div#menu {
 	float: left;
- 	/*background-color: red;/**/
+ 	background-color: #FBFBD3;
 	width: 30%; /*taille 30% de la taille de l'écran*/
 	margin-right: 5%;
+	color: #5AB318;
 }
 
 div#corps {
@@ -49,7 +85,7 @@ div#corps {
 div#corps {
 	float: left; /*pour mettre le corps a gauche*/
 	width: 65%; /*taille de 65% de la taille de la page*/
-	/*background-color: yellow;/**/
+	background-color: #FBFBD3;
 }
 
 span#erreur, div#erreur {
@@ -61,7 +97,8 @@ body {
 	margin: auto; /*pour centrer le contenu au milieu de la page*/
 	margin-top: 2%; /*pour faire l'espace avec le bord supérieur de la page*/
 	color: gray; /*couleur grise pour tout le texte*/
-	font-family: fantasy; /**/
+	font-family: fantasy, cursive; /**/
+	background-color:#FBFBD3;
 }
 
 div#image, div#infoAnnonce, div#infoVendeur
@@ -99,10 +136,11 @@ div#enchere, div#description
 }
 
 a {
-	color: gray;
+	color: #5AB318;
 }
 
 a:HOVER {
 	color: appworkspace;
 	text-decoration: underline overline ;
 }
+
