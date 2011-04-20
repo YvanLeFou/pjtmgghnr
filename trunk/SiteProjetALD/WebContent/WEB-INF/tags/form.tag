@@ -11,6 +11,7 @@
 		<label for="pseudo"><bean:message key="inscription.legend.creerCompte.pseudo"/></label>
 		<html:text property="pseudo" styleId="pseudo"></html:text><br/>
 		<div id="erreur"><html:errors property="inscription.pseudo.vide"/></div>
+		<div id="erreur"><html:errors property="inscription.pseudo.pris"/></div>
 		
 		<label for="mdp1"><bean:message key="inscription.legend.creerCompte.mdp"/></label>
 		<html:password property="mdp" styleId="mdp1"/><br/>
@@ -47,6 +48,7 @@
 		<label for="cp"><bean:message key="inscription.legend.infoperso.cp"/></label>
 		<html:text property="cp" styleId="cp"></html:text><br/>
 		<div id="erreur"><html:errors property="inscription.cp.vide"/></div>
+		<div id="erreur"><html:errors property="inscription.cp.invalide"/></div>
 			
 		<label for="ville"><bean:message key="inscription.legend.infoperso.ville"/></label>
 		<html:text property="ville" styleId="ville"></html:text><br/>
@@ -68,12 +70,13 @@
 		<label for="mail"><bean:message key="inscription.legend.infoperso.mail"/></label>
 		<html:text property="email" styleId="mail"></html:text><br/>
 		<div id="erreur"><html:errors property="inscription.mail.vide"/></div>
-				
+		<div id="erreur"><html:errors property="inscription.mail.invalide"/></div>
+		
 		<label for="telephone"><bean:message key="inscription.legend.infoperso.tel"/></label>
 		<html:text property="telephone" styleId="telephone"></html:text><br/>
 		<div id="erreur"><html:errors property="inscription.tel.vide"/></div>
+		<div id="erreur"><html:errors property="inscription.tel.invalide"/></div>
 	</fieldset>
-
 	<html:submit styleClass="btn"><bean:message key="bouton.submit.inscription"/></html:submit>
 	<html:reset styleClass="btn"><bean:message key="bouton.reset"/></html:reset>
 </html:form>

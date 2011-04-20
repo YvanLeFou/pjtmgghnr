@@ -1,5 +1,6 @@
 <%@ page language="java" isErrorPage="true" %>
 <!DOCTYPE HTML PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+
 <html>
 	<head>
 		<title>Page d'erreur</title>

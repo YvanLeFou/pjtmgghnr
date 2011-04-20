@@ -1,15 +1,11 @@
 package action.action;
 
-import java.util.HashSet;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import metier.Departement;
 import metier.Droit;
-import metier.Encherit;
 import metier.Internaute;
-import metier.Offre;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -46,8 +42,6 @@ public class ModificationInscription extends Action {
 			//les info là sont à récupérer à l'aide de DAO pour le moment constructeur par défaut
 		Droit droit = new Droit();
 		Departement departement = new Departement(f.getDepartement());
-		HashSet<Encherit> encherit = new HashSet<Encherit>();
-		HashSet<Offre> offre = new HashSet<Offre>();
 		
 		Internaute i = new Internaute(nom, prenom, pseudo, mdp, numeroRue, nomRue, ville, cp, telephone, email, droit, departement);
 		

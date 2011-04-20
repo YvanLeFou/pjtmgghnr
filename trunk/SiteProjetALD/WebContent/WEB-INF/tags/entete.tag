@@ -21,6 +21,7 @@
 				<html:reset  styleClass="btn"><bean:message key="bouton.reset"/></html:reset><br/>
 				
 				<html:link action="/inscription.do"><bean:message key="entete.lien.inscription"/></html:link>
+				<div id="erreur"><html:errors property="entete.client.introuvable"/></div>
 			</html:form>
 		</logic:empty>
 		
