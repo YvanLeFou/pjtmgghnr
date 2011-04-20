@@ -47,5 +47,12 @@ public class Encherit implements Serializable {
 		this.offre = offre;
 	}
 
-    
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Encherit [internaute=" + internaute
+				+ ", offre=" + offre + ", prix=" + prix + "]";
+	}
 }

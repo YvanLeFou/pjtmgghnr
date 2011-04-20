@@ -2,13 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 							"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
-<class name="metier.Encherit" table="encherit" lazy="false">
-	<composite-id>
-		<key-many-to-one name="internaute" column="pseudo" class="metier.Internaute"/>
-		<key-many-to-one name="offre" column="idOffre" class="metier.Offre"/>
-	</composite-id>
-	<property name="prix" type="double" column="prix"/>
-</class>
-
+	<class name="metier.Encherit" table="encherit" lazy="false">
+		<composite-id mapped="true">
+			<key-many-to-one name="internaute" column="pseudo" class="metier.Internaute" />
+			<key-many-to-one name="offre" column="idOffre" class="metier.Offre" />
+		</composite-id>
+		<property name="prix" type="double" column="prix" />
+	</class>
 </hibernate-mapping>

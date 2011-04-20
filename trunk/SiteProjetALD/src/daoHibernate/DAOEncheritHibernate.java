@@ -2,31 +2,36 @@ package daoHibernate;
 
 import java.util.ArrayList;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import metier.Encherit;
+import metier.Internaute;
+import metier.Offre;
 import dao.DAOEncherit;
 
 public class DAOEncheritHibernate extends DAOHibernate implements DAOEncherit {
 
 	@Override
 	public void delete(Encherit e) throws Exception {
-		Session	session = connect();
+		Session session = connect();
 		
-		session.delete(e);
-		e.setInternaute(null);
-		e.setOffre(null);
-		
-		close(session);
-
+		String hql = "delete from Encherit where pseudo = '" + e.getInternaute().getPseudo() + "' and idOffre = " + e.getOffre().getIdOffre();
+        Query query = session.createQuery(hql);
+        
+        int rowCount = query.executeUpdate();
+        System.out.println("Rows affected: " + rowCount);
 	}
 
 	@Override
-	public Encherit get(String pseudo, int idOffre) throws Exception {
+	public Encherit get(Internaute pseudo, Offre idOffre) throws Exception {
 		Encherit e = null;
 		Session	session = connect();
 		
-		e = (Encherit) session.createQuery("FROM Encherit WHERE pseudo="+pseudo+" AND idOfrre="+idOffre);
+        String hql = "from Encherit where idOffre = "+idOffre.getIdOffre()+" and pseudo = '"+pseudo.getPseudo()+"'";
+        Query query = session.createQuery(hql);
+        e = (Encherit) query.uniqueResult();
+        
 		close(session);
 		return e;
 	}

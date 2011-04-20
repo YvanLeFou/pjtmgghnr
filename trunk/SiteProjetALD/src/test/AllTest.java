@@ -10,7 +10,10 @@ public class AllTest {
 		//$JUnit-BEGIN$
 		suite.addTestSuite(TestCategorie.class);
 		suite.addTestSuite(TestDroit.class);
+		suite.addTestSuite(TestMotCle.class);
 		suite.addTestSuite(TestDepartementRegion.class);
+		suite.addTestSuite(TestInternaute.class);
+		suite.addTestSuite(TestEncherit.class);
 		//$JUnit-END$
 		return suite;
 	}

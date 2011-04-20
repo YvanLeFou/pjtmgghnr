@@ -12,8 +12,8 @@ public class TestDroit extends TestCase{
 	public void testSave() throws Exception
 	{
 		DAODroitHibernate dao = new DAODroitHibernate();
-		dao.save(new Droit("Administrateur"));
-		dao.save(new Droit("Personne majeure"));
+		dao.save(new Droit(-1, "Administrateur"));
+		dao.save(new Droit(-1, "Personne majeure"));
 	}
 	
 	public void testUpdate() throws Exception

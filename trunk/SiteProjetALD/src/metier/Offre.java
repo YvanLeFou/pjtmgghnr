@@ -3,15 +3,15 @@ package metier;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.TreeSet;
+import java.util.Set;
 
 public class Offre  implements Serializable{
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String titre = null;
-    private String description = null;
+	private String titre = "";
+    private String descriptif = "";
     private double miseAPrix = 0.0;
     private int joignable = 0;
     private Date dateDebut = null;
@@ -20,8 +20,8 @@ public class Offre  implements Serializable{
     private int idOffre = -1;
     private Categorie categorie = null;
     private Departement departement = null;
-    private HashSet<Encherit> encherit = null;
-    private TreeSet<Image> image = null;
+    private Set<Encherit> encherit = new HashSet<Encherit>();
+    private Set<Image> image = new HashSet<Image>();
     private int suspecte = 0;
     private Internaute internaute = null;
 
@@ -30,12 +30,11 @@ public class Offre  implements Serializable{
 
 	public Offre(String titre, String description, double miseAPrix,
 			int joignable, Date dateDebut, Date dateFin, Date dateDepot,
-			int idOffre, Categorie categorie, Departement departement,
-			HashSet<Encherit> encherit, TreeSet<Image> image, int suspecte,
+			int idOffre, Categorie categorie, Departement departement, int suspecte,
 			Internaute internaute) {
 		super();
 		this.titre = titre;
-		this.description = description;
+		this.descriptif = description;
 		this.miseAPrix = miseAPrix;
 		this.joignable = joignable;
 		this.dateDebut = dateDebut;
@@ -44,12 +43,9 @@ public class Offre  implements Serializable{
 		this.idOffre = idOffre;
 		this.categorie = categorie;
 		this.departement = departement;
-		this.encherit = encherit;
-		this.image = image;
 		this.suspecte = suspecte;
 		this.internaute = internaute;
 	}
-
 
 	public String getTitre() {
 		return titre;
@@ -59,12 +55,12 @@ public class Offre  implements Serializable{
 		this.titre = titre;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescriptif() {
+		return descriptif;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescriptif(String descriptif) {
+		this.descriptif = descriptif;
 	}
 
 	public double getMiseAPrix() {
@@ -131,23 +127,29 @@ public class Offre  implements Serializable{
 		this.departement = departement;
 	}
 
-	public HashSet<Encherit> getEncherit() {
+	public Set<Encherit> getEncherit() {
 		return encherit;
 	}
 
-	public void setEncherit(HashSet<Encherit> encherit) {
+	public void setEncherit(Set<Encherit> encherit) {
 		this.encherit = encherit;
 	}
 
-	public TreeSet<Image> getImage() {
+	/**
+	 * @return the image
+	 */
+	public Set<Image> getImage() {
 		return image;
 	}
 
-	public void setImage(TreeSet<Image> image) {
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(Set<Image> image) {
 		this.image = image;
 	}
 
-	public int isSuspecte() {
+	public int getSuspecte() {
 		return suspecte;
 	}
 
@@ -161,6 +163,14 @@ public class Offre  implements Serializable{
 
 	public void setInternaute(Internaute internaute) {
 		this.internaute = internaute;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Offre [titre=" + titre + ", image=" + image + "]";
 	}
 
 }

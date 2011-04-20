@@ -49,7 +49,7 @@ public class ActionInscription extends Action {
 		HashSet<Encherit> encherit = new HashSet<Encherit>();
 		HashSet<Offre> offre = new HashSet<Offre>();
 		
-		Internaute i = new Internaute(nom, prenom, pseudo, mdp, numeroRue, nomRue, ville, cp, telephone, email, droit, departement, encherit, offre);
+		Internaute i = new Internaute(nom, prenom, pseudo, mdp, numeroRue, nomRue, ville, cp, telephone, email, droit, departement);
 		
 		System.out.println(i);
 		return mapping.findForward("index");
