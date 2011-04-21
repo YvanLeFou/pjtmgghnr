@@ -17,5 +17,7 @@ public interface DAOEncherit {
 	public abstract void save(Encherit e) throws Exception;
 
 	public abstract void update(Encherit e) throws Exception;
+	
+	public abstract void saveOrUpdate(Encherit e) throws Exception;
 
 }

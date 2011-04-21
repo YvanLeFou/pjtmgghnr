@@ -68,4 +68,13 @@ public class DAOEncheritHibernate extends DAOHibernate implements DAOEncherit {
 
 	}
 
+	@Override
+	public void saveOrUpdate(Encherit e) throws Exception {
+		Session	session = connect();
+		
+		session.saveOrUpdate(e);
+		
+		close(session);
+	}
+
 }

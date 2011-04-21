@@ -64,6 +64,7 @@ public class ActionFormFormuEncherir extends ActionForm {
 		else
 			erreurs.add("enchere.invalide", new ActionMessage("enchere.invalide"));
 		
+		request.setAttribute("id", idOffre);
 		return erreurs;
 	}
 }

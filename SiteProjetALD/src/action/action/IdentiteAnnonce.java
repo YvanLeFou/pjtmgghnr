@@ -1,19 +1,13 @@
 package action.action;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.TreeSet;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import metier.Categorie;
-import metier.Departement;
 import metier.Encherit;
-import metier.Image;
 import metier.Internaute;
 import metier.Offre;
-import metier.Region;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -35,14 +29,40 @@ public class IdentiteAnnonce extends Action {
 		
 		DAOOffreHibernate dao = new DAOOffreHibernate();
 		
-		if (request.getSession().getAttribute("lastId") == null)
-			request.getSession().setAttribute("lastId", Integer.parseInt(request.getParameter("id")));
+		//if (request.getSession().getAttribute("lastId") == null)
+		//	request.getSession().setAttribute("lastId", Integer.parseInt(request.getParameter("id")));
 		
-		int id = (Integer) request.getSession().getAttribute("lastId");
+		//int id = (Integer) request.getSession().getAttribute("lastId");
+		int id;
+		
+		try
+		{
+			id = Integer.parseInt(request.getParameter("id")); 
+		}
+		catch(Exception e)
+		{
+			id = Integer.parseInt((String) request.getAttribute("id"));
+		}
+		
 		Offre o = dao.get(id);
 		Internaute i = o.getInternaute();
 		
+		Iterator<Encherit> it = o.getEncherit().iterator();
+		Encherit save = null;
+		if (it.hasNext())
+		{
+			save = it.next();
+			while(it.hasNext())
+			{
+				Encherit e = it.next();
+				
+				if (e != null && save != null && e.getDate().compareTo(save.getDate()) > 0)
+					save = e;
+			}
+		}
+		
 		request.setAttribute("annonce", o);
+		request.setAttribute("enchere", save);
 		request.setAttribute("internaute", i);
 		return mapping.findForward("identiteAnnonce");
 	}

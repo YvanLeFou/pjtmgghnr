@@ -63,7 +63,7 @@ public class TestEncherit extends TestCase{
 		}
 		System.out.println(i.getOffre().size());
 		Offre o = i.getOffre().iterator().next();
-		Encherit e = new Encherit(6., i, o);
+		Encherit e = new Encherit(6., new Date(), i, o);
 		i.getEncherit().add(e);
 		dao.update(i);
 	}
@@ -73,11 +73,11 @@ public class TestEncherit extends TestCase{
 		DAOInternauteHibernate dao = new DAOInternauteHibernate();
 		
 		Internaute i = dao.get("Banbi");
-		Encherit e = new Encherit(5., i, i.getOffre().iterator().next());
+		Encherit e = new Encherit(5., new Date(), i, i.getOffre().iterator().next());
 		e.setPrix(12.);
 		
 		DAOEncheritHibernate enc = new DAOEncheritHibernate();
-		enc.update(e);
+		enc.saveOrUpdate(e);
 	}
 	
 	public void testDelete() throws Exception
