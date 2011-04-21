@@ -31,7 +31,7 @@ public class ModificationInscription extends Action {
 				prenom = f.getPrenom(), 
 				mdpActuel = f.getMdpActuel(),
 				mdp = f.getMdp(),
-				mdp2 = f.getMdp2(),
+				/*mdp2 = f.getMdp2(),*/
 				nomRue = f.getNomRue(), 
 				ville = f.getVille(), 
 				cp = f.getCp(), 
@@ -47,7 +47,7 @@ public class ModificationInscription extends Action {
 		
 		System.out.println(f.getNom());
 		
-		if (i.getMdp().trim().equals(mdpActuel))
+		if (i.getMdp().trim().equals(mdpActuel.trim()))
 		{
 			i.setCp(cp);
 			i.setVille(ville);
