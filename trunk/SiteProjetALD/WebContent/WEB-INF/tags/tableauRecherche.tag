@@ -25,7 +25,7 @@ ${pageScope.nom}
 				<bean:write name="list" property="titre" />
 			</html:link>
 		</td><!-- il faut ajouter un lien vers le descriptif de l'article -->
-		<td><bean:write name="list" property="dateDepot" format="EEEEE dd MMMM yyyy"/></td>
+		<td><bean:write name="list" property="dateFin" format="EEEEE dd MMMM yyyy"/></td>
 		<%--<td><bean:write name="list" property="dateDepot" format="EEEEE dd MMMM yyyy HH:mm:ss"/></td> --%>
 		<td><bean:write name="list" property="miseAPrix" /></td>
 	</tr>
