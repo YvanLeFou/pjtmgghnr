@@ -23,9 +23,14 @@
 			<div id="infoAnnonce">
 				<bean:write name="annonce" property="titre" /><br/>
 				<label><bean:message key="ficheAnnonce.prixmin"/></label><bean:write name="annonce" property="miseAPrix" /><br/>
-				<label><bean:message key="ficheAnnonce.prixactu"/></label>	<logic:iterate id="list" name="annonce" property="encherit">
-												<label><bean:write name="list" property="prix" /></label>
-											</logic:iterate><br/>
+				<label><bean:message key="ficheAnnonce.prixactu"/></label>	<label>
+																				<logic:present name="enchere" scope="request">
+																					<bean:write name="enchere" property="prix"/>(<bean:write name="enchere" property="date" format="dd MMMM yyyy"/>)
+																				</logic:present>
+																				<logic:notPresent name="enchere" scope="request">
+																					<bean:write name="annonce" property="miseAPrix" />
+																				</logic:notPresent>
+																			</label><br/>
 				<%--<label><bean:message key="ficheAnnonce.datefin"/></label><bean:write name="annonce" property="dateFin" format="EEEEE dd MMMM yyyy HH:mm:ss"/><br/> --%>
 				<label><bean:message key="ficheAnnonce.datefin"/></label><bean:write name="annonce" property="dateFin" format="EEEEE dd MMMM yyyy"/><br/>
 			</div>

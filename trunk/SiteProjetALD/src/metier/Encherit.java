@@ -1,6 +1,7 @@
 package metier;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Encherit implements Serializable {
     /**
@@ -10,18 +11,18 @@ public class Encherit implements Serializable {
 	private Double prix = 0.0;
     private Internaute internaute = null;
     private Offre offre = null;
+    private Date date = null;
 
     public Encherit(){
     }
     
-	public Encherit(Double prix, Internaute internaute, Offre offre) {
+	public Encherit(Double prix, Date d, Internaute internaute, Offre offre) {
 		super();
 		this.prix = prix;
 		this.internaute = internaute;
 		this.offre = offre;
+		this.date = d;
 	}
-
-
 
 	public Double getPrix() {
 		return prix;
@@ -45,6 +46,20 @@ public class Encherit implements Serializable {
 
 	public void setOffre(Offre offre) {
 		this.offre = offre;
+	}
+
+	/**
+	 * @return the date
+	 */
+	public Date getDate() {
+		return date;
+	}
+
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	/* (non-Javadoc)

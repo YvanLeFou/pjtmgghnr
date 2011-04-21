@@ -8,5 +8,6 @@
 			<key-many-to-one name="offre" column="idOffre" class="metier.Offre" />
 		</composite-id>
 		<property name="prix" type="double" column="prix" />
+		<property name="date" type="date" column="date" />
 	</class>
 </hibernate-mapping>

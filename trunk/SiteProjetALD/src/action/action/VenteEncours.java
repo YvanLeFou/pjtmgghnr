@@ -29,7 +29,7 @@ public class VenteEncours extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-ArrayList<Offre> offre = new ArrayList<Offre>();
+		ArrayList<Offre> offre = new ArrayList<Offre>();
 		
 		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
 		
@@ -41,7 +41,7 @@ ArrayList<Offre> offre = new ArrayList<Offre>();
 		Offre o = new Offre("machin", "bidule", 3, 0, new Date(), new Date(), new Date(), 10, new Categorie("bidule"), new Departement("Machin"), 0, i);
 		o.setImage(img);
 		HashSet<Encherit> e = new HashSet<Encherit>();
-		e.add(new Encherit(3., i, o));
+		e.add(new Encherit(3., new Date(),i, o));
 		
 		o.setEncherit(e);
 		

@@ -36,7 +36,7 @@ public class TestInternaute extends TestCase{
 		o.getImage().add(new Image(-1, "bidule", o));
 		o.getImage().add(new Image(-1, "truc", o));
 		
-		Encherit e = new Encherit(3., i, o);
+		Encherit e = new Encherit(3., new Date(), i, o);
 		o.getEncherit().add(e);
 		i.getEncherit().add(e);
 		
@@ -73,7 +73,7 @@ public class TestInternaute extends TestCase{
 		o.getImage().add(new Image(-1, "bidule", o));
 		o.getImage().add(new Image(-1, "truc", o));
 		
-		Encherit e = new Encherit(3., i, o);
+		Encherit e = new Encherit(3., new Date(), i, o);
 		o.getEncherit().add(e);
 		i.getEncherit().add(e);
 		
