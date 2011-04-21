@@ -43,7 +43,7 @@
 								<bean:write name="list" property="titre" />
 							</html:link>
 						</td>
-						<td><bean:write name="list" property="dateDepot" format="EEEEE dd MMMM yyyy HH:mm:ss"/></td>
+						<td><bean:write name="list" property="dateDepot" format="EEEEE dd MMMM yyyy"/></td>
 						<td><bean:write name="list" property="miseAPrix"/></td>
 					</tr>
 				</logic:iterate>

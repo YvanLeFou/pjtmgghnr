@@ -10,21 +10,21 @@ import org.apache.struts.action.ActionMessage;
 public class ActionFormFormuEncherir extends ActionForm {
 	private static final long serialVersionUID = 5920987576396511807L;
 	
-	private double enchere = -1;
+	private String enchere = "-1";
 	
 	private String idOffre;
 	
 	/**
 	 * @return the enchere
 	 */
-	public double getEnchere() {
+	public String getEnchere() {
 		return enchere;
 	}
 
 	/**
 	 * @param enchere the enchere to set
 	 */
-	public void setEnchere(double enchere) {
+	public void setEnchere(String enchere) {
 		this.enchere = enchere;
 	}
 
@@ -52,13 +52,17 @@ public class ActionFormFormuEncherir extends ActionForm {
 	@Override
 	public ActionErrors validate(ActionMapping mapping,
 			HttpServletRequest request) {
-		ActionErrors erreurs = null;
+		ActionErrors erreurs = new ActionErrors();;
 		
-		if (getEnchere() < 1)
+		if (!getEnchere().trim().isEmpty())
 		{
-			erreurs = new ActionErrors();
-			erreurs.add("enchere.invalide", new ActionMessage("enchere.invalide"));
+			double ench = Double.parseDouble(getEnchere());
+			
+			if (ench < 1.)
+				erreurs.add("enchere.invalide", new ActionMessage("enchere.invalide"));
 		}
+		else
+			erreurs.add("enchere.invalide", new ActionMessage("enchere.invalide"));
 		
 		return erreurs;
 	}
