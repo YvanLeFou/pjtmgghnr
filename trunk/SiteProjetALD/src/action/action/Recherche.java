@@ -1,18 +1,10 @@
 package action.action;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import metier.Categorie;
-import metier.Departement;
-import metier.Encherit;
-import metier.Image;
-import metier.Internaute;
 import metier.Offre;
 
 import org.apache.struts.action.Action;
