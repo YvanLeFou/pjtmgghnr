@@ -3,15 +3,23 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"%>
 
 <%@attribute name="action" required="true"%>
+<%@attribute name="modification" required="true"%>
 
 <html:form action="${pageScope.action}"> 
 	<fieldset>
 		<legend><bean:message key="inscription.legend.creerCompte"/></legend>
 		
 		<label for="pseudo"><bean:message key="inscription.legend.creerCompte.pseudo"/></label>
-		<html:text property="pseudo" styleId="pseudo"></html:text><br/>
+		<html:text disabled="${ pageScope.modification }" property="pseudo" styleId="pseudo"></html:text><br/>
 		<div id="erreur"><html:errors property="inscription.pseudo.vide"/></div>
 		<div id="erreur"><html:errors property="inscription.pseudo.pris"/></div>
+		
+		<logic:equal value="true" name="modification">
+			<label for="mdpActuel"><bean:message key="inscription.legend.creerCompte.mdp.actuel"/></label>
+			<html:password property="mdpActuel" styleId="mdpActuel"/><br/>
+			<div id="erreur"><html:errors property="inscription.mdp.actuel.vide"/></div>
+			<div id="erreur"><html:errors property="inscription.mdp.mod"/></div>
+		</logic:equal>
 		
 		<label for="mdp1"><bean:message key="inscription.legend.creerCompte.mdp"/></label>
 		<html:password property="mdp" styleId="mdp1"/><br/>

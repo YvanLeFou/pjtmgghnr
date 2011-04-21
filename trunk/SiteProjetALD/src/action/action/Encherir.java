@@ -20,6 +20,9 @@ public class Encherir extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ActionFormFormuEncherir f = (ActionFormFormuEncherir)form;
+
+		request.getSession().removeAttribute("lastId");
+		
 		System.out.println(f.getEnchere() + " sur " + f.getIdOffre());
 		return mapping.findForward("index");
 	}

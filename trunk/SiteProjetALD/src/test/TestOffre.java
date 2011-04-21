@@ -85,4 +85,22 @@ public class TestOffre extends TestCase{
 		
 	}
 	
+	public void testFind() throws Exception
+	{
+		DAOOffreHibernate dao = new DAOOffreHibernate();
+		
+		ArrayList<Offre> list = dao.findThem("bouillote", 3, 1, 15, -1);
+		
+		System.out.println(list.size());
+		
+		for(Offre a : list)
+			System.out.println(a);
+		
+		list = dao.findThem("bouillote", 3, 1, 4, 50);
+		
+		System.out.println(list.size());
+		
+		for(Offre a : list)
+			System.out.println(a);
+	}
 }

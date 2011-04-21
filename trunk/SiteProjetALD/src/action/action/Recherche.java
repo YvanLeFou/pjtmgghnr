@@ -20,6 +20,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import action.form.ActionFormFormuRecherche;
+
+import daoHibernate.DAOOffreHibernate;
+
 public class Recherche extends Action {
 
 	/* (non-Javadoc)
@@ -29,24 +33,16 @@ public class Recherche extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		ArrayList<Offre> offre = new ArrayList<Offre>();
+		DAOOffreHibernate dao = new DAOOffreHibernate();
+		ActionFormFormuRecherche f = (ActionFormFormuRecherche)form;
 		
-		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
+		String	motClef = f.getMotclef();
+		int 	categ = f.getCategorie().trim().isEmpty() ? -1 : Integer.parseInt(f.getCategorie()),
+				dep = f.getDepartementSelect().trim().isEmpty() ? -1 : Integer.parseInt(f.getDepartementSelect());
+		double	prixMin = f.getMin().trim().isEmpty() ? -1 : Double.parseDouble(f.getMin()),
+				prixMax = f.getMax().trim().isEmpty() ? -1 : Double.parseDouble(f.getMax());
 		
-		TreeSet<Image> img = new TreeSet<Image>();
-		img.add(new Image("ImageUpload/mpd.png"));
-		img.add(new Image("ImageUpload/mpd.png"));
-		img.add(new Image("ImageUpload/mpd.png"));
-		
-		Offre o = new Offre("machin", "bidule", 3, 0, new Date(), new Date(), new Date(), 10, new Categorie("bidule"), new Departement("Machin"), 0, i);
-		o.setImage(img);
-		HashSet<Encherit> e = new HashSet<Encherit>();
-		e.add(new Encherit(3., i, o));
-		
-		o.setEncherit(e);
-		
-		
-		offre.add(o);
+		ArrayList<Offre> offre = dao.findThem(motClef, categ, dep, prixMin, prixMax);
 		
 		request.setAttribute("listRecherche", offre);
 		return mapping.findForward("resultatRecherche");

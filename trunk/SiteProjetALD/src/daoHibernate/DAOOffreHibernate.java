@@ -77,4 +77,46 @@ public class DAOOffreHibernate extends DAOHibernate implements DAOOffre{
 		
 		close(session);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<Offre> findThem(String motClef, int categorie, int departement, double prixMin, double prixMax) throws Exception {
+		ArrayList<Offre> list = null;
+		
+		Session session = connect();
+		
+		String cplRequete = "";
+		
+		String from = " from offre ";
+		
+		if (!motClef.trim().isEmpty())
+		{
+			String[] str = motClef.split(" ");
+			for(String s : str)
+				cplRequete += " and (titre like '%" + s + "%' or descriptif like '%" + s + "%')";
+		}
+		
+		if (categorie > 0)
+			cplRequete += " and idCategorie = " + categorie;
+
+		if (departement > 0)
+			cplRequete += " and idDepartement = " + departement;
+		
+		if (prixMin > 0)
+			cplRequete += " and  " + prixMin + " <= miseAPrix";
+		
+		if (prixMax > 0)
+		{
+			from = " from offre, encherit ";
+			cplRequete += " and offre.idOffre = encherit.idOffre and prix <= " + prixMax;
+		}
+		
+		String req = "select * " + from + " where 1 " + cplRequete;
+		list = (ArrayList<Offre>) session.createSQLQuery(req).addEntity(Offre.class)
+				.list();
+		
+		close(session);
+		
+		return list;
+	}
 }

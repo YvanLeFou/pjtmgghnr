@@ -8,6 +8,7 @@
 		<form-bean name="formuRapide" type="action.form.ActionFormFormuRapide"></form-bean>
 		<form-bean name="formuRecherche" type="action.form.ActionFormFormuRecherche"></form-bean>
 		<form-bean name="formuInscription" type="action.form.ActionFormFormuInscription"></form-bean>
+		<form-bean name="formuModification" type="action.form.ActionFormFormuModification"></form-bean>
 		<form-bean name="signalerAnnonce" type="action.form.ActionFormFormuSignaler"></form-bean>
 		<form-bean name="encherir" type="action.form.ActionFormFormuEncherir"></form-bean>
 		<form-bean name="identiteInternaute" type="action.form.ActionFormFormuIdentiteInternaute"></form-bean>
@@ -58,7 +59,7 @@
 			scope="request" 
 			path="/modificationCompte" 
 			type="action.action.ModificationInscription" 
-			name="formuInscription" 
+			name="formuModification" 
 			validate="true" 
 			input="/inscription.jsp">
 		</action>

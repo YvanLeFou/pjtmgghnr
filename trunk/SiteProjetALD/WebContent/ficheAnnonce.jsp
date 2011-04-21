@@ -15,7 +15,7 @@
 		
 		<div id="corps">
 			<div id="image">
-				<logic:iterate id="img" name="annonce" property="image">
+				<logic:iterate id="img" name="annonce" property="image" length="1">
 					<img style="width: 100%; height:100%;" src="<bean:write name="img" property="libelleImage"/>" alt="<bean:write name="img" property="libelleImage"/>" />
 				</logic:iterate><br/>
 			</div>
@@ -26,7 +26,8 @@
 				<label><bean:message key="ficheAnnonce.prixactu"/></label>	<logic:iterate id="list" name="annonce" property="encherit">
 												<label><bean:write name="list" property="prix" /></label>
 											</logic:iterate><br/>
-				<label><bean:message key="ficheAnnonce.datefin"/></label><bean:write name="annonce" property="dateFin" format="EEEEE dd MMMM yyyy HH:mm:ss"/><br/>
+				<%--<label><bean:message key="ficheAnnonce.datefin"/></label><bean:write name="annonce" property="dateFin" format="EEEEE dd MMMM yyyy HH:mm:ss"/><br/> --%>
+				<label><bean:message key="ficheAnnonce.datefin"/></label><bean:write name="annonce" property="dateFin" format="EEEEE dd MMMM yyyy"/><br/>
 			</div>
 			
 			<div id="infoVendeur">
@@ -60,7 +61,13 @@
 			
 			<div id="description">
 				<bean:message key="ficheAnnonce.description"/><br/>
-				<bean:write name="annonce" property="description"/><br/>
+				<bean:write name="annonce" property="descriptif"/><br/>
+			</div>
+			
+			<div>
+				<logic:iterate id="img" name="annonce" property="image">
+					<img src="<bean:write name="img" property="libelleImage"/>" alt="<bean:write name="img" property="libelleImage"/>" />
+				</logic:iterate><br/>
 			</div>
 		</div>
 	</body>

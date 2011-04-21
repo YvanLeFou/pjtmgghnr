@@ -24,10 +24,26 @@
 				<label><bean:message key="postAnnonce.description"/></label><html:text property="description"></html:text><br/>
 				<div id="erreur"><html:errors property="postAnnonce.description.vide"/></div>
 				
+				<label><bean:message key="menu.legend.basique.categ"/></label>
+				<html:select property="categorie">
+					<html:options collection="listCategorie" property="idCategorie" labelProperty="libelle"/>
+				</html:select><br/>
+				
+				<label><bean:message key="menu.legend.option.departement"/></label>
+				<html:select property="departement">
+					<html:options collection="listDepartement" property="idDepartement" labelProperty="libelleDepartement"/>
+				</html:select><br/>
+				
+				<label title="<bean:message key="postAnnonce.datedeb.info"/>"><bean:message key="postAnnonce.datedeb"/></label><html:text property="dateDeb"></html:text><br/>
+				<div id="erreur">
+					<html:errors property="postAnnonce.datedeb.invalideFormat"/>
+				</div>
+				
 				<label><bean:message key="postAnnonce.datefin"/></label><html:text property="dateFin"></html:text><br/>
 				<div id="erreur">
-					<html:errors property="postAnnonce.date.vide"/>
-					<html:errors property="postAnnonce.date.invalideFormat"/>
+					<html:errors property="postAnnonce.datefin.vide"/>
+					<html:errors property="postAnnonce.datefin.invalideFormat"/>
+					<html:errors property="postAnnonce.datefin.pbenchere"/>
 				</div>
 				
 				<label><bean:message key="postAnnonce.miseaprix"/></label><html:text property="miseAPrix"></html:text><br/>

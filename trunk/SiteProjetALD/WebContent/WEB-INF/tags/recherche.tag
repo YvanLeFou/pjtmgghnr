@@ -36,6 +36,5 @@
 	
 	<html:submit styleClass="btn"><bean:message key="bouton.submit.rechercher"/></html:submit>
 	<html:reset styleClass="btn"><bean:message key="bouton.reset"/></html:reset>
-	
 </html:form>
 

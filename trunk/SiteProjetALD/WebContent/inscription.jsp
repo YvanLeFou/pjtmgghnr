@@ -56,11 +56,11 @@
 				<legend><bean:message key="inscription.legend"/></legend>
 				
 				<logic:present parameter="prior">
-					<tags:form action="/modificationCompte.do?prior" />
+					<tags:form action="/modificationCompte.do?prior" modification="true" />
 				</logic:present>
 				
 				<logic:notPresent parameter="prior">
-					<tags:form action="/creationCompte.do" />
+					<tags:form action="/creationCompte.do" modification="false" />
 				</logic:notPresent>
 			</fieldset>
 		</div>

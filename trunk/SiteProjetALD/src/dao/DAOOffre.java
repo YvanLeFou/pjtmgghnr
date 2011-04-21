@@ -16,4 +16,5 @@ public interface DAOOffre {
 
 	public abstract void update(Offre o) throws Exception;
 
+	public abstract ArrayList<Offre> findThem(String motClef, int Categorie, int departement, double prixMin, double prixMax) throws Exception;
 }

@@ -3,8 +3,6 @@ package action.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import metier.Departement;
-import metier.Droit;
 import metier.Internaute;
 
 import org.apache.struts.action.Action;
@@ -12,7 +10,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import action.form.ActionFormFormuInscription;
+import daoHibernate.DAOInternauteHibernate;
+
+import action.form.ActionFormFormuModification;
 
 public class ModificationInscription extends Action {
 	
@@ -25,12 +25,13 @@ public class ModificationInscription extends Action {
 			throws Exception {
 		System.out.println("ici je modifie");
 		//ici il faut enregistrer l'internaute dans la base
-		ActionFormFormuInscription f = (ActionFormFormuInscription)form;
+		ActionFormFormuModification f = (ActionFormFormuModification)form;
 		
 		String 	nom = f.getNom(),
 				prenom = f.getPrenom(), 
-				pseudo = f.getPseudo(), 
+				mdpActuel = f.getMdpActuel(),
 				mdp = f.getMdp(),
+				mdp2 = f.getMdp2(),
 				nomRue = f.getNomRue(), 
 				ville = f.getVille(), 
 				cp = f.getCp(), 
@@ -40,12 +41,26 @@ public class ModificationInscription extends Action {
 		int numeroRue = Integer.parseInt(f.getNumeroRue());
 		
 			//les info là sont à récupérer à l'aide de DAO pour le moment constructeur par défaut
-		Droit droit = new Droit();
-		Departement departement = new Departement(f.getDepartement());
 		
-		Internaute i = new Internaute(nom, prenom, pseudo, mdp, numeroRue, nomRue, ville, cp, telephone, email, droit, departement);
+		DAOInternauteHibernate dao = new DAOInternauteHibernate();
+		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
 		
-		System.out.println(i);
+		System.out.println(f.getNom());
+		
+		if (i.getMdp().trim().equals(mdpActuel))
+		{
+			i.setCp(cp);
+			i.setVille(ville);
+			i.setTelephone(telephone);
+			i.setEmail(email);
+			i.setNom(nom);
+			i.setPrenom(prenom);
+			i.setMdp(mdp.trim().isEmpty() ? mdpActuel : mdp);
+			i.setNomRue(nomRue);
+			i.setNumeroRue(numeroRue);
+			
+			dao.update(i);
+		}
 		return mapping.findForward("index");
 	}
 
