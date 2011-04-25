@@ -84,7 +84,7 @@
 			
 			<logic:equal value="visu" name="typeAff">
 				<div>
-					<html:link action="ajouterAnnonceVisualise.do" styleId="lienValide">Valider l'offre</html:link>
+					<html:link action="/ajouterAnnonceVisualise.do" styleId="lienValide">Valider l'offre</html:link>
 				</div>
 			</logic:equal>
 		</div>
