@@ -83,10 +83,17 @@ public class AjouterAnnonce extends Action {
 		Offre o = new Offre(f.getTitre(), f.getDescription(), f.getMiseAPrix(), f.isJoignable() ? 1 : 0, dateDeb, dateFin, new Date(), -1, daoCat.get(f.getCategorie()), daoDep.get(f.getDepartement()), 0, (Internaute)(request.getSession().getAttribute("pseudo"))); 
 		o.getImage().add(new Image(-1, "ImageUpload"+File.separator+fileName, o));
 		
-		DAOOffreHibernate dao = new DAOOffreHibernate();
+		//DAOOffreHibernate dao = new DAOOffreHibernate();
 		
-		dao.save(o);
-
+		//dao.save(o);
+		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
+		request.getSession().setAttribute("nouvelleOffre", o);
+		
+		request.setAttribute("annonce", o);
+		request.setAttribute("oenchere", null);
+		request.setAttribute("internaute", i);
+		request.setAttribute("dateAujourdhui", (new Date()).compareTo(o.getDateFin()));
+		request.setAttribute("typeAff", "visu");
 		return mapping.findForward("retour");
 	}
 }

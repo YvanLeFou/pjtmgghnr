@@ -22,6 +22,7 @@
 				
 				<html:link action="/inscription.do"><bean:message key="entete.lien.inscription"/></html:link>
 				<div id="erreur"><html:errors property="entete.client.introuvable"/></div>
+				<div id="erreur"><html:errors property="entete.connexion"/></div>
 			</html:form>
 		</logic:empty>
 		

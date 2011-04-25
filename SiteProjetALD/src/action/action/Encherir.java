@@ -1,5 +1,7 @@
 package action.action;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 
 import daoHibernate.DAOEncheritHibernate;
 import daoHibernate.DAOOffreHibernate;
@@ -29,19 +33,54 @@ public class Encherir extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ActionFormFormuEncherir f = (ActionFormFormuEncherir)form;
-
+		
 		DAOEncheritHibernate dao = new DAOEncheritHibernate();
 		DAOOffreHibernate daoOffre = new DAOOffreHibernate();
 		
 		Offre o = daoOffre.get(Integer.parseInt(f.getIdOffre()));
-		Encherit e = new Encherit(Double.parseDouble(f.getEnchere()), new Date(), (Internaute)request.getSession().getAttribute("pseudo"), o);
+		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
+		request.getSession().setAttribute("id", o.getIdOffre());
+		System.out.println("dans encherir : " + request.getSession().getAttribute("id"));
+		if (i == null)
+		{
+			request.getSession().setAttribute("formEncherir", request.getAttribute("encherir"));
+			
+			ActionForward a = mapping.getInputForward();
+			request.getSession().setAttribute("lastPath", a);
+			
+			ActionMessages erreur = new ActionMessages();
+			erreur.add("entete.connexion", new ActionMessage("entete.connexion"));
+			this.addErrors(request, erreur);
+			
+			return mapping.getInputForward();
+		}
 		
-		dao.saveOrUpdate(e);
+		Date timestamp = new Timestamp(new Date().getTime());
+		System.out.println(timestamp);
+		Encherit e = new Encherit(Double.parseDouble(f.getEnchere()), timestamp, (Internaute)request.getSession().getAttribute("pseudo"), o);
 		
-		request.getSession().removeAttribute("lastId");
+		ArrayList<Encherit> s = dao.get(o);
+		double ss = Double.POSITIVE_INFINITY, tmp = Double.NEGATIVE_INFINITY;
+		for(Encherit encherit : s)
+			if (encherit.getPrix() > tmp)
+				tmp = encherit.getPrix();
+		ss = tmp;
 		
 		System.out.println(f.getEnchere() + " sur " + f.getIdOffre());
-		return mapping.findForward("index");
+		
+		if (i != null)
+		{
+			if ((s == null && e.getPrix() > o.getMiseAPrix()) || (s != null && e.getPrix() > ss))
+			{
+				dao.saveOrUpdate(e);
+			}
+			else
+			{
+				ActionMessages erreur = new ActionMessages();
+				erreur.add("enchere.insuffisant", new ActionMessage("enchere.insuffisant"));
+				this.addErrors(request, erreur);
+			}
+		}
+		return mapping.getInputForward();
 	}
-
 }

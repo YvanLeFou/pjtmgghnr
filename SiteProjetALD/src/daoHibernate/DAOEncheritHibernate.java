@@ -35,6 +35,20 @@ public class DAOEncheritHibernate extends DAOHibernate implements DAOEncherit {
 		close(session);
 		return e;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<Encherit> get(Offre idOffre) throws Exception {
+		ArrayList<Encherit> e = null;
+		Session	session = connect();
+		
+        String hql = "from Encherit where idOffre = "+idOffre.getIdOffre();
+        Query query = session.createQuery(hql);
+        e = (ArrayList<Encherit>) query.list();
+        
+		close(session);
+		return e;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -76,5 +90,4 @@ public class DAOEncheritHibernate extends DAOHibernate implements DAOEncherit {
 		
 		close(session);
 	}
-
 }

@@ -53,6 +53,8 @@ public class Index extends Action {
 			listRegion = daoReg.loadAll();
 			request.getServletContext().setAttribute("listRegion", listRegion);
 		}
+		
+		request.getSession().setAttribute("lastPath", mapping.findForward("index"));
 		return mapping.findForward("index");
 	}
 

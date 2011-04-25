@@ -19,35 +19,39 @@
 			<label><bean:message key="identiteInternaute.departement"/></label><bean:write name="internaute" property="departement" /><br/>
 			<label><bean:message key="identiteInternaute.nbvente"/></label><bean:write name="nbVente"/><br/>
 			<label><bean:message key="identiteInternaute.nbachat"/></label><bean:write name="nbAchat"/><br/>
-			<label><bean:message key="identiteInternaute.encours"/></label><br/>
-			<table border="1">
-				<tr>
-					<th></th>
-					<th><bean:message key="tableau.nom"/></th>
-					<th><bean:message key="tableau.date"/></th>
-					<th><bean:message key="tableau.prix"/></th>
-				</tr>
-				<logic:iterate id="list" name="internaute" property="offre">
+			
+			<logic:notEmpty name="annonce">
+				<label><bean:message key="identiteInternaute.encours"/></label><br/>
+				<table border="1">
 					<tr>
-						<td>
-							<logic:iterate id="img" name="list" property="image" length="1">
-								<img 
-									src="<bean:write name="img" property="libelleImage"/>" 
-									alt="<bean:write name="img" property="libelleImage"/>" 
-									width="50" 
-									height="50" />
-							</logic:iterate>
-						</td>
-						<td>
-							<html:link action="/identiteAnnonce.do?id=${list.idOffre}">
-								<bean:write name="list" property="titre" />
-							</html:link>
-						</td>
-						<td><bean:write name="list" property="dateDepot" format="EEEEE dd MMMM yyyy"/></td>
-						<td><bean:write name="list" property="miseAPrix"/></td>
+						<th></th>
+						<th><bean:message key="tableau.nom"/></th>
+						<th><bean:message key="tableau.date"/></th>
+						<th><bean:message key="tableau.prix"/></th>
 					</tr>
-				</logic:iterate>
-			</table>
+					
+					<logic:iterate id="list" name="annonce">
+						<tr>
+							<td>
+								<logic:iterate id="img" name="list" property="image" length="1">
+									<img 
+										src="<bean:write name="img" property="libelleImage"/>" 
+										alt="<bean:write name="img" property="libelleImage"/>" 
+										width="50" 
+										height="50" />
+								</logic:iterate>
+							</td>
+							<td>
+								<html:link action="/identiteAnnonce.do?id=${list.idOffre}">
+									<bean:write name="list" property="titre" />
+								</html:link>
+							</td>
+							<td><bean:write name="list" property="dateFin" format="EEEEE dd MMMM yyyy"/></td>
+							<td><bean:write name="list" property="miseAPrix"/></td>
+						</tr>
+					</logic:iterate>
+				</table>
+			</logic:notEmpty>
 		</div>
 	</body>
 </html>

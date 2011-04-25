@@ -81,6 +81,7 @@
 			name="encherir" 
 			validate="true" 
 			input="/identiteAnnonce.do">
+			<forward name="identiteAnnonce" path="/proposeenchere.do"></forward>
 			<!-- ici rajouter un parameter qui permettrait de retourner à l'annonce encherit -->
 			<!-- http://javaweb.developpez.com/faq/struts/?page=form#dispatchAction -->
 		</action>
@@ -104,8 +105,11 @@
 			name="postAnnonce" 
 			validate="true" 
 			input="/postAnnonce.jsp">
-			<forward name="retour" path="/postAnnonce.jsp"></forward>
+			<forward name="retour" path="/ficheAnnonce.jsp"></forward>
 		</action>
+		
+		<!-- validation de l'apercu de l'annonce -->
+		<action scope="request" path="/ajouterAnnonceVisualise" type="action.action.AjouterAnnonceVisualise" />
 		
 		<!-- mapping de la fiche d'identite de l'annonce -->
 		<action scope="request" path="/identiteAnnonce" type="action.action.IdentiteAnnonce" input="/resultatRecherche.jsp">

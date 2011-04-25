@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 import dao.DAOOffre;
 
-
+import metier.Internaute;
 import metier.Offre;
 
 public class DAOOffreHibernate extends DAOHibernate implements DAOOffre{
@@ -85,15 +85,17 @@ public class DAOOffreHibernate extends DAOHibernate implements DAOOffre{
 		
 		Session session = connect();
 		
-		String cplRequete = "";
+		String cplRequete = " and now() between offre.dateDebut and offre.dateFin ";
 		
 		String from = " from offre ";
 		
 		if (!motClef.trim().isEmpty())
 		{
+			cplRequete += " and ( 0 ";
 			String[] str = motClef.split(" ");
 			for(String s : str)
-				cplRequete += " and (titre like '%" + s + "%' or descriptif like '%" + s + "%')";
+				cplRequete += " or titre like '%" + s + "%' or descriptif like '%" + s + "%'";
+			cplRequete += ")";
 		}
 		
 		if (categorie > 0)
@@ -103,16 +105,120 @@ public class DAOOffreHibernate extends DAOHibernate implements DAOOffre{
 			cplRequete += " and idDepartement = " + departement;
 		
 		if (prixMin > 0)
-			cplRequete += " and  " + prixMin + " <= miseAPrix";
+			cplRequete += " and miseAPrix >= " + prixMin;
 		
 		if (prixMax > 0)
 		{
 			from = " from offre, encherit ";
-			cplRequete += " and offre.idOffre = encherit.idOffre and prix <= " + prixMax;
+			cplRequete += 	" and offre.idOffre = encherit.idOffre" +
+							" and encherit.idoffre not in (select z.idoffre from encherit z where prix > " + prixMax + ") " +
+							" and date = (select max(z.date) from encherit z where z.idoffre = encherit.idoffre) " +
+							" and prix = (select max(z.prix) from encherit z where z.idoffre = encherit.idoffre) ";
 		}
 		
 		String req = "select * " + from + " where 1 " + cplRequete;
 		list = (ArrayList<Offre>) session.createSQLQuery(req).addEntity(Offre.class)
+				.list();
+		
+		close(session);
+		
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Offre> getVenteEncours(Internaute i) throws Exception
+	{
+		ArrayList<Offre> list = null;
+		
+		Session session = connect();
+		
+		String sql = "" +
+				"select * " +
+				"from offre " +
+				"where now() between dateDebut and dateFin " +
+				"and pseudo = '" + i.getPseudo() + "'";
+		
+		list = (ArrayList<Offre>) session.createSQLQuery(sql).addEntity(Offre.class)
+				.list();
+		
+		close(session);
+		
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Offre> getHistoriqueVente(Internaute i) throws Exception
+	{
+		ArrayList<Offre> list = null;
+		
+		Session session = connect();
+		
+		String sql = "" +
+				"select * " +
+				"from offre " +
+				"where now() > dateFin " +
+				"and pseudo = '" + i.getPseudo() + "'";
+		
+		list = (ArrayList<Offre>) session.createSQLQuery(sql).addEntity(Offre.class)
+				.list();
+		
+		close(session);
+		
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Offre> getEnchereEncours(Internaute i) throws Exception
+	{
+		ArrayList<Offre> list = null;
+		
+		Session session = connect();
+		
+		String sql = "select * " +
+				"from encherit e, offre o " +
+				"where e.idoffre = o.idoffre " +
+				"and now() between dateDebut and dateFin " + //ou e.date ?? 
+				"and e.pseudo = '" + i.getPseudo() + "' " +
+				"and e.date = (select max(y.date) " +
+				"			     from encherit y " +
+				"	             where y.idoffre = e.idoffre " +
+				"				 and e.idoffre = o.idoffre) " +
+				"and e.prix = (select max(j.prix) " +
+				"              from encherit j " +
+				"              where j.idoffre = e.idoffre " +
+				"              and e.idoffre = o.idoffre)";
+		
+		list = (ArrayList<Offre>) session.createSQLQuery(sql).addEntity(Offre.class)
+				.list();
+		
+		close(session);
+		
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Offre> getHistoriqueAchat(Internaute i) throws Exception
+	{
+		ArrayList<Offre> list = null;
+		
+		Session session = connect();
+		
+		String sql = "" +
+					"select * " +
+					"from encherit e, offre o " +
+					"where e.idoffre = o.idoffre " +
+					"and datefin < now() " + //ou e.date ?? 
+					"and e.pseudo = '" + i.getPseudo() + "' " +
+					"and e.date = (select max(y.date) " +
+					"			     from encherit y " +
+					"	             where y.idoffre = e.idoffre " +
+					"				 and e.idoffre = o.idoffre) " +
+					"and e.prix = (select max(j.prix) " +
+					"              from encherit j " +
+					"              where j.idoffre = e.idoffre " +
+					"              and e.idoffre = o.idoffre)";   
+		
+		list = (ArrayList<Offre>) session.createSQLQuery(sql).addEntity(Offre.class)
 				.list();
 		
 		close(session);
