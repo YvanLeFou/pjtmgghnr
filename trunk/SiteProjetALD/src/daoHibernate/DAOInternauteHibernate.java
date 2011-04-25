@@ -76,5 +76,4 @@ public class DAOInternauteHibernate extends DAOHibernate implements DAOInternaut
 		
 		close(session);
 	}
-
 }

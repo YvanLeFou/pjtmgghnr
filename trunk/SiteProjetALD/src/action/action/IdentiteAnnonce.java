@@ -1,5 +1,6 @@
 package action.action;
 
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,15 +35,17 @@ public class IdentiteAnnonce extends Action {
 		
 		//int id = (Integer) request.getSession().getAttribute("lastId");
 		int id;
-		
-		try
-		{
-			id = Integer.parseInt(request.getParameter("id")); 
-		}
+		/*try
+		{*/
+		if (request.getParameter("id") != null)
+			id = Integer.parseInt(request.getParameter("id"));
+		else
+			id = (Integer) request.getSession().getAttribute("id");
+		/*}
 		catch(Exception e)
 		{
 			id = Integer.parseInt((String) request.getAttribute("id"));
-		}
+		}*/
 		
 		Offre o = dao.get(id);
 		Internaute i = o.getInternaute();
@@ -56,15 +59,17 @@ public class IdentiteAnnonce extends Action {
 			{
 				Encherit e = it.next();
 				
-				if (e != null && save != null && e.getDate().compareTo(save.getDate()) > 0)
+				if (e != null && save != null && e.getPrix() > save.getPrix())
 					save = e;
 			}
 		}
 		
 		request.setAttribute("annonce", o);
-		request.setAttribute("enchere", save);
+		request.setAttribute("oenchere", save);
 		request.setAttribute("internaute", i);
+		request.setAttribute("dateAujourdhui", (new Date()).compareTo(o.getDateFin()));
+		
+		//request.getSession().setAttribute("lastPath", mapping.findForward("identiteAnnonce"));
 		return mapping.findForward("identiteAnnonce");
 	}
-
 }

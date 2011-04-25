@@ -121,7 +121,7 @@ public class ActionFormFormuModification extends ActionFormFormuCompte {
 	 */
 	@Override
 	public String getDepartement() {
-		return "" + (!departement.equals(this.i.getDepartement()) && !departement.trim().isEmpty()  ? departement : i.getDepartement());
+		return "" + (!departement.equals(this.i.getDepartement()) && !departement.trim().isEmpty()  ? departement : i.getDepartement().getIdDepartement());
 	}
 
 	/* (non-Javadoc)

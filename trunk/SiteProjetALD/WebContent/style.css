@@ -1,85 +1,74 @@
+#lienValide {
+	color: red;
+}
+
+.btn {
+	background-color: #5AB318;
+	color: #FBFBD3;
+	border: none;
+	padding: 2px 8px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-right: 3px;
+	margin-left: 3px;
+	margin-bottom: 3px;
+	margin-top: 3px;
+}
+
+.btn:hover {
+	border: none;
+	background-color: #FBFBD3;
+	color: #5AB318;
+	padding: 2px 8px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-right: 3px;
+	margin-left: 3px;
+	margin-bottom: 3px;
+	margin-top: 3px;
+}
+
 div#entete {
 	float: left;
 	width: 100%;
-	min-height:110px;
+	min-height: 110px;
 	margin-bottom: 2%;
- 	background-color: #FBFBD3;
+	background-color: #FBFBD3;
 }
 
 div#banniere {
 	float: left;
 	width: 60%;
-	min-height:110px;
+	min-height: 110px;
 	text-align: center;
 	font-size: 90px;
 	font-family: cursive; /**/
- 	background-color: #FBFBD3;
- 	vertical-align: top;
- }
-
-.btn{
-	background-color: #5AB318;
-	color: #FBFBD3;
-	border: none;
-    padding: 2px 8px;
-    padding-top: 5px;
- 	padding-bottom: 5px;
- 	margin-right: 3px;
- 	margin-left: 3px;
- 	margin-bottom: 3px;
- 	margin-top: 3px;
+	background-color: #FBFBD3;
+	vertical-align: top;
 }
 
-.btn:hover {
-    border: none;
-    background-color: #FBFBD3;
-    color: #5AB318;
-    padding: 2px 8px;
-    padding-top: 5px;
- 	padding-bottom: 5px;
- 	margin-right: 3px;
- 	margin-left: 3px;
- 	margin-bottom: 3px;
- 	margin-top: 3px;
-}
-	
-label
-{
-	display:block;
-	width:40%;
-	float:left;
-}
-
-input, select
-{
-	width: 48%;
-	float: left;
-}
-
-
-	
 div#formuRapide {
 	float: left;
 	width: 35%;
- 	background-color: #CEFFAA;
- 	color :#5AB318;
- 	border: 2px solid #5AB318;
- 	padding-left: 10px;
- 	padding-right: 10px;
- 	padding-top: 10px;
- 	padding-bottom: 10px;
+	background-color: #CEFFAA;
+	color: #5AB318;
+	border: 2px solid #5AB318;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 div#menu {
 	float: left;
- 	background-color: #FBFBD3;
+	background-color: #FBFBD3;
 	width: 30%; /*taille 30% de la taille de l'écran*/
 	margin-right: 5%;
 	color: #5AB318;
 }
 
-div#corps {
-	/*height: 800px;*/
+div#corps { /*height: 800px;*/
+	
 }
 
 div#corps {
@@ -88,51 +77,64 @@ div#corps {
 	background-color: #FBFBD3;
 }
 
-span#erreur, div#erreur {
+span#erreur,div#erreur {
 	color: red; /*pour faire ressortir les erreurs ont les met en rouge*/
 }
 
-body {
-	width: 80%; /*sur la page on ne va utiliser que 80% de l'espace disponible*/
-	margin: auto; /*pour centrer le contenu au milieu de la page*/
-	margin-top: 2%; /*pour faire l'espace avec le bord supérieur de la page*/
-	color: gray; /*couleur grise pour tout le texte*/
-	font-family: fantasy, cursive; /**/
-	background-color:#FBFBD3;
-}
-
-div#image, div#infoAnnonce, div#infoVendeur
-{
+div#image,div#infoAnnonce,div#infoVendeur {
 	float: left;
 	margin-bottom: 70px;
 	height: 100px;
 }
 
-div#image
-{
+div#image {
 	width: 10%;
 	/*background-color: blue;/**/
 }
 
-div#infoAnnonce
-{
+div#infoAnnonce {
 	width: 40%;
-	margin-left:5%;
-	margin-right:10%;
+	margin-left: 5%;
+	margin-right: 10%;
 	/*background-color: red;/**/
 }
 
-div#infoVendeur
-{
-	width:35%;
+div#infoVendeur {
+	width: 35%;
 	/*background-color: yellow;/**/
 }
 
-div#enchere, div#description
-{
+div#enchere,div#description {
 	clear: left;
 	margin-bottom: 2%;
-	width:100%;
+	width: 100%;
+}
+
+body {
+	width: 90%;
+	/*sur la page on ne va utiliser que 80% de l'espace disponible*/
+	margin: auto; /*pour centrer le contenu au milieu de la page*/
+	margin-top: 2%;
+	/*pour faire l'espace avec le bord supérieur de la page*/
+	color: gray; /*couleur grise pour tout le texte*/
+	font-family: fantasy, cursive; /**/
+	background-color: #FBFBD3;
+}
+
+label {
+	display: block;
+	width: 40%;
+	float: left;
+}
+
+input,select {
+	width: 48%;
+	float: left;
+	/*border-radius: 10px 10px 10px 10px;/**/
+}
+
+table {
+	margin: auto;
 }
 
 a {
@@ -141,6 +143,5 @@ a {
 
 a:HOVER {
 	color: appworkspace;
-	text-decoration: underline overline ;
+	text-decoration: underline overline;
 }
-

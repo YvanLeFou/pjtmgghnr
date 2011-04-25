@@ -15,7 +15,7 @@ import org.apache.struts.action.ActionMapping;
 
 import daoHibernate.DAOOffreHibernate;
 
-public class EnchereEncours extends Action {
+public class AjouterAnnonceVisualise extends Action {
 
 	/* (non-Javadoc)
 	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -24,15 +24,15 @@ public class EnchereEncours extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		ArrayList<Offre> offre = null;
+		Offre o = (Offre) request.getSession().getAttribute("nouvelleOffre");
 		
-		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
 		DAOOffreHibernate dao = new DAOOffreHibernate();
 		
-		offre = dao.getEnchereEncours(i);
+		dao.save(o);
 		
-		request.getSession().setAttribute("listRecherche", offre);
-		return mapping.findForward("resultatRecherche");
+		request.getSession().removeAttribute("nouvelleOffre");
+		
+		return mapping.findForward("index");
 	}
 
 }

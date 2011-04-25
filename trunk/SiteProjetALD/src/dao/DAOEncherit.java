@@ -12,6 +12,8 @@ public interface DAOEncherit {
 
 	public abstract Encherit get(Internaute pseudo, Offre idOffre) throws Exception;
 
+	public abstract ArrayList<Encherit> get(Offre idOffre) throws Exception;
+	
 	public abstract ArrayList<Encherit> loadAll() throws Exception;
 
 	public abstract void save(Encherit e) throws Exception;

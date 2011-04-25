@@ -10,9 +10,9 @@
 		<property name="descriptif" type="string" column="descriptif" />
 		<property name="miseAPrix" type="double" column="miseAPrix" />
 		<property name="joignable" type="integer" column="joignable" />
-		<property name="dateDepot" type="date" column="dateDepot" />
-		<property name="dateDebut" type="date" column="dateDebut" />
-		<property name="dateFin" type="date" column="dateFin" />
+		<property name="dateDepot" type="timestamp" column="dateDepot" />
+		<property name="dateDebut" type="timestamp" column="dateDebut" />
+		<property name="dateFin" type="timestamp" column="dateFin" />
 		<property name="suspecte" type="integer" column="suspecte" />
 		
 		<many-to-one name="departement" column="idDepartement" class="metier.Departement" />

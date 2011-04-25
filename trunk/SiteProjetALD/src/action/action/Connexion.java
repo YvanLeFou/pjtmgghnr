@@ -27,9 +27,16 @@ public class Connexion extends Action
 		DAOInternauteHibernate dao = new DAOInternauteHibernate();
 		Internaute i = dao.get(fm.getPseudo());
 		
+		ActionForward a = (ActionForward) (request.getSession().getAttribute("lastPath") != null ? request.getSession().getAttribute("lastPath") : mapping.findForward("index"));
 		if (i != null && i.getMdp().equals(fm.getMdp())) 
 		{
 			request.getSession().setAttribute("pseudo", i);
+			
+			if (request.getSession().getAttribute("formEncherir") != null)
+			{
+				request.setAttribute("encherir", request.getSession().getAttribute("formEncherir"));
+				request.getSession().removeAttribute("formEncherir");
+			}
 		}
 		else // pas de resultat
 		{
@@ -39,7 +46,7 @@ public class Connexion extends Action
 			this.addErrors(request, erreur);
 		}
 		
-		return mapping.findForward("index");
+		return a;
 	}
 
 }

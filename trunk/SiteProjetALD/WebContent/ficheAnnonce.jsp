@@ -5,7 +5,6 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel=stylesheet type="text/css" href="style.css"/>
-		
 		<title><bean:message key="ficheAnnonce.title"/></title>
 	</head>
 	
@@ -24,10 +23,10 @@
 				<bean:write name="annonce" property="titre" /><br/>
 				<label><bean:message key="ficheAnnonce.prixmin"/></label><bean:write name="annonce" property="miseAPrix" /><br/>
 				<label><bean:message key="ficheAnnonce.prixactu"/></label>	<label>
-																				<logic:present name="enchere" scope="request">
-																					<bean:write name="enchere" property="prix"/>(<bean:write name="enchere" property="date" format="dd MMMM yyyy"/>)
+																				<logic:present name="oenchere" scope="request">
+																					<bean:write name="oenchere" property="prix"/><!-- <br/>(<bean:write name="oenchere" property="date" format="dd MMMM yyyy"/>) -->
 																				</logic:present>
-																				<logic:notPresent name="enchere" scope="request">
+																				<logic:notPresent name="oenchere" scope="request">
 																					<bean:write name="annonce" property="miseAPrix" />
 																				</logic:notPresent>
 																			</label><br/>
@@ -37,32 +36,40 @@
 			
 			<div id="infoVendeur">
 				<label><bean:message key="ficheAnnonce.vendeur"/></label>
-				<html:form action="/identiteIntenaute.do">
-					<label><bean:write name="internaute" property="pseudo" /></label>
-					<html:hidden property="idOffre" write="idOffre" name="annonce"/>
-					<html:submit value="Information Complémentaire" style="width:100%;"></html:submit><br/>
-				</html:form><br/>
-				
-				<label><bean:message key="ficheAnnonce.tel"/></label><bean:write name="internaute" property="telephone" /><br/>
+				<logic:notPresent name="typeAff">
+					<html:form action="/identiteIntenaute.do">
+						<label><bean:write name="internaute" property="pseudo" /></label>
+						<html:hidden property="idOffre" write="idOffre" name="annonce"/>
+						<html:submit value="Information Complémentaire" style="width:100%;"></html:submit><br/>
+					</html:form><br/>
+				</logic:notPresent>
+				<logic:equal value="1" name="annonce" property="joignable">
+					<label><bean:message key="ficheAnnonce.tel"/></label><bean:write name="internaute" property="telephone" /><br/>
+				</logic:equal>
 				<label><bean:message key="ficheAnnonce.mail"/></label><bean:write name="internaute" property="email" /><br/>
-				<html:form action="/signaler.do">
-					<html:hidden property="idOffre" write="idOffre" name="annonce" />
-					<html:submit value="Signaler cette annonce" style="width:100%;"/><br/>
-				</html:form>
+				
+				<logic:notPresent name="typeAff">
+					<html:form action="/signaler.do">
+						<html:hidden property="idOffre" write="idOffre" name="annonce" />
+						<html:submit value="Signaler cette annonce" style="width:100%;"/><br/>
+					</html:form>
+				</logic:notPresent>
 			</div>
 			
-			<!-- ici vaut mieux faire une vérification JS -->
-			<div id="enchere">
-				<logic:present name="pseudo" scope="session">
-					<html:form action="/proposeenchere.do">
-						<label style="width:20%;"><bean:message key="ficheAnnonce.enchere"/></label>
-						<html:text property="enchere" style="width:20%; margin-right:5%;" value=""/>
-						<html:hidden property="idOffre" write="idOffre" name="annonce"/>
-						<html:submit value="Encherir" style="width:30%"/><br/>
-						<div id="erreur"><html:errors property="enchere.invalide"/></div>
-					</html:form>
-				</logic:present>
-			</div>
+			<logic:notPresent name="typeAff">
+				<div id="enchere">
+					<logic:lessEqual value="0" name="dateAujourdhui">
+						<html:form action="/proposeenchere.do">
+							<label style="width:20%;"><bean:message key="ficheAnnonce.enchere"/></label>
+							<html:text property="enchere" style="width:20%; margin-right:5%;" />
+							<html:hidden property="idOffre" write="idOffre" name="annonce"/>
+							<html:submit value="Encherir" style="width:30%"/><br/>
+							<div id="erreur"><html:errors property="enchere.invalide"/></div>
+							<div id="erreur"><html:errors property="enchere.insuffisant"/></div>
+						</html:form>
+					</logic:lessEqual>
+				</div>
+			</logic:notPresent>
 			
 			<div id="description">
 				<bean:message key="ficheAnnonce.description"/><br/>
@@ -74,6 +81,12 @@
 					<img src="<bean:write name="img" property="libelleImage"/>" alt="<bean:write name="img" property="libelleImage"/>" />
 				</logic:iterate><br/>
 			</div>
+			
+			<logic:equal value="visu" name="typeAff">
+				<div>
+					<html:link action="ajouterAnnonceVisualise.do" styleId="lienValide">Valider l'offre</html:link>
+				</div>
+			</logic:equal>
 		</div>
 	</body>
 </html>

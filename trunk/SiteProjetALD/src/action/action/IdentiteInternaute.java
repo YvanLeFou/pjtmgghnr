@@ -1,5 +1,7 @@
 package action.action;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,10 +32,15 @@ public class IdentiteInternaute extends Action {
 		Offre o = dao.get(Integer.parseInt(f.getIdOffre()));
 		Internaute i = o.getInternaute();
 		
-		request.setAttribute("annonce", i.getOffre());
+		int nbVente = dao.getHistoriqueVente(i).size(),
+		nbAchat = dao.getHistoriqueAchat(i).size();
+		
+		ArrayList<Offre> list = dao.getVenteEncours(i);
+		
+		request.setAttribute("annonce", list);
 		request.setAttribute("internaute", i);
-		request.setAttribute("nbVente", i.getOffre().size());
-		request.setAttribute("nbAchat", i.getEncherit().size());
+		request.setAttribute("nbVente", nbVente);
+		request.setAttribute("nbAchat", nbAchat);
 		
 		return mapping.findForward("identiteInternaute");
 	}

@@ -36,7 +36,8 @@ public class Recherche extends Action {
 		
 		ArrayList<Offre> offre = dao.findThem(motClef, categ, dep, prixMin, prixMax);
 		
-		request.setAttribute("listRecherche", offre);
+		request.getSession().setAttribute("listRecherche", offre);
+		request.getSession().setAttribute("lastPath", mapping.findForward("resultatRecherche"));
 		return mapping.findForward("resultatRecherche");
 	}
 

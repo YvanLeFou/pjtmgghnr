@@ -6,9 +6,11 @@ import java.util.Date;
 import metier.Categorie;
 import metier.Departement;
 import metier.Image;
+import metier.Internaute;
 import metier.Offre;
 import daoHibernate.DAOCategorieHibernate;
 import daoHibernate.DAODepartementHibernate;
+import daoHibernate.DAOInternauteHibernate;
 import daoHibernate.DAOOffreHibernate;
 import junit.framework.TestCase;
 
@@ -102,5 +104,27 @@ public class TestOffre extends TestCase{
 		
 		for(Offre a : list)
 			System.out.println(a);
+	}
+	
+	public void testVenteEnCours() throws Exception
+	{
+		DAOOffreHibernate dao = new DAOOffreHibernate();
+		DAOInternauteHibernate inter = new DAOInternauteHibernate();
+		Internaute i = inter.get("toto");
+		for(Offre o : dao.getVenteEncours(i))
+		{
+			System.out.println(o.getTitre());
+		}
+	}
+	
+	public void testVenteHistorique() throws Exception
+	{
+		DAOOffreHibernate dao = new DAOOffreHibernate();
+		DAOInternauteHibernate inter = new DAOInternauteHibernate();
+		Internaute i = inter.get("Bobo");
+		for(Offre o : dao.getHistoriqueVente(i))
+		{
+			System.out.println(o.getTitre());
+		}
 	}
 }
