@@ -21,7 +21,6 @@ import org.apache.struts.upload.FormFile;
 
 import daoHibernate.DAOCategorieHibernate;
 import daoHibernate.DAODepartementHibernate;
-import daoHibernate.DAOOffreHibernate;
 
 import action.form.ActionFormFormuPostAnnonce;
 
@@ -41,7 +40,7 @@ public class AjouterAnnonce extends Action {
 			throws Exception {
 		ActionFormFormuPostAnnonce f = (ActionFormFormuPostAnnonce) form;
 		FormFile myFile = f.getFileList();
-
+		
 		//String contentType = myFile.getContentType();
 		
 		// recuperer le nom du fichier
@@ -94,6 +93,8 @@ public class AjouterAnnonce extends Action {
 		request.setAttribute("internaute", i);
 		request.setAttribute("dateAujourdhui", (new Date()).compareTo(o.getDateFin()));
 		request.setAttribute("typeAff", "visu");
-		return mapping.findForward("retour");
+		
+		request.getSession().setAttribute("formPostAnnonce", f);
+		return mapping.findForward("suivant");
 	}
 }

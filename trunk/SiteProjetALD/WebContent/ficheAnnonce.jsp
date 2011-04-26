@@ -36,13 +36,14 @@
 			
 			<div id="infoVendeur">
 				<label><bean:message key="ficheAnnonce.vendeur"/></label>
-				<logic:notPresent name="typeAff">
 					<html:form action="/identiteIntenaute.do">
 						<label><bean:write name="internaute" property="pseudo" /></label>
 						<html:hidden property="idOffre" write="idOffre" name="annonce"/>
-						<html:submit value="Information Complémentaire" style="width:100%;"></html:submit><br/>
+						
+						<logic:notPresent name="typeAff">
+								<html:submit value="Information Complémentaire" style="width:100%;"></html:submit><br/>
+						</logic:notPresent>
 					</html:form><br/>
-				</logic:notPresent>
 				<logic:equal value="1" name="annonce" property="joignable">
 					<label><bean:message key="ficheAnnonce.tel"/></label><bean:write name="internaute" property="telephone" /><br/>
 				</logic:equal>
@@ -84,7 +85,8 @@
 			
 			<logic:equal value="visu" name="typeAff">
 				<div>
-					<html:link action="/ajouterAnnonceVisualise.do" styleId="lienValide">Valider l'offre</html:link>
+					<html:link action="/retour.do?prior" styleClass="btn" style="width: 45%; float: left;text-align:center;">Retour</html:link>
+					<html:link action="/ajouterAnnonceVisualise.do" styleClass="btn" style="width: 45%; float: right;text-align:center;">Valider l'offre</html:link>
 				</div>
 			</logic:equal>
 		</div>
