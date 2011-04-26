@@ -132,15 +132,4 @@
 			<ref bean="daoInternaute" />
 		</property>
 	</bean>
-<!-- 	<bean name="/actionFormListePersonneCode" class="action.ActionListePersonneRecherche"> -->
-<!-- 		<property name="dao"> -->
-<!-- 			<ref bean="monDAOPersonne" /> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
-	
-<!-- 	<bean name="/actionFormListePersonneNom" class="action.ActionListePersonneRechercheNom"> -->
-<!-- 		<property name="dao"> -->
-<!-- 			<ref bean="monDAOPersonne" /> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
 </beans>
