@@ -18,12 +18,42 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 
-import daoHibernate.DAOEncheritHibernate;
-import daoHibernate.DAOOffreHibernate;
+import dao.DAOEncherit;
+import dao.DAOOffre;
 
 import action.form.ActionFormFormuEncherir;
 
 public class Encherir extends Action {
+	private DAOOffre daoOffre;
+	private DAOEncherit daoEncherit;
+	
+	/**
+	 * @return the daoOffre
+	 */
+	public DAOOffre getDaoOffre() {
+		return daoOffre;
+	}
+
+	/**
+	 * @param daoOffre the daoOffre to set
+	 */
+	public void setDaoOffre(DAOOffre daoOffre) {
+		this.daoOffre = daoOffre;
+	}
+
+	/**
+	 * @return the daoEncherit
+	 */
+	public DAOEncherit getDaoEncherit() {
+		return daoEncherit;
+	}
+
+	/**
+	 * @param daoEncherit the daoEncherit to set
+	 */
+	public void setDaoEncherit(DAOEncherit daoEncherit) {
+		this.daoEncherit = daoEncherit;
+	}
 
 	/* (non-Javadoc)
 	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -33,9 +63,6 @@ public class Encherir extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ActionFormFormuEncherir f = (ActionFormFormuEncherir)form;
-		
-		DAOEncheritHibernate dao = new DAOEncheritHibernate();
-		DAOOffreHibernate daoOffre = new DAOOffreHibernate();
 		
 		Offre o = daoOffre.get(Integer.parseInt(f.getIdOffre()));
 		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
@@ -59,7 +86,7 @@ public class Encherir extends Action {
 		System.out.println(timestamp);
 		Encherit e = new Encherit(Double.parseDouble(f.getEnchere()), timestamp, (Internaute)request.getSession().getAttribute("pseudo"), o);
 		
-		ArrayList<Encherit> s = dao.get(o);
+		ArrayList<Encherit> s = daoEncherit.get(o);
 		double ss = Double.POSITIVE_INFINITY, tmp = Double.NEGATIVE_INFINITY;
 		for(Encherit encherit : s)
 			if (encherit.getPrix() > tmp)
@@ -72,7 +99,7 @@ public class Encherir extends Action {
 		{
 			if ((s == null && e.getPrix() > o.getMiseAPrix()) || (s != null && e.getPrix() > ss))
 			{
-				dao.saveOrUpdate(e);
+				daoEncherit.saveOrUpdate(e);
 			}
 			else
 			{

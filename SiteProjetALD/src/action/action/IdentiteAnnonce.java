@@ -15,9 +15,24 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import daoHibernate.DAOOffreHibernate;
+import dao.DAOOffre;
 
 public class IdentiteAnnonce extends Action {
+	private DAOOffre daoOffre;
+	
+	/**
+	 * @return the daoOffre
+	 */
+	public DAOOffre getDaoOffre() {
+		return daoOffre;
+	}
+
+	/**
+	 * @param daoOffre the daoOffre to set
+	 */
+	public void setDaoOffre(DAOOffre daoOffre) {
+		this.daoOffre = daoOffre;
+	}
 
 	/* (non-Javadoc)
 	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -27,8 +42,6 @@ public class IdentiteAnnonce extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		System.out.println(request.getRequestURI());
-		
-		DAOOffreHibernate dao = new DAOOffreHibernate();
 		
 		//if (request.getSession().getAttribute("lastId") == null)
 		//	request.getSession().setAttribute("lastId", Integer.parseInt(request.getParameter("id")));
@@ -47,7 +60,7 @@ public class IdentiteAnnonce extends Action {
 			id = Integer.parseInt((String) request.getAttribute("id"));
 		}*/
 		
-		Offre o = dao.get(id);
+		Offre o = daoOffre.get(id);
 		Internaute i = o.getInternaute();
 		
 		Iterator<Encherit> it = o.getEncherit().iterator();

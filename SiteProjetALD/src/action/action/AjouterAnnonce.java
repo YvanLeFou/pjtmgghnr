@@ -19,12 +19,42 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
 
-import daoHibernate.DAOCategorieHibernate;
-import daoHibernate.DAODepartementHibernate;
+import dao.DAOCategorie;
+import dao.DAODepartement;
 
 import action.form.ActionFormFormuPostAnnonce;
 
 public class AjouterAnnonce extends Action {
+	private DAOCategorie daoCategorie;
+	private DAODepartement daoDepartement;
+	
+	/**
+	 * @return the daoCategorie
+	 */
+	public DAOCategorie getDaoCategorie() {
+		return daoCategorie;
+	}
+
+	/**
+	 * @param daoCategorie the daoCategorie to set
+	 */
+	public void setDaoCategorie(DAOCategorie daoCategorie) {
+		this.daoCategorie = daoCategorie;
+	}
+
+	/**
+	 * @return the daoDepartement
+	 */
+	public DAODepartement getDaoDepartement() {
+		return daoDepartement;
+	}
+
+	/**
+	 * @param daoDepartement the daoDepartement to set
+	 */
+	public void setDaoDepartement(DAODepartement daoDepartement) {
+		this.daoDepartement = daoDepartement;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -72,14 +102,12 @@ public class AjouterAnnonce extends Action {
 		}
 		
 		System.out.println(filePath+File.separator+fileName);
-		DAODepartementHibernate daoDep = new DAODepartementHibernate();
-		DAOCategorieHibernate daoCat = new DAOCategorieHibernate();
 		
 		SimpleDateFormat sd = new SimpleDateFormat("d/M/y");
 		Date dateDeb = 	f.getDateDeb().trim().isEmpty() ? new Date() : sd.parse(f.getDateDeb()), 
 						dateFin = sd.parse(f.getDateFin());
 		
-		Offre o = new Offre(f.getTitre(), f.getDescription(), f.getMiseAPrix(), f.isJoignable() ? 1 : 0, dateDeb, dateFin, new Date(), -1, daoCat.get(f.getCategorie()), daoDep.get(f.getDepartement()), 0, (Internaute)(request.getSession().getAttribute("pseudo"))); 
+		Offre o = new Offre(f.getTitre(), f.getDescription(), f.getMiseAPrix(), f.isJoignable() ? 1 : 0, dateDeb, dateFin, new Date(), -1, daoCategorie.get(f.getCategorie()), daoDepartement.get(f.getDepartement()), 0, (Internaute)(request.getSession().getAttribute("pseudo"))); 
 		o.getImage().add(new Image(-1, "ImageUpload"+File.separator+fileName, o));
 		
 		//DAOOffreHibernate dao = new DAOOffreHibernate();

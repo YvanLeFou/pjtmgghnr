@@ -14,9 +14,24 @@ import org.apache.struts.action.ActionMapping;
 
 import action.form.ActionFormFormuRecherche;
 
-import daoHibernate.DAOOffreHibernate;
+import dao.DAOOffre;
 
 public class Recherche extends Action {
+	private DAOOffre daoOffre;
+	
+	/**
+	 * @return the daoOffre
+	 */
+	public DAOOffre getDaoOffre() {
+		return daoOffre;
+	}
+
+	/**
+	 * @param daoOffre the daoOffre to set
+	 */
+	public void setDaoOffre(DAOOffre daoOffre) {
+		this.daoOffre = daoOffre;
+	}
 
 	/* (non-Javadoc)
 	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -25,7 +40,6 @@ public class Recherche extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DAOOffreHibernate dao = new DAOOffreHibernate();
 		ActionFormFormuRecherche f = (ActionFormFormuRecherche)form;
 		
 		String	motClef = f.getMotclef();
@@ -34,7 +48,7 @@ public class Recherche extends Action {
 		double	prixMin = f.getMin().trim().isEmpty() ? -1 : Double.parseDouble(f.getMin()),
 				prixMax = f.getMax().trim().isEmpty() ? -1 : Double.parseDouble(f.getMax());
 		
-		ArrayList<Offre> offre = dao.findThem(motClef, categ, dep, prixMin, prixMax);
+		ArrayList<Offre> offre = daoOffre.findThem(motClef, categ, dep, prixMin, prixMax);
 		
 		request.getSession().setAttribute("listRecherche", offre);
 		request.getSession().setAttribute("lastPath", mapping.findForward("resultatRecherche"));

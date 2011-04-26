@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="daoInternaute" class="daoHibernate.DAOInternauteHibernate" />
+	<bean id="daoOffre" class="daoHibernate.DAOOffreHibernate" />
+	<bean id="daoEncherit" class="daoHibernate.DAOEncheritHibernate" />
+	<bean id="daoDepartement" class="daoHibernate.DAODepartementHibernate" />
+	<bean id="daoRegion" class="daoHibernate.DAORegionHibernate" />
+	<bean id="daoCategorie" class="daoHibernate.DAOCategorieHibernate" />
+	<bean id="daoDroit" class="daoHibernate.DAODroitHibernate" />
+
+	<bean name="/ajaxAction" class="action.action.AjaxAction"> 
+		<property name="daoRegion">
+			<ref bean="daoRegion" />
+		</property>
+	</bean>
+
+ 	<bean name="/index" class="action.action.Index"> 
+		<property name="daoDepartement">
+			<ref bean="daoDepartement" />
+		</property>
+		<property name="daoRegion">
+			<ref bean="daoRegion"/>
+		</property>
+		<property name="daoCategorie">
+			<ref bean="daoCategorie"/>
+		</property>
+	</bean>
+	
+	<bean name="/suppressionCompte" class="action.action.SuppressionCompte"> 
+		<property name="daoInternaute">
+			<ref bean="daoInternaute" />
+		</property>
+	</bean>
+	
+	<bean name="/historiqueVente" class="action.action.HistoriqueVente"> 
+		<property name="daoOffre">
+			<ref bean="daoOffre" />
+		</property>
+	</bean>
+	
+	<bean name="/historiqueAchat" class="action.action.HistoriqueAchat"> 
+		<property name="daoOffre">
+			<ref bean="daoOffre" />
+		</property>
+	</bean>
+	
+	<bean name="/venteEncours" class="action.action.VenteEncours"> 
+		<property name="daoOffre">
+			<ref bean="daoOffre" />
+		</property>
+	</bean>
+	
+	<bean name="/enchereEncours" class="action.action.EnchereEncours"> 
+		<property name="daoOffre">
+			<ref bean="daoOffre" />
+		</property>
+	</bean>
+	
+	<bean name="/identiteAnnonce" class="action.action.IdentiteAnnonce"> 
+		<property name="daoOffre">
+			<ref bean="daoOffre" />
+		</property>
+	</bean>
+	
+	<bean name="/ajouterAnnonceVisualise" class="action.action.AjouterAnnonceVisualise"> 
+		<property name="daoOffre">
+			<ref bean="daoOffre" />
+		</property>
+	</bean>
+	
+	<bean name="/posterAnnonce" class="action.action.AjouterAnnonce"> 
+		<property name="daoCategorie">
+			<ref bean="daoCategorie" />
+		</property>
+		<property name="daoDepartement">
+			<ref bean="daoDepartement" />
+		</property>
+	</bean>
+	
+	<bean name="/identiteIntenaute" class="action.action.IdentiteInternaute"> 
+		<property name="daoOffre">
+			<ref bean="daoOffre" />
+		</property>
+	</bean>
+	
+	<bean name="/proposeenchere" class="action.action.Encherir"> 
+		<property name="daoOffre">
+			<ref bean="daoOffre" />
+		</property>
+		<property name="daoEncherit">
+			<ref bean="daoEncherit" />
+		</property>
+	</bean>
+	
+	<bean name="/signaler" class="action.action.Signaler"> 
+		<property name="daoOffre">
+			<ref bean="daoOffre" />
+		</property>
+	</bean>
+	
+	<bean name="/modificationCompte" class="action.action.ModificationInscription"> 
+		<property name="daoInternaute">
+			<ref bean="daoInternaute" />
+		</property>
+		<property name="daoDepartement">
+			<ref bean="daoDepartement" />
+		</property>
+	</bean>
+	
+	<bean name="/creationCompte" class="action.action.ActionInscription"> 
+		<property name="daoInternaute">
+			<ref bean="daoInternaute" />
+		</property>
+		<property name="daoDepartement">
+			<ref bean="daoDepartement" />
+		</property>
+		<property name="daoDroit">
+			<ref bean="daoDroit" />
+		</property>
+	</bean>
+	
+	<bean name="/recherche" class="action.action.Recherche"> 
+		<property name="daoOffre">
+			<ref bean="daoOffre" />
+		</property>
+	</bean>
+	
+	<bean name="/connexion" class="action.action.Connexion"> 
+		<property name="daoInternaute">
+			<ref bean="daoInternaute" />
+		</property>
+	</bean>
+<!-- 	<bean name="/actionFormListePersonneCode" class="action.ActionListePersonneRecherche"> -->
+<!-- 		<property name="dao"> -->
+<!-- 			<ref bean="monDAOPersonne" /> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean name="/actionFormListePersonneNom" class="action.ActionListePersonneRechercheNom"> -->
+<!-- 		<property name="dao"> -->
+<!-- 			<ref bean="monDAOPersonne" /> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+</beans>

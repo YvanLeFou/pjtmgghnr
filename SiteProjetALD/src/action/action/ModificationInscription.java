@@ -3,6 +3,7 @@ package action.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import metier.Departement;
 import metier.Internaute;
 
 import org.apache.struts.action.Action;
@@ -10,12 +11,43 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import daoHibernate.DAOInternauteHibernate;
+import dao.DAODepartement;
+import dao.DAOInternaute;
 
 import action.form.ActionFormFormuModification;
 
 public class ModificationInscription extends Action {
+	private DAOInternaute daoInternaute;
+	private DAODepartement daoDepartement;
 	
+	/**
+	 * @return the daoInternaute
+	 */
+	public DAOInternaute getDaoInternaute() {
+		return daoInternaute;
+	}
+
+	/**
+	 * @param daoInternaute the daoInternaute to set
+	 */
+	public void setDaoInternaute(DAOInternaute daoInternaute) {
+		this.daoInternaute = daoInternaute;
+	}
+
+	/**
+	 * @return the daoDepartement
+	 */
+	public DAODepartement getDaoDepartement() {
+		return daoDepartement;
+	}
+
+	/**
+	 * @param daoDepartement the daoDepartement to set
+	 */
+	public void setDaoDepartement(DAODepartement daoDepartement) {
+		this.daoDepartement = daoDepartement;
+	}
+
 	/* (non-Javadoc)
 	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
@@ -39,11 +71,12 @@ public class ModificationInscription extends Action {
 				email = f.getEmail();
 		
 		int numeroRue = Integer.parseInt(f.getNumeroRue());
+		int departement = Integer.parseInt(f.getDepartement());
 		
-			//les info là sont à récupérer à l'aide de DAO pour le moment constructeur par défaut
+		//les info là sont à récupérer à l'aide de DAO pour le moment constructeur par défaut
 		
-		DAOInternauteHibernate dao = new DAOInternauteHibernate();
 		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
+		Departement dep = daoDepartement.get(departement);
 		
 		System.out.println(f.getNom());
 		
@@ -58,8 +91,9 @@ public class ModificationInscription extends Action {
 			i.setMdp(mdp.trim().isEmpty() ? mdpActuel : mdp);
 			i.setNomRue(nomRue);
 			i.setNumeroRue(numeroRue);
+			i.setDepartement(dep);
 			
-			dao.update(i);
+			daoInternaute.update(i);
 		}
 		return mapping.findForward("index");
 	}
