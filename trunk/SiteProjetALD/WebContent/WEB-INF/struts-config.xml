@@ -27,7 +27,7 @@
 		<action
 			scope="request" 
 			path="/connexion" 
-			type="action.action.Connexion" 
+			type="org.springframework.web.struts.DelegatingActionProxy" 
 			name="formuRapide" 
 			validate="true" 
 			input="/index.jsp">
@@ -37,7 +37,7 @@
 		<action
 			scope="request" 
 			path="/recherche" 
-			type="action.action.Recherche" 
+			type="org.springframework.web.struts.DelegatingActionProxy" 
 			name="formuRecherche" 
 			validate="true" 
 			input="/index.jsp">
@@ -48,7 +48,7 @@
 		<action
 			scope="request" 
 			path="/creationCompte" 
-			type="action.action.ActionInscription" 
+			type="org.springframework.web.struts.DelegatingActionProxy" 
 			name="formuInscription" 
 			validate="true" 
 			input="/inscription.jsp">
@@ -58,7 +58,7 @@
 		<action
 			scope="request" 
 			path="/modificationCompte" 
-			type="action.action.ModificationInscription" 
+			type="org.springframework.web.struts.DelegatingActionProxy" 
 			name="formuModification" 
 			validate="true" 
 			input="/inscription.jsp">
@@ -68,7 +68,7 @@
 		<action 
 			scope="request" 
 			path="/signaler" 
-			type="action.action.Signaler" 
+			type="org.springframework.web.struts.DelegatingActionProxy" 
 			validate="true" 
 			name="signalerAnnonce">
 		</action>
@@ -77,7 +77,7 @@
 		<action
 			scope="request" 
 			path="/proposeenchere" 
-			type="action.action.Encherir"  
+			type="org.springframework.web.struts.DelegatingActionProxy"  
 			name="encherir" 
 			validate="true" 
 			input="/identiteAnnonce.do">
@@ -90,7 +90,7 @@
 		<action
 			scope="request" 
 			path="/identiteIntenaute" 
-			type="action.action.IdentiteInternaute" 
+			type="org.springframework.web.struts.DelegatingActionProxy" 
 			name="identiteInternaute" 
 			validate="true" 
 			input="/erreur.jsp">
@@ -101,7 +101,7 @@
 		<action
 			scope="request" 
 			path="/posterAnnonce"
-			type="action.action.AjouterAnnonce" 
+			type="org.springframework.web.struts.DelegatingActionProxy" 
 			name="postAnnonce" 
 			validate="true" 
 			input="/postAnnonce.jsp">
@@ -114,10 +114,10 @@
 		</action>
 		
 		<!-- validation de l'apercu de l'annonce -->
-		<action scope="request" path="/ajouterAnnonceVisualise" type="action.action.AjouterAnnonceVisualise" />
+		<action scope="request" path="/ajouterAnnonceVisualise" type="org.springframework.web.struts.DelegatingActionProxy" />
 		
 		<!-- mapping de la fiche d'identite de l'annonce -->
-		<action scope="request" path="/identiteAnnonce" type="action.action.IdentiteAnnonce" input="/resultatRecherche.jsp">
+		<action scope="request" path="/identiteAnnonce" type="org.springframework.web.struts.DelegatingActionProxy" input="/resultatRecherche.jsp">
 			<forward name="identiteAnnonce" path="/ficheAnnonce.jsp"></forward>
 		</action>
 		
@@ -127,27 +127,27 @@
 		</action>
 		
 		<!-- mapping du lien vers l'enchere en cours -->
-		<action scope="request" path="/enchereEncours" type="action.action.EnchereEncours" input="/index.jsp">
+		<action scope="request" path="/enchereEncours" type="org.springframework.web.struts.DelegatingActionProxy" input="/index.jsp">
 			<forward name="resultatRecherche" path="/resultatRecherche.jsp"></forward>
 		</action>
 		
 		<!-- mapping du lien vers la vente en cours -->
-		<action scope="request" path="/venteEncours" type="action.action.VenteEncours" input="/index.jsp">
+		<action scope="request" path="/venteEncours" type="org.springframework.web.struts.DelegatingActionProxy" input="/index.jsp">
 			<forward name="resultatRecherche" path="/resultatRecherche.jsp"></forward>
 		</action>
 		
 		<!-- mapping du lien vers l'enchere en cours -->
-		<action scope="request" path="/historiqueAchat" type="action.action.HistoriqueAchat" input="/index.jsp">
+		<action scope="request" path="/historiqueAchat" type="org.springframework.web.struts.DelegatingActionProxy" input="/index.jsp">
 			<forward name="resultatRecherche" path="/resultatRecherche.jsp"></forward>
 		</action>
 		
 		<!-- mapping du lien vers la vente en cours -->
-		<action scope="request" path="/historiqueVente" type="action.action.HistoriqueVente" input="/index.jsp">
+		<action scope="request" path="/historiqueVente" type="org.springframework.web.struts.DelegatingActionProxy" input="/index.jsp">
 			<forward name="resultatRecherche" path="/resultatRecherche.jsp"></forward>
 		</action>
 		
 		<!-- mapping du lien vers la déconnexion -->
-		<action scope="request" path="/suppressionCompte" type="action.action.SuppressionCompte" input="/index.jsp" />
+		<action scope="request" path="/suppressionCompte" type="org.springframework.web.struts.DelegatingActionProxy" input="/index.jsp" />
 		
 		<!-- mapping du lien vers la déconnexion -->
 		<action scope="request" path="/deconnexion" type="action.action.Deconnexion" input="/index.jsp" />
@@ -156,11 +156,15 @@
 		<action scope="request" path="/inscription" type="action.action.Inscription" input="/index.jsp" />
 		
 		<!-- mapping du lien vers la page de configuration du site -->
-		<action scope="session" path="/index" type="action.action.Index" />
+		<action scope="session" path="/index" type="org.springframework.web.struts.DelegatingActionProxy" />
 		
 		<!-- pour faire de l'ajax entre region et departement -->
-		<action path="/ajaxAction" type="action.action.AjaxAction" />
+		<action path="/ajaxAction" type="org.springframework.web.struts.DelegatingActionProxy" />
 	</action-mappings>
 	
 	<message-resources parameter="ApplicationRessources" />
+	
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation" value="/MesBeans.xml" />
+	</plug-in>
 </struts-config>

@@ -12,20 +12,35 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 
-import daoHibernate.DAOInternauteHibernate;
+import dao.DAOInternaute;
 
 import action.form.ActionFormFormuRapide;
 
 public class Connexion extends Action 
 {
+	private DAOInternaute daoInternaute;
+	
+	/**
+	 * @return the daoInternaute
+	 */
+	public DAOInternaute getDaoInternaute() {
+		return daoInternaute;
+	}
+
+	/**
+	 * @param daoInternaute the daoInternaute to set
+	 */
+	public void setDaoInternaute(DAOInternaute daoInternaute) {
+		this.daoInternaute = daoInternaute;
+	}
+
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ActionFormFormuRapide fm = (ActionFormFormuRapide) form;
 		
-		DAOInternauteHibernate dao = new DAOInternauteHibernate();
-		Internaute i = dao.get(fm.getPseudo());
+		Internaute i = daoInternaute.get(fm.getPseudo());
 		
 		ActionForward a = (ActionForward) (request.getSession().getAttribute("lastPath") != null ? request.getSession().getAttribute("lastPath") : mapping.findForward("index"));
 		if (i != null && i.getMdp().equals(fm.getMdp())) 

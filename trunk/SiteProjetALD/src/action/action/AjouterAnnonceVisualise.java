@@ -13,9 +13,25 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import dao.DAOOffre;
 import daoHibernate.DAOOffreHibernate;
 
 public class AjouterAnnonceVisualise extends Action {
+	private DAOOffre daoOffre;
+	
+	/**
+	 * @return the daoOffre
+	 */
+	public DAOOffre getDaoOffre() {
+		return daoOffre;
+	}
+
+	/**
+	 * @param daoOffre the daoOffre to set
+	 */
+	public void setDaoOffre(DAOOffre daoOffre) {
+		this.daoOffre = daoOffre;
+	}
 
 	/* (non-Javadoc)
 	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -26,9 +42,7 @@ public class AjouterAnnonceVisualise extends Action {
 			throws Exception {
 		Offre o = (Offre) request.getSession().getAttribute("nouvelleOffre");
 		
-		DAOOffreHibernate dao = new DAOOffreHibernate();
-		
-		dao.save(o);
+		daoOffre.save(o);
 		
 		request.getSession().removeAttribute("nouvelleOffre");
 		

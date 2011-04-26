@@ -15,9 +15,25 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import daoHibernate.DAORegionHibernate;
+import dao.DAORegion;
 
 public class AjaxAction extends Action {
+	private DAORegion daoRegion;
+	
+	/**
+	 * @return the daoRegion
+	 */
+	public DAORegion getDaoRegion() {
+		return daoRegion;
+	}
+
+	/**
+	 * @param daoRegion the daoRegion to set
+	 */
+	public void setDaoRegion(DAORegion daoRegion) {
+		this.daoRegion = daoRegion;
+	}
+
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -28,9 +44,8 @@ public class AjaxAction extends Action {
 		String str = "";
 		int idRegion = Integer.parseInt(request.getParameter("data"));
 		
-		DAORegionHibernate dao = new DAORegionHibernate();
 		Region region = null;
-		region = dao.get(idRegion);
+		region = daoRegion.get(idRegion);
 		
 		SortedSet<Departement> listDep = new TreeSet<Departement>(region.getListeDepartements());
 		

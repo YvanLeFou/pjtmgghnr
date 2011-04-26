@@ -10,9 +10,24 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import daoHibernate.DAOInternauteHibernate;
+import dao.DAOInternaute;
 
 public class SuppressionCompte extends Action {
+	private DAOInternaute daoInternaute;
+	
+	/**
+	 * @return the daoInternaute
+	 */
+	public DAOInternaute getDaoInternaute() {
+		return daoInternaute;
+	}
+
+	/**
+	 * @param daoInternaute the daoInternaute to set
+	 */
+	public void setDaoInternaute(DAOInternaute daoInternaute) {
+		this.daoInternaute = daoInternaute;
+	}
 
 	/* (non-Javadoc)
 	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -21,13 +36,12 @@ public class SuppressionCompte extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		DAOInternauteHibernate dao = new DAOInternauteHibernate();
 		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
 		
 		System.err.println(i);
 		if (i != null)
 		{
-			dao.delete(i);
+			daoInternaute.delete(i);
 			System.err.println("apres suppr");
 		}
 		

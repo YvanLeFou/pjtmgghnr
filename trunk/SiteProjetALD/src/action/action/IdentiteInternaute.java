@@ -13,11 +13,26 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import daoHibernate.DAOOffreHibernate;
+import dao.DAOOffre;
 
 import action.form.ActionFormFormuIdentiteInternaute;
 
 public class IdentiteInternaute extends Action {
+	private DAOOffre daoOffre;
+	
+	/**
+	 * @return the daoOffre
+	 */
+	public DAOOffre getDaoOffre() {
+		return daoOffre;
+	}
+
+	/**
+	 * @param daoOffre the daoOffre to set
+	 */
+	public void setDaoOffre(DAOOffre daoOffre) {
+		this.daoOffre = daoOffre;
+	}
 
 	/* (non-Javadoc)
 	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -28,14 +43,13 @@ public class IdentiteInternaute extends Action {
 			throws Exception {
 		ActionFormFormuIdentiteInternaute f = (ActionFormFormuIdentiteInternaute)form;
 		System.out.println(f.getIdOffre());
-		DAOOffreHibernate dao = new DAOOffreHibernate();
-		Offre o = dao.get(Integer.parseInt(f.getIdOffre()));
+		Offre o = daoOffre.get(Integer.parseInt(f.getIdOffre()));
 		Internaute i = o.getInternaute();
 		
-		int nbVente = dao.getHistoriqueVente(i).size(),
-		nbAchat = dao.getHistoriqueAchat(i).size();
+		int nbVente = daoOffre.getHistoriqueVente(i).size(),
+		nbAchat = daoOffre.getHistoriqueAchat(i).size();
 		
-		ArrayList<Offre> list = dao.getVenteEncours(i);
+		ArrayList<Offre> list = daoOffre.getVenteEncours(i);
 		
 		request.setAttribute("annonce", list);
 		request.setAttribute("internaute", i);

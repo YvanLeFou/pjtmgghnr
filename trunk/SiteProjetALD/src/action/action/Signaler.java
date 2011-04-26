@@ -11,11 +11,26 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import daoHibernate.DAOOffreHibernate;
+import dao.DAOOffre;
 
 import action.form.ActionFormFormuSignaler;
 
 public class Signaler extends Action {
+	private DAOOffre daoOffre;
+	
+	/**
+	 * @return the daoOffre
+	 */
+	public DAOOffre getDaoOffre() {
+		return daoOffre;
+	}
+
+	/**
+	 * @param daoOffre the daoOffre to set
+	 */
+	public void setDaoOffre(DAOOffre daoOffre) {
+		this.daoOffre = daoOffre;
+	}
 
 	/* (non-Javadoc)
 	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -25,12 +40,11 @@ public class Signaler extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		ActionFormFormuSignaler f = (ActionFormFormuSignaler) form;
-		DAOOffreHibernate dao = new DAOOffreHibernate();
-		Offre o = dao.get(Integer.parseInt(f.getIdOffre()));
+		Offre o = daoOffre.get(Integer.parseInt(f.getIdOffre()));
 		
 		o.setSuspecte(o.getSuspecte() + 1);
 		
-		dao.update(o);
+		daoOffre.update(o);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("recherche.do");
 		rd.forward(request, response);
