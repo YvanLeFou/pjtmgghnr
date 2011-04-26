@@ -105,7 +105,12 @@
 			name="postAnnonce" 
 			validate="true" 
 			input="/postAnnonce.jsp">
-			<forward name="retour" path="/ficheAnnonce.jsp"></forward>
+			<forward name="suivant" path="/ficheAnnonce.jsp"></forward>
+		</action>
+		
+		<!-- validation de l'apercu de l'annonce -->
+		<action scope="request" path="/retour" type="action.action.Retour">
+			<forward name="retour" path="/postAnnonce.jsp"></forward>
 		</action>
 		
 		<!-- validation de l'apercu de l'annonce -->
