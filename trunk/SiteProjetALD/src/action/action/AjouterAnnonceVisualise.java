@@ -1,11 +1,8 @@
 package action.action;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import metier.Internaute;
 import metier.Offre;
 
 import org.apache.struts.action.Action;
@@ -14,7 +11,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import dao.DAOOffre;
-import daoHibernate.DAOOffreHibernate;
 
 public class AjouterAnnonceVisualise extends Action {
 	private DAOOffre daoOffre;

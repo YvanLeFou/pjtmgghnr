@@ -17,9 +17,6 @@ import org.apache.struts.action.ActionMapping;
 import dao.DAOCategorie;
 import dao.DAODepartement;
 import dao.DAORegion;
-import daoHibernate.DAOCategorieHibernate;
-import daoHibernate.DAODepartementHibernate;
-import daoHibernate.DAORegionHibernate;
 
 public class Index extends Action {
 	private DAODepartement daoDepartement;
