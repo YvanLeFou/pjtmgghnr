@@ -21,7 +21,7 @@
 				<label><bean:message key="postAnnonce.nom"/></label><html:text property="titre"></html:text><br/>
 				<div id="erreur"><html:errors property="postAnnonce.titre.vide"/></div>
 				
-				<label><bean:message key="postAnnonce.description"/></label><html:text property="description"></html:text><br/>
+				<label><bean:message key="postAnnonce.description"/></label><html:textarea property="description"></html:textarea><br/>
 				<div id="erreur"><html:errors property="postAnnonce.description.vide"/></div>
 				
 				<label><bean:message key="menu.legend.basique.categ"/></label>

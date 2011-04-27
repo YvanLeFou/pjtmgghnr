@@ -18,6 +18,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
+import org.apache.tomcat.jni.Directory;
 
 import dao.DAOCategorie;
 import dao.DAODepartement;
@@ -74,8 +75,8 @@ public class AjouterAnnonce extends Action {
 		//String contentType = myFile.getContentType();
 		
 		// recuperer le nom du fichier
-		String fileName = "" + DateFormat.getInstance().format(new Date()).replace(File.separatorChar, '-');
-		System.out.println(fileName);
+		String fileName = "" + DateFormat.getDateInstance().format(new Date()).replace(File.separatorChar, '-').replace(File.separator, "-").replace("\\", "-");
+		System.out.println(fileName); 
 		
 		//int fileSize = myFile.getFileSize();
 		//byte[] fileData = myFile.getFileData();

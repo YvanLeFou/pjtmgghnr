@@ -1,12 +1,10 @@
 package action.action;
 
 import java.util.Date;
-import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import metier.Encherit;
 import metier.Internaute;
 import metier.Offre;
 
