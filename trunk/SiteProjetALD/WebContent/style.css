@@ -123,15 +123,19 @@ label {
 	float: left;
 }
 
-input,select {
+input,select,textarea {
 	width: 48%;
 	float: left;
 	/*border-radius: 10px 10px 10px 10px;/**/
 }
 
+textarea {
+	height: 60px;
+}
+
 table {
 	margin: auto;
-	width:100%;
+	width: 100%;
 	text-align: center;
 }
 
