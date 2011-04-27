@@ -45,14 +45,14 @@
 				<html:form action="/identiteIntenaute.do">
 					<html:hidden property="idOffre" write="idOffre" name="annonce"/>
 					<logic:notPresent name="typeAff">
-							<html:submit value="Information Complémentaire" style="width:100%;"></html:submit>
+							<html:submit value="Information Complémentaire" style="width:100%;" styleClass="btn"></html:submit>
 					</logic:notPresent>
 				</html:form><br/>
 				
 				<logic:notPresent name="typeAff">
 					<html:form action="/signaler.do">
 						<html:hidden property="idOffre" write="idOffre" name="annonce" />
-						<html:submit value="Signaler cette annonce" style="width:100%;"/><br/>
+						<html:submit value="Signaler cette annonce" style="width:100%;" styleClass="btn"/><br/>
 					</html:form>
 				</logic:notPresent>
 			</div>
@@ -64,7 +64,7 @@
 							<label style="width:20%;"><bean:message key="ficheAnnonce.enchere"/></label>
 							<html:text property="enchere" style="width:20%; margin-right:5%;" />
 							<html:hidden property="idOffre" write="idOffre" name="annonce"/>
-							<html:submit value="Encherir" style="width:30%"/><br/>
+							<html:submit value="Encherir" style="width:30%" styleClass="btn"/><br/>
 							<div id="erreur"><html:errors property="enchere.invalide"/></div>
 							<div id="erreur"><html:errors property="enchere.insuffisant"/></div>
 						</html:form>
