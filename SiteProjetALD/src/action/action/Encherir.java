@@ -68,6 +68,7 @@ public class Encherir extends Action {
 		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
 		request.getSession().setAttribute("id", o.getIdOffre());
 		//System.out.println("dans encherir : " + request.getSession().getAttribute("id"));
+		
 		if (i == null)
 		{
 			request.getSession().setAttribute("formEncherir", request.getAttribute("encherir"));
@@ -83,7 +84,7 @@ public class Encherir extends Action {
 		}
 		
 		Date timestamp = new Timestamp(new Date().getTime());
-		System.out.println(timestamp);
+		//System.out.println(timestamp);
 		Encherit e = new Encherit(Double.parseDouble(f.getEnchere()), timestamp, (Internaute)request.getSession().getAttribute("pseudo"), o);
 		
 		ArrayList<Encherit> s = daoEncherit.get(o);
@@ -93,11 +94,11 @@ public class Encherir extends Action {
 				tmp = encherit.getPrix();
 		ss = tmp;
 		
-		System.out.println(f.getEnchere() + " sur " + f.getIdOffre());
-		System.out.println(s + " " + f.getEnchere() + " > " + o.getMiseAPrix());
+		//System.out.println(f.getEnchere() + " sur " + f.getIdOffre());
+		System.out.println(s + " " + f.getEnchere() + " > " + o.getMiseAPrix() + " || " + e.getPrix() + " > " + ss);
 		if (i != null)
 		{
-			if ((s == null && e.getPrix() > o.getMiseAPrix()) || (s != null && e.getPrix() > ss))
+			if ((s == null && !s.isEmpty() && e.getPrix() > o.getMiseAPrix()) || (s != null && !s.isEmpty() && e.getPrix() > ss))
 			{
 				daoEncherit.saveOrUpdate(e);
 			}
