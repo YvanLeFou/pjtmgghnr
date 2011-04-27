@@ -1,7 +1,6 @@
 package action.action;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -86,21 +85,40 @@ public class Encherir extends Action {
 		Date timestamp = new Timestamp(new Date().getTime());
 		//System.out.println(timestamp);
 		Encherit e = new Encherit(Double.parseDouble(f.getEnchere()), timestamp, (Internaute)request.getSession().getAttribute("pseudo"), o);
-		
-		ArrayList<Encherit> s = daoEncherit.get(o);
-		double ss = Double.POSITIVE_INFINITY, tmp = Double.NEGATIVE_INFINITY;
-		for(Encherit encherit : s)
-			if (encherit.getPrix() > tmp)
-				tmp = encherit.getPrix();
-		ss = tmp;
-		
+//		
+//		ArrayList<Encherit> s = daoEncherit.get(o);
+//		double ss = Double.POSITIVE_INFINITY, tmp = Double.NEGATIVE_INFINITY;
+//		for(Encherit encherit : s)
+//			if (encherit.getPrix() > tmp)
+//				tmp = encherit.getPrix();
+//		ss = tmp;
+//		
 		//System.out.println(f.getEnchere() + " sur " + f.getIdOffre());
-		System.out.println(s + " " + f.getEnchere() + " > " + o.getMiseAPrix() + " || " + e.getPrix() + " > " + ss);
+//		System.out.println(s + " " + f.getEnchere() + " > " + o.getMiseAPrix() + " || " + e.getPrix() + " > " + ss);
+//		if (i != null)
+//		{
+//			if ((s == null && !s.isEmpty() && e.getPrix() > o.getMiseAPrix()) || (s != null && !s.isEmpty() && e.getPrix() > ss))
+//			{
+//				daoEncherit.saveOrUpdate(e);
+//				o.setMiseAPrix(e.getPrix());
+//				daoOffre.update(o);
+//			}
+//			else
+//			{
+//				ActionMessages erreur = new ActionMessages();
+//				erreur.add("enchere.insuffisant", new ActionMessage("enchere.insuffisant"));
+//				this.addErrors(request, erreur);
+//			}
+//		}
+		
+		System.out.println(f.getEnchere() + " > " + o.getMiseAPrix());
 		if (i != null)
 		{
-			if ((s == null && !s.isEmpty() && e.getPrix() > o.getMiseAPrix()) || (s != null && !s.isEmpty() && e.getPrix() > ss))
+			if (e.getPrix() > o.getMiseAPrix())
 			{
 				daoEncherit.saveOrUpdate(e);
+				o.setMiseAPrix(e.getPrix());
+				daoOffre.update(o);
 			}
 			else
 			{
