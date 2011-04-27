@@ -14,7 +14,7 @@
 		
 		<div id="corps">
 			<bean:message key="postAnnonce.titre"/><br/>
-			<html:form action="/posterAnnonce.do?prior" enctype="multipart/form-data">
+			<html:form action="/posterAnnonce.do?prior" enctype="multipart/form-data" style= "width:100%">
 				<label><bean:message key="postAnnonce.photo"/></label><html:file property="fileList"></html:file><br/>
 				<div id="erreur"><html:errors property="postAnnonce.img.vide"/></div>
 				
@@ -51,8 +51,8 @@
 				
 				<label><bean:message key="postAnnonce.voirtel"/></label><html:checkbox property="joignable"></html:checkbox><br/>
 				
-				<html:submit><bean:message key="bouton.submit.inscription"/></html:submit>
-				<html:reset><bean:message key="bouton.reset"/></html:reset>
+				<html:submit styleClass="btn"><bean:message key="bouton.submit.inscription"/></html:submit>
+				<html:reset styleClass="btn"><bean:message key="bouton.reset"/></html:reset>
 			</html:form>
 		</div>
 	</body>

@@ -75,12 +75,13 @@ public class AjouterAnnonce extends Action {
 		//String contentType = myFile.getContentType();
 		
 		// recuperer le nom du fichier
-		String fileName = "" + DateFormat.getDateInstance().format(new Date()).replace(File.separatorChar, '-').replace(File.separator, "-").replace("\\", "-");
-		System.out.println(fileName); 
+		String fileName = "" + DateFormat.getDateInstance().format(new Date()).replace(File.separatorChar, '-').replace(File.separator,"-").replace("\\", "-");
+		System.out.println(fileName);
+
 		
 		//int fileSize = myFile.getFileSize();
 		//byte[] fileData = myFile.getFileData();
-		// ca permet de retourne le chemin où sera sauvegarder le fichier
+		// ca permet de retourne le chemin oÔøΩ sera sauvegarder le fichier
 		String filePath = getServlet().getServletContext().getRealPath("/") + "ImageUpload";
 		// Sauvegarde du fichier dans le serveur //
 		if (!fileName.equals("")) {

@@ -132,6 +132,7 @@ input,select {
 table {
 	margin: auto;
 	width:100%;
+	text-align: center;
 }
 
 a {
