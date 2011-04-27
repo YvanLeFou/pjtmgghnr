@@ -67,10 +67,6 @@ div#menu {
 	color: #5AB318;
 }
 
-div#corps { /*height: 800px;*/
-	
-}
-
 div#corps {
 	float: left; /*pour mettre le corps a gauche*/
 	width: 65%; /*taille de 65% de la taille de la page*/
@@ -135,6 +131,7 @@ input,select {
 
 table {
 	margin: auto;
+	width:100%;
 }
 
 a {
