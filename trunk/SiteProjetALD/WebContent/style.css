@@ -139,6 +139,12 @@ table {
 	text-align: center;
 }
 
+th{
+	background-color: #CEFFAA;
+	color: #5AB318;
+	
+}
+
 a {
 	color: #5AB318;
 }
