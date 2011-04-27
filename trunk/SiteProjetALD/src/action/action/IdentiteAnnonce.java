@@ -62,23 +62,8 @@ public class IdentiteAnnonce extends Action {
 		
 		Offre o = daoOffre.get(id);
 		Internaute i = o.getInternaute();
-		
-		Iterator<Encherit> it = o.getEncherit().iterator();
-		Encherit save = null;
-		if (it.hasNext())
-		{
-			save = it.next();
-			while(it.hasNext())
-			{
-				Encherit e = it.next();
 				
-				if (e != null && save != null && e.getPrix() > save.getPrix())
-					save = e;
-			}
-		}
-		
 		request.setAttribute("annonce", o);
-		request.setAttribute("oenchere", save);
 		request.setAttribute("internaute", i);
 		request.setAttribute("dateAujourdhui", (new Date()).compareTo(o.getDateFin()));
 		

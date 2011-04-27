@@ -105,15 +105,11 @@ public class DAOOffreHibernate extends DAOHibernate implements DAOOffre{
 			cplRequete += " and idDepartement = " + departement;
 		
 		if (prixMin > 0)
-			cplRequete += " and miseAPrix >= " + prixMin;
+			cplRequete += " and " + prixMin + " <= miseaprix";
 		
 		if (prixMax > 0)
 		{
-			from = " from offre, encherit ";
-			cplRequete += 	" and offre.idOffre = encherit.idOffre" +
-							" and encherit.idoffre not in (select z.idoffre from encherit z where prix > " + prixMax + ") " +
-							" and date = (select max(z.date) from encherit z where z.idoffre = encherit.idoffre) " +
-							" and prix = (select max(z.prix) from encherit z where z.idoffre = encherit.idoffre) ";
+			cplRequete += 	" and miseAPrix <= " + prixMax;
 		}
 		
 		String req = "select * " + from + " where 1 " + cplRequete;
