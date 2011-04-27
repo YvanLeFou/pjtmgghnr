@@ -67,7 +67,7 @@ public class Encherir extends Action {
 		Offre o = daoOffre.get(Integer.parseInt(f.getIdOffre()));
 		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
 		request.getSession().setAttribute("id", o.getIdOffre());
-		System.out.println("dans encherir : " + request.getSession().getAttribute("id"));
+		//System.out.println("dans encherir : " + request.getSession().getAttribute("id"));
 		if (i == null)
 		{
 			request.getSession().setAttribute("formEncherir", request.getAttribute("encherir"));
@@ -94,7 +94,7 @@ public class Encherir extends Action {
 		ss = tmp;
 		
 		System.out.println(f.getEnchere() + " sur " + f.getIdOffre());
-		
+		System.out.println(s + " " + f.getEnchere() + " > " + o.getMiseAPrix());
 		if (i != null)
 		{
 			if ((s == null && e.getPrix() > o.getMiseAPrix()) || (s != null && e.getPrix() > ss))
