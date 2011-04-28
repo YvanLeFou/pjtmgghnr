@@ -15,6 +15,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.tomcat.jni.Time;
 
+import daoHibernate.DAOCategorieHibernate;
+import daoHibernate.DAOMotClefHibernate;
+import daoHibernate.DAOOffreHibernate;
+
 public class AdminChiffreAffaire extends Action {
 
 	/* (non-Javadoc)
@@ -24,11 +28,9 @@ public class AdminChiffreAffaire extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		Administrateur a = new Administrateur();
-		Date aujourdhui = new Date(Time.now());
-		GregorianCalendar calendar = new GregorianCalendar();
-		calendar.setTime(aujourdhui);
-				
+		Administrateur a = new Administrateur(new DAOOffreHibernate(),new DAOCategorieHibernate(),new DAOMotClefHibernate());
+		Calendar calendar = Calendar.getInstance();
+		request.getSession().setAttribute("caDerniersMois", a.getCADerniersMois());
 		request.getSession().setAttribute("caEnCours", a.getCAMois(calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
 		//request.getSession().setAttribute("lastPath", mapping.findForward("resultatRecherche"));
 		return mapping.findForward("adminChiffreAffaire");

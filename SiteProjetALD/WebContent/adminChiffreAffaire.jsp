@@ -14,6 +14,21 @@
 		
 		<div id="corps">
 			<h1><bean:message key="chiffreAffaire.title"/></h1>
+			<bean:message key="chiffreAffaire.libelleEnCours"/>&nbsp;:&nbsp;<bean:write name="caEnCours"/><br><br>
+			<label><bean:message key="chiffreAffaire.libelleDerniersMois"/></label><br><br>
+			<table border="1">
+				<tr>
+				<logic:iterate id="element" name="caDerniersMois">
+					<th><bean:write name="element" property="key"/></th>
+				</logic:iterate>
+				</tr>
+				<tr>
+				<logic:iterate id="element" name="caDerniersMois">
+					<th><bean:write name="element" property="value"/></th>
+				</logic:iterate>
+				</tr>		
+			</table>
+
 		</div>
 	</body>
 </html>
