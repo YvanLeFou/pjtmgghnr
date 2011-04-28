@@ -29,22 +29,22 @@ public class DAOAdministrateurHibernate implements DAOAdministrateur {
 	}
 
 	@Override
-	public void addMotCle(String name) {
+	public void addMotClef(String name) {
 
 	}
 
 	@Override
-	public void removeMotCle(int pos) {
+	public void removeMotClef(int pos) {
 
 	}
 
 	@Override
-	public ArrayList<MotClef> getMotCle() {
+	public ArrayList<MotClef> getMotClef() {
 		return null;
 	}
 
 	@Override
-	public void setMotCle(int pos, String newName) {
+	public void setMotClef(int pos, String newName) {
 
 	}
 

@@ -15,13 +15,13 @@ public interface DAOAdministrateur {
 
 	public int getNbAnonceAnnee();
 
-	public void addMotCle(String name);
+	public void addMotClef(String name);
 
-	public void removeMotCle(int pos);
+	public void removeMotClef(int pos);
 
-	public ArrayList<MotClef> getMotCle();
+	public ArrayList<MotClef> getMotClef();
 
-	public void setMotCle(int pos, String newName);
+	public void setMotClef(int pos, String newName);
 
 	public void addCategorie(String name);
 

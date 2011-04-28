@@ -20,6 +20,7 @@
 		<forward name="erreur" path="/erreur.jsp"></forward>
 		<forward name="index" path="/index.jsp"></forward>
 		<forward name="inscription" path="/inscription.jsp"></forward>
+		<forward name="adminAccueil" path="/adminAccueil.jsp"></forward>
 	</global-forwards>
 	
 	<action-mappings>
@@ -160,6 +161,24 @@
 		
 		<!-- pour faire de l'ajax entre region et departement -->
 		<action path="/ajaxAction" type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- PARTIE ADMINISTRATEUR -->
+		
+		<!-- mapping de la connexion via le formulaire rapide pour l'administrateur'-->
+		<action
+			scope="request" 
+			path="/adminConnexion" 
+			type="action.action.AdminConnexion" 
+			name="formuRapide" 
+			validate="true" 
+			input="/adminAccueil.jsp">
+		</action>
+		
+		<!-- mapping du lien vers la déconnexion Administrateur -->
+		<action	scope="request" 
+			path="/adminDeconnexion" 
+			type="action.action.AdminDeconnexion"/>
+		
 	</action-mappings>
 	
 	<message-resources parameter="ApplicationRessources" />
