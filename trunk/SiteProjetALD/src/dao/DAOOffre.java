@@ -26,4 +26,5 @@ public interface DAOOffre {
 	public abstract ArrayList<Offre> getEnchereEncours(Internaute i) throws Exception;
 	
 	public abstract ArrayList<Offre> getHistoriqueAchat(Internaute i) throws Exception;
+	
 }

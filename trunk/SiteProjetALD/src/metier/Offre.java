@@ -164,6 +164,8 @@ public class Offre  implements Serializable{
 	public void setInternaute(Internaute internaute) {
 		this.internaute = internaute;
 	}
+	
+	
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

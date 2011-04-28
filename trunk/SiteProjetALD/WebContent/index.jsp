@@ -10,7 +10,7 @@
 	</head>
 	
 	<body>
-		<tags:enteteAdmin/>
+		<tags:entete/>
 		<tags:lateral/>
 		
 		<div id="corps">

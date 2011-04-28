@@ -21,6 +21,7 @@
 		<forward name="index" path="/index.jsp"></forward>
 		<forward name="inscription" path="/inscription.jsp"></forward>
 		<forward name="adminAccueil" path="/adminAccueil.jsp"></forward>
+		<forward name="adminChiffreAffaire" path="/adminChiffreAffaire.jsp"></forward>
 	</global-forwards>
 	
 	<action-mappings>
@@ -178,6 +179,11 @@
 		<action	scope="request" 
 			path="/adminDeconnexion" 
 			type="action.action.AdminDeconnexion"/>
+			
+		<!-- mapping de la fiche d'identite de l'annonce -->
+		<action	scope="request" 
+			path="/adminChiffreAffaire" 
+			type="action.action.AdminChiffreAffaire"/>
 		
 	</action-mappings>
 	
