@@ -5,7 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link rel=stylesheet type="text/css" href="style.css"/>
-		<title><bean:message key="chiffreAffaire.title"/></title>
+		<title><bean:message key="nombreAnnonces.title"/></title>
 	</head>
 	
 	<body>
@@ -14,22 +14,21 @@
 		
 		<div id="corps">
 		<logic:present name="pseudo" scope="session">
-			<h1><bean:message key="chiffreAffaire.title"/></h1>
-			<bean:message key="chiffreAffaire.libelleEnCours"/>
-			&nbsp;:&nbsp;<bean:write name="caEnCours"/><bean:message key="chiffreAffaire.unite"/><br><br>
-			<label><bean:message key="chiffreAffaire.libelleDerniersMois"/></label><br><br>
+			<h1><bean:message key="nombreAnnonces.title"/></h1>
+			<bean:message key="nombreAnnonces.libelleEnCours"/>&nbsp;:&nbsp;<bean:write name="nbAnnoncesEnCours"/><br><br>
+			<label><bean:message key="nombreAnnonces.libelleDerniersMois"/></label><br><br>
 			<table border="1">
 				<tr>
-				<logic:iterate id="element" name="caDerniersMois">
+				<logic:iterate id="element" name="nbAnnoncesDerniersMois">
 					<th><bean:write name="element" property="key"/></th>
 				</logic:iterate>
 				</tr>
 				<tr>
-				<logic:iterate id="element" name="caDerniersMois">
+				<logic:iterate id="element" name="nbAnnoncesDerniersMois">
 					<th><bean:write name="element" property="value"/></th>
 				</logic:iterate>
 				</tr>		
-			</table>
+			</table>		
 		</logic:present>
 		</div>
 	</body>
