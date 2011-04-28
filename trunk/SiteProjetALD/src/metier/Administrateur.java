@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -89,7 +88,7 @@ public class Administrateur {
 		return resultat;
 	}
  
-	public int getNbAnonceMois(int mois, int annee) throws Exception {
+	public int getNbAnnoncesMois(int mois, int annee) throws Exception {
 		
 		ArrayList<Offre> offres = offre.loadAll();
 		
@@ -110,24 +109,22 @@ public class Administrateur {
 		return nbAnnonce;
 	}
 
-	public int getNbAnonceAnnee(int annee) throws Exception {
+	public Map<String, Integer> getNbAnnoncesDerniersMois() throws Exception {
 		
-		ArrayList<Offre> offres = offre.loadAll();
-		
+		Map<String, Integer>  resultat = new LinkedHashMap<String, Integer>();
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(annee, 0, 1);
-		Date dateDebutAnnee = calendar.getTime();
-		calendar.set(annee, 11, 31);
-		Date dateFinAnnee = calendar.getTime();
+		String mois;
+		int nbAnnonces;
 		
-		int nbAnnonce = 0;
-				
-		//Recherche des offres aux dates inférieur à aujourd'hui
-		for (Offre o : offres)
-			 if(o.getDateDepot().after(dateDebutAnnee) && o.getDateDepot().before(dateFinAnnee))
-		        	nbAnnonce += 1;
+		for(int i = 0; i < 12 ; i++){
+			calendar.add(Calendar.MONTH, -1);
+			DateFormat dateFormat = new SimpleDateFormat("MMM yyyy");
+			mois = dateFormat.format(calendar.getTime());
+			nbAnnonces = this.getNbAnnoncesMois(calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR));
+			resultat.put(mois,nbAnnonces);
+		}
 		
-		return nbAnnonce;
+		return resultat;
 	}
 
 }

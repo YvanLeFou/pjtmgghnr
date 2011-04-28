@@ -5,7 +5,7 @@
 <h1><bean:message key="menuAdmin.titre"/></h1>
 <ul>
 	<li><html:link action="/adminChiffreAffaire.do"><bean:message key="menuAdmin.lien.chiffreAffaire"/></html:link></li>
-	<li><html:link action="/nombreAnnonces.do"><bean:message key="menuAdmin.lien.nombreAnnonces"/></html:link></li>
+	<li><html:link action="/adminNombreAnnonces.do"><bean:message key="menuAdmin.lien.nombreAnnonces"/></html:link></li>
 	<li><html:link action="/gestionCategorie.do"><bean:message key="menuAdmin.lien.gestionCategorie"/></html:link></li>
 	<li><html:link action="/gestionAnnoncesDouteuses.do"><bean:message key="menuAdmin.lien.gestionAnnoncesDouteuses"/></html:link></li>
 </ul>
