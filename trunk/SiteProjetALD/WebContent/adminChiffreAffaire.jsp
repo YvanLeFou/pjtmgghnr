@@ -16,7 +16,7 @@
 		<logic:present name="pseudo" scope="session">
 			<h1><bean:message key="chiffreAffaire.title"/></h1>
 			<bean:message key="chiffreAffaire.libelleEnCours"/>
-			&nbsp;:&nbsp;<bean:write name="caEnCours"/><bean:message key="chiffreAffaire.unite"/><br><br>
+			&nbsp;:&nbsp;<bean:write name="caEnCours"/>&nbsp;<bean:message key="chiffreAffaire.unite"/><br><br>
 			<label><bean:message key="chiffreAffaire.libelleDerniersMois"/></label><br><br>
 			<table border="1">
 				<tr>
