@@ -23,6 +23,7 @@
 		<forward name="adminAccueil" path="/adminAccueil.jsp"></forward>
 		<forward name="adminChiffreAffaire" path="/adminChiffreAffaire.jsp"></forward>
 		<forward name="adminNombreAnnonces" path="/adminNombreAnnonces.jsp"></forward>
+		<forward name="adminGestionMotsClefs" path="/adminGestionMotsClefs.jsp"></forward>
 	</global-forwards>
 	
 	<action-mappings>
@@ -185,12 +186,16 @@
 		<action	scope="request" 
 			path="/adminChiffreAffaire" 
 			type="action.action.AdminChiffreAffaire"/>
-			
-			
+						
 		<!-- mapping du liens vers l'affichage du nombre d'Annonces-->
 		<action	scope="request" 
 			path="/adminNombreAnnonces" 
 			type="action.action.AdminNombreAnnonces"/>
+		
+		<!-- mapping du liens vers la gestion des mots clefs-->
+		<action	scope="request" 
+			path="/adminGestionMotsClefs"
+			type="action.action.AdminListeMotClef"/>
 		
 	</action-mappings>
 	
