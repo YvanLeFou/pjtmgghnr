@@ -17,12 +17,14 @@
 	<table border="1">
 		<tr>
 			<th><bean:message key="adminGestionMotsClefs.tableau.libelle" /></th>
-			<th><bean:message key="adminGestionMotsClefs.tableau.suppression" /></th>
+			<th width=30><img border=none src="icone_poubelle.gif"></th>
 		</tr>
 		<logic:iterate id="list" name="motsClefs">
 			<tr>
 				<td><bean:write name="list" property="libelleMotClef" /></td>
-				<td></td>
+				<td><html:link action="/adminSuppressionMotClef.do?id=${list.idMotClef}">
+					<img border=none src="supprimer.png">
+				</html:link></td>
 			</tr>
 		</logic:iterate>
 	</table>
