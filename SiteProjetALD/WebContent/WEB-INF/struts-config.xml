@@ -13,6 +13,8 @@
 		<form-bean name="encherir" type="action.form.ActionFormFormuEncherir"></form-bean>
 		<form-bean name="identiteInternaute" type="action.form.ActionFormFormuIdentiteInternaute"></form-bean>
 		<form-bean name="postAnnonce" type="action.form.ActionFormFormuPostAnnonce"></form-bean>
+		<!-- Formulaire Administrateur -->
+		<form-bean name="adminAjouterMotClef" type="action.form.ActionFormAdminFormuAjouterMotClef"></form-bean>
 	</form-beans>
 	
 	<global-exceptions></global-exceptions>
@@ -203,7 +205,17 @@
 		<!-- mapping pour l'action de suppression d'un mot clef-->
 		<action	scope="request" 
 			path="/adminSuppressionMotClef"
-			type="action.action.AdminSuppressionMotClef">
+			type="action.action.AdminSuppressionMotClef"
+			input="/adminGestionMotsClefs.jsp">
+			<forward name="adminGestionMotsClefs" path="/adminGestionMotsClefs.jsp"></forward>
+		</action>
+		
+		<action
+			scope="request" 
+			path="/adminAjouterMotClef" 
+			type="action.action.AdminAjouterMotClef" 
+			name="adminAjouterMotClef"
+			validate="true">
 			<forward name="adminGestionMotsClefs" path="/adminGestionMotsClefs.jsp"></forward>
 		</action>
 		
