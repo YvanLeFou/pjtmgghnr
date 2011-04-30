@@ -14,20 +14,36 @@
 <tags:adminLateral />
 
 <div id="corps"><logic:present name="pseudo" scope="session">
-	<table border="1">
-		<tr>
-			<th><bean:message key="adminGestionMotsClefs.tableau.libelle" /></th>
-			<th width=30><img border=none src="icone_poubelle.gif"></th>
-		</tr>
-		<logic:iterate id="list" name="motsClefs">
+	
+	<fieldset><legend>
+		<bean:message key="adminGestionMotsClefs.titre.creation" /></legend>
+		<html:form action="/adminAjouterMotClef.do">
+			<label><bean:message key="adminGestionMotsClefs.tableau.libelle" /></label>
+			<html:text property="libelleMotClef" size="30" maxlength="50"></html:text><br>
+			
+			<html:submit styleClass="btn"><bean:message key="bouton.ajouter"/></html:submit>			
+		</html:form>
+	</fieldset>
+	
+	<fieldset>
+	<legend>
+		<bean:message key="adminGestionMotsClefs.titre.suppression" /></legend>
+		<table border="1">
 			<tr>
-				<td><bean:write name="list" property="libelleMotClef" /></td>
-				<td><html:link action="/adminSuppressionMotClef.do?id=${list.idMotClef}">
-					<img border=none src="supprimer.png">
-				</html:link></td>
+				<th><bean:message key="adminGestionMotsClefs.tableau.libelle" /></th>
+				<th width=30><img border=none src="icone_poubelle.gif"></th>
 			</tr>
-		</logic:iterate>
-	</table>
+			<logic:iterate id="list" name="motsClefs">
+				<tr>
+					<td><bean:write name="list" property="libelleMotClef" /></td>
+					<td><html:link
+						action="/adminSuppressionMotClef.do?id=${list.idMotClef}">
+						<img border=none src="supprimer.png">
+					</html:link></td>
+				</tr>
+			</logic:iterate>
+		</table>
+	</fieldset>
 </logic:present></div>
 </body>
 </html>
