@@ -15,6 +15,7 @@
 		<form-bean name="postAnnonce" type="action.form.ActionFormFormuPostAnnonce"></form-bean>
 		<!-- Formulaire Administrateur -->
 		<form-bean name="adminAjouterMotClef" type="action.form.ActionFormAdminFormuAjouterMotClef"></form-bean>
+		<form-bean name="adminModifierMotClef" type="action.form.ActionFormAdminFormuModifierMotClef"></form-bean>
 	</form-beans>
 	
 	<global-exceptions></global-exceptions>
@@ -22,7 +23,9 @@
 		<forward name="erreur" path="/erreur.jsp"></forward>
 		<forward name="index" path="/index.jsp"></forward>
 		<forward name="inscription" path="/inscription.jsp"></forward>
+		<!-- Global Forwards Administrateur -->
 		<forward name="adminAccueil" path="/adminAccueil.jsp"></forward>
+		<forward name="adminGestionMotsClefs" path="/adminGestionMotsClefs.jsp"></forward>
 	</global-forwards>
 	
 	<action-mappings>
@@ -199,24 +202,33 @@
 		<action	scope="request" 
 			path="/adminGestionMotsClefs"
 			type="action.action.AdminListeMotClef">
-			<forward name="adminGestionMotsClefs" path="/adminGestionMotsClefs.jsp"></forward>
 		</action>
 		
 		<!-- mapping pour l'action de suppression d'un mot clef-->
 		<action	scope="request" 
 			path="/adminSuppressionMotClef"
 			type="action.action.AdminSuppressionMotClef"
-			input="/adminGestionMotsClefs.jsp">
-			<forward name="adminGestionMotsClefs" path="/adminGestionMotsClefs.jsp"></forward>
+			input="/adminGestionMotsClefs.do">
 		</action>
 		
+		<!-- mapping pour l'action d'ajout d'un mot clef-->
 		<action
 			scope="request" 
 			path="/adminAjouterMotClef" 
 			type="action.action.AdminAjouterMotClef" 
 			name="adminAjouterMotClef"
-			validate="true">
-			<forward name="adminGestionMotsClefs" path="/adminGestionMotsClefs.jsp"></forward>
+			validate="true"
+			input="/adminGestionMotsClefs.do">
+		</action>
+		
+		<!-- mapping pour l'action de modification d'un mot clef-->
+		<action
+			scope="request" 
+			path="/adminModifierMotClef" 
+			type="action.action.AdminModifierMotClef" 
+			name="adminModifierMotClef"
+			validate="true"
+			input="/adminGestionMotsClefs.do">
 		</action>
 		
 	</action-mappings>
