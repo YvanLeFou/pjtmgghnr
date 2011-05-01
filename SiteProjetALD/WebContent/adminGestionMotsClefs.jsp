@@ -23,6 +23,8 @@
 				<label><bean:message key="adminGestionMotsClefs.tableau.libelle" /></label>
 				<html:text property="libelleMotClef" size="30" maxlength="50"></html:text><br>
 				
+				<div id="erreur"><html:errors property="adminGestionMotsClefs.champsVide"/></div>
+				
 				<html:submit styleClass="btn"><bean:message key="bouton.ajouter"/></html:submit>			
 			</html:form>
 		</fieldset>
@@ -42,6 +44,8 @@
 				<input type="hidden" name="idMotClef" value="<bean:write name="id"/>"/>
 								
 				<input type="text" name="libelleMotClef" size="30" maxlength="50" value="<bean:write name="libelle"/>"/><br>
+				
+				<div id="erreur"><html:errors property="adminGestionMotsClefs.champsVide"/></div>
 				
 				<html:submit styleClass="btn"><bean:message key="bouton.modifier"/></html:submit>
 				<html:link action="/adminGestionMotsClefs.do"><bean:message key="adminGestionMotsClefs.annuler" /></html:link>

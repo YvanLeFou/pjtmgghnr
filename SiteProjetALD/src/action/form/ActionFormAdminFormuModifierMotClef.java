@@ -44,7 +44,7 @@ public class ActionFormAdminFormuModifierMotClef extends ActionForm {
 		ActionErrors erreurs = new ActionErrors();
 		
 		if (getLibelleMotClef().trim().isEmpty())
-			erreurs.add("libelleMotClef.invalide", new ActionMessage("libelleMotClef.invalide"));			
+			erreurs.add("adminGestionCategories.champsVide", new ActionMessage("adminGestionCategories.champsVide"));			
 		
 		return erreurs;
 	}
