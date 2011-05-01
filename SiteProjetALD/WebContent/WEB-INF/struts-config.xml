@@ -267,6 +267,27 @@
 			input="/adminGestionCategories.do">
 		</action>
 		
+		<!-- mapping du liens vers l'affichage du nombre d'Annonces-->
+		<action	scope="request" 
+			path="/adminAnnoncesDouteuses" 
+			type="action.action.AdminListeAnnoncesDouteuses">
+			<forward name="adminAnnoncesDouteuses" path="/adminAnnoncesDouteuses.jsp"></forward>
+		</action>
+		
+		<!-- mapping pour l'action d'annulation d'un signalement suspect-->
+		<action	scope="request" 
+			path="/adminAnnulerSignalement"
+			type="action.action.AdminAnnulerSignalement"
+			input="/adminAnnoncesDouteuses.do">
+		</action>
+		
+		<!-- mapping pour l'action de validation d'un signalement suspect-->
+		<action	scope="request" 
+			path="/adminValiderSignalement"
+			type="action.action.AdminValiderSignalement"
+			input="/adminAnnoncesDouteuses.do">
+		</action>
+		
 	</action-mappings>
 	
 	<message-resources parameter="ApplicationRessources" />

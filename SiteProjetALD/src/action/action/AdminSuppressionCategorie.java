@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import metier.Administrateur;
 import metier.Categorie;
-import metier.MotClef;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
