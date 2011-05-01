@@ -11,25 +11,28 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import action.form.ActionFormAdminFormuModifierMotClef;
 import daoHibernate.DAOCategorieHibernate;
 import daoHibernate.DAOMotClefHibernate;
 import daoHibernate.DAOOffreHibernate;
 
-public class AdminSuppressionMotClef extends Action {
-
-	/* (non-Javadoc)
-	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
-	 */
+public class AdminModifierMotClef extends Action 
+{
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		Administrateur a = new Administrateur(new DAOOffreHibernate(),new DAOCategorieHibernate(),new DAOMotClefHibernate());
+		ActionFormAdminFormuModifierMotClef formulaire = (ActionFormAdminFormuModifierMotClef) form;
 		
-		int idMotClef = Integer.parseInt(request.getParameter("id"));
+		Administrateur admin = new Administrateur(new DAOOffreHibernate(),new DAOCategorieHibernate(),new DAOMotClefHibernate());
 		
-		MotClef mc = a.getMotclef().get(idMotClef);
-		a.getMotclef().delete(mc);	
+		MotClef mc = admin.getMotclef().get(Integer.parseInt(formulaire.getIdMotClef()));
+		
+		mc.setLibelleMotClef(formulaire.getLibelleMotClef());
+		
+		admin.getMotclef().update(mc);
+		
+		mc = admin.getMotclef().get(Integer.parseInt(formulaire.getIdMotClef()));
 		
 		return mapping.getInputForward();
 	}

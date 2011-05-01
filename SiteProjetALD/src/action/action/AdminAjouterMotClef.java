@@ -28,7 +28,7 @@ public class AdminAjouterMotClef extends Action
 		MotClef mc = new MotClef(formulaire.getLibelleMotClef());
 		admin.getMotclef().save(mc);
 		
-		return  mapping.findForward("adminGestionMotsClefs");
+		return mapping.getInputForward();
 	}
 
 }
