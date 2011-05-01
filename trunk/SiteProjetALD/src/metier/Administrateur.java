@@ -127,6 +127,16 @@ public class Administrateur {
 		return resultat;
 	}
 	
+	public ArrayList<Offre> getAnnoncesDouteuses() throws Exception{
+		ArrayList<Offre> annoncesDouteuses = new ArrayList<Offre>();
+		
+		for (Offre o : offre.loadAll())
+			if(o.getSuspecte() == 1)
+				annoncesDouteuses.add(o);
+				
+		return annoncesDouteuses;
+	}
+	
 	public int nbOffresPourCategorie(int idCategorie) throws Exception{		
 		int nbOffres = 0;
 		ArrayList<Offre> offres = offre.loadAll();
