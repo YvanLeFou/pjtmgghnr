@@ -116,6 +116,8 @@ public class DAOOffreHibernate extends DAOHibernate implements DAOOffre{
 		list = (ArrayList<Offre>) session.createSQLQuery(req).addEntity(Offre.class)
 				.list();
 		
+		System.out.println(req);
+		
 		close(session);
 		
 		return list;

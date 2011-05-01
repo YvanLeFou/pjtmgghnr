@@ -7,18 +7,18 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
-public class ActionFormAdminFormuAjouterMotClef extends ActionForm {
+public class ActionFormAdminFormuAjouterCategorie extends ActionForm {
 
 	private static final long serialVersionUID = 1L;
 
-	private String libelleMotClef = "";
-	
-	public void setLibelleMotClef(String libelleMotClef) {
-		this.libelleMotClef = libelleMotClef;
+	private String libelleCategorie = "";
+
+	public void setLibelleCategorie(String libelleCategorie) {
+		this.libelleCategorie = libelleCategorie;
 	}
 
-	public String getLibelleMotClef() {
-		return libelleMotClef;
+	public String getLibelleCategorie() {
+		return libelleCategorie;
 	}
 	
 	/*
@@ -33,10 +33,10 @@ public class ActionFormAdminFormuAjouterMotClef extends ActionForm {
 			HttpServletRequest request) {
 		ActionErrors erreurs = new ActionErrors();
 		
-		if (getLibelleMotClef().trim().isEmpty())
-			erreurs.add("adminGestionMotsClefs.champsVide", new ActionMessage("adminGestionMotsClefs.champsVide"));			
+		if (getLibelleCategorie().trim().isEmpty())
+			erreurs.add("adminGestionCategorie.champsVide", new ActionMessage("adminGestionCategorie.champsVide"));			
 		
 		return erreurs;
-	}
+	}	
 
 }

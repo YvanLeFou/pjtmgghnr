@@ -8,6 +8,6 @@
 	<li><html:link action="/adminNombreAnnonces.do"><bean:message key="menuAdmin.lien.nombreAnnonces"/></html:link></li>
 	<li><html:link action="/adminGestionMotsClefs.do"><bean:message key="menuAdmin.lien.gestionMotsClefs"/></html:link></li>
 	<li><html:link action="/gestionAnnoncesDouteuses.do"><bean:message key="menuAdmin.lien.gestionAnnoncesDouteuses"/></html:link></li>
-	<li><html:link action="/gestionCategorie.do"><bean:message key="menuAdmin.lien.gestionCategorie"/></html:link></li>
+	<li><html:link action="/adminGestionCategories.do"><bean:message key="menuAdmin.lien.gestionCategorie"/></html:link></li>
 	
 </ul>

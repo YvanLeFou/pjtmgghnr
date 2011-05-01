@@ -16,6 +16,8 @@
 		<!-- Formulaire Administrateur -->
 		<form-bean name="adminAjouterMotClef" type="action.form.ActionFormAdminFormuAjouterMotClef"></form-bean>
 		<form-bean name="adminModifierMotClef" type="action.form.ActionFormAdminFormuModifierMotClef"></form-bean>
+		<form-bean name="adminAjouterCategorie" type="action.form.ActionFormAdminFormuAjouterCategorie"></form-bean>
+		<form-bean name="adminModifierCategorie" type="action.form.ActionFormAdminFormuModifierCategorie"></form-bean>
 	</form-beans>
 	
 	<global-exceptions></global-exceptions>
@@ -26,6 +28,7 @@
 		<!-- Global Forwards Administrateur -->
 		<forward name="adminAccueil" path="/adminAccueil.jsp"></forward>
 		<forward name="adminGestionMotsClefs" path="/adminGestionMotsClefs.jsp"></forward>
+		<forward name="adminGestionCategories" path="/adminGestionCategories.jsp"></forward>
 	</global-forwards>
 	
 	<action-mappings>
@@ -229,6 +232,39 @@
 			name="adminModifierMotClef"
 			validate="true"
 			input="/adminGestionMotsClefs.do">
+		</action>
+		
+		<!-- mapping du liens vers la gestion des categories-->
+		<action	scope="request" 
+			path="/adminGestionCategories"
+			type="action.action.AdminListeCategorie">
+		</action>
+		
+		<!-- mapping pour l'action de suppression d'une catégorie-->
+		<action	scope="request" 
+			path="/adminSuppressionCategorie"
+			type="action.action.AdminSuppressionCategorie"
+			input="/adminGestionCategories.do">
+		</action>
+		
+		<!-- mapping pour l'action d'ajout d'une Catégorie-->
+		<action
+			scope="request" 
+			path="/adminAjouterCategorie" 
+			type="action.action.AdminAjouterCategorie"
+			name="adminAjouterCategorie"
+			validate="true"
+			input="/adminGestionCategories.do">
+		</action>
+		
+		<!-- mapping pour l'action de modification d'une catégorie -->
+		<action
+			scope="request" 
+			path="/adminModifierCategorie" 
+			type="action.action.AdminModifierCategorie" 
+			name="adminModifierCategorie"
+			validate="true"
+			input="/adminGestionCategories.do">
 		</action>
 		
 	</action-mappings>

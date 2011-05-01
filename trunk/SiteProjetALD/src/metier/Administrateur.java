@@ -126,5 +126,17 @@ public class Administrateur {
 		
 		return resultat;
 	}
+	
+	public int nbOffresPourCategorie(int idCategorie) throws Exception{		
+		int nbOffres = 0;
+		ArrayList<Offre> offres = offre.loadAll();
+				
+		//Recherche des offres aux dates inférieur à aujourd'hui
+		for (Offre o : offres)
+			 if(o.getCategorie().getIdCategorie() == idCategorie)
+		        	nbOffres+= 1;
+		
+		return nbOffres;
+	}
 
 }
