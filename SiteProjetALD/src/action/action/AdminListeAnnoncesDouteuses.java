@@ -33,6 +33,7 @@ public class AdminListeAnnoncesDouteuses extends Action {
 		
 		Administrateur a = new Administrateur();
 		a.setOffre(daoOffre);
+		request.getSession().setAttribute("annoncesMotClef", a.getAnnoncesMotClef());
 		request.getSession().setAttribute("annoncesDouteuses", a.getAnnoncesDouteuses());
 		return mapping.findForward("adminAnnoncesDouteuses");
 	}
