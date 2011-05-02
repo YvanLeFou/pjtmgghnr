@@ -100,7 +100,7 @@ public class Encherir extends Action {
 				{
 					daoEncherit.delete(e);
 				}
-
+				
 				o.setMiseAPrix(Double.parseDouble(f.getEnchere()));
 				daoOffre.update(o);
 				
