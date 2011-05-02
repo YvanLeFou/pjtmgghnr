@@ -57,6 +57,28 @@ public class Administrateur {
 		this.motclef = motclef;
 	}
 	
+	public double getCACourant(int mois, int annee) throws Exception {
+		
+		Calendar calendar = Calendar.getInstance();
+		Date dateAujourdhui = calendar.getTime();
+		calendar.set(annee, mois, 1);
+		Date dateDebutMois = calendar.getTime();
+				
+		double ca = 0.0;
+		
+		//Recherche des offres entre les date de début et de fin de mois
+		for (Offre o : offre.loadAll()){
+			if(o.getEncherit().size() != 0)
+				if(o.getDateFin().after(dateDebutMois) && o.getDateFin().before(dateAujourdhui)){
+		        	//Recherche de l'enchère maximum
+		        	ca += o.getMiseAPrix();
+		        }
+		}
+		
+		return ca;
+	}
+	
+	
 	public double getCAMois(int mois, int annee) throws Exception {
 					
 		Calendar calendar = Calendar.getInstance();
@@ -142,9 +164,8 @@ public class Administrateur {
 		for(MotClef mc : motclef.loadAll())
 			motClef += mc.getLibelleMotClef() + " ";
 		
-		System.out.println(motClef);
-		
 		for (Offre o : offre.findThem(motClef, -1, -1, -1, -1))
+			if(o.getSuspecte() > 0)
 				annoncesMotClef.add(o);
 				
 		return annoncesMotClef;

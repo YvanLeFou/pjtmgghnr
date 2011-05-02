@@ -28,7 +28,7 @@ public class AdminChiffreAffaire extends Action {
 		a.setOffre(daoOffre);
 		Calendar calendar = Calendar.getInstance();
 		request.getSession().setAttribute("caDerniersMois", a.getCADerniersMois());
-		request.getSession().setAttribute("caEnCours", a.getCAMois(calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
+		request.getSession().setAttribute("caEnCours", a.getCACourant(calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
 		return mapping.findForward("adminChiffreAffaire");
 	}
 
