@@ -28,6 +28,9 @@ public class AdminAjouterCategorie extends Action
 		Categorie c = new Categorie(formulaire.getLibelleCategorie());
 		admin.getCategorie().save(c);
 		
+		ActionFormAdminFormuAjouterCategorie forma = new ActionFormAdminFormuAjouterCategorie();
+		request.setAttribute("adminAjouterCategorie", forma);
+		
 		return mapping.getInputForward();
 	}
 
