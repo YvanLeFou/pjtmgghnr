@@ -62,7 +62,7 @@ public class EnchereEncours extends Action {
 			}
 		}
 		if (affiPossible)
-			request.setAttribute("affi", "vous n'êtes plus maître de l'enchère");
+			request.setAttribute("affi", "enchere.maitre");
 		
 		request.getSession().setAttribute("listRecherche", offre);
 		
