@@ -34,7 +34,7 @@ ${pageScope.nom}
 		
 		<logic:present name="affi">
 			<td>
-				<logic:equal value="false" name="list" property="valable"><bean:write name="affi"/></logic:equal>
+				<logic:equal value="false" name="list" property="valable"><bean:message key="${affi}"/></logic:equal>
 			</td>
 		</logic:present>
 	</tr>
