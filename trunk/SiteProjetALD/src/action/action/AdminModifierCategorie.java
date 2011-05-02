@@ -13,9 +13,6 @@ import org.apache.struts.action.ActionMapping;
 
 import action.form.ActionFormAdminFormuModifierCategorie;
 import dao.DAOCategorie;
-import daoHibernate.DAOCategorieHibernate;
-import daoHibernate.DAOMotClefHibernate;
-import daoHibernate.DAOOffreHibernate;
 
 public class AdminModifierCategorie extends Action 
 {
