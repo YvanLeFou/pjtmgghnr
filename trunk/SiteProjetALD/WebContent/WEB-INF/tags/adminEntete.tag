@@ -3,7 +3,7 @@
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic"%>
 
 <div id="entete">
-	<div id="banniere">Chez Olive
+	<div id="banniere"><html:link action="/index.do">Chez Olive</html:link>
 	<img src="olive.gif" height="145px"/>
 	</div>
 	<div id="formuRapide">

@@ -99,6 +99,9 @@ public class Encherir extends Action {
 				daoEncherit.saveOrUpdate(e);
 				o.setMiseAPrix(e.getPrix());
 				daoOffre.update(o);
+				
+				ActionFormFormuEncherir forma = new ActionFormFormuEncherir();
+				request.setAttribute("encherir", forma);
 			}
 			else
 			{

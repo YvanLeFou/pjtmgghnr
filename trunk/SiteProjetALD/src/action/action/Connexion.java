@@ -43,7 +43,10 @@ public class Connexion extends Action
 		Internaute i = daoInternaute.get(fm.getPseudo());
 		
 		ActionForward a = (ActionForward) (request.getSession().getAttribute("lastPath") != null ? request.getSession().getAttribute("lastPath") : mapping.findForward("index"));
-		System.out.println(i.getPseudo()+".equals("+fm.getPseudo()+")");
+		
+		if (i != null)
+			System.out.println(i.getPseudo()+".equals("+fm.getPseudo()+")");
+		
 		if (i != null && i.getMdp().equals(fm.getMdp()) && i.getPseudo().equals(fm.getPseudo())) 
 		{
 			request.getSession().setAttribute("pseudo", i);

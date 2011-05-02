@@ -28,7 +28,7 @@
 		
 		<logic:notEmpty name="pseudo" scope="session">
 			<bean:message key="entete.presentation"/><bean:write name="pseudo" scope="session" property="pseudo"/><br/>
-			<html:link action="/modificationCompte.do?prior"><bean:message key="entete.lien.creationCompte"/></html:link><br/>
+			<html:link action="/enchereEncours.do?prior"><bean:message key="entete.lien.creationCompte"/></html:link><br/>
 			<html:link action="/deconnexion.do"><bean:message key="entete.lien.deconnexion"/></html:link>
 		</logic:notEmpty>
 	</div>
