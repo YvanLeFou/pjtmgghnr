@@ -55,7 +55,7 @@ public class HistoriqueVente extends Action {
 			}
 		}
 		if (affiPossible)
-			request.setAttribute("affi", "l'objet n'a pas pu ŽtŽ vendu");
+			request.setAttribute("affi", "l'objet n'a pas pu été vendu");
 		request.getSession().setAttribute("listRecherche", offre);
 		return mapping.findForward("resultatRecherche");
 	}

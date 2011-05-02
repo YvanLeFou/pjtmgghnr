@@ -165,7 +165,6 @@ public class Administrateur {
 			motClef += mc.getLibelleMotClef() + " ";
 		
 		for (Offre o : offre.findThem(motClef, -1, -1, -1, -1))
-			if(o.getSuspecte() > 0)
 				annoncesMotClef.add(o);
 				
 		return annoncesMotClef;
