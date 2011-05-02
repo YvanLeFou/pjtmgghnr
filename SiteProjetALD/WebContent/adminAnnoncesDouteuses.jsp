@@ -25,7 +25,11 @@
 			</tr>
 			<logic:iterate id="list" name="annoncesDouteuses">
 				<tr>
-					<td><bean:write name="list" property="titre" /></td>
+					<td>
+						<html:link target="_blank" action="/identiteAnnonce.do?id=${list.idOffre}">
+							<bean:write name="list" property="titre" />
+						</html:link>
+					</td>
 					<td><html:link
 						action="/adminAnnulerSignalement.do?id=${list.idOffre}">
 						<img border=none src="pouce_haut.png"/>
@@ -50,7 +54,11 @@
 			</tr>
 			<logic:iterate id="listMotClef" name="annoncesMotClef">
 				<tr>
-					<td><bean:write name="listMotClef" property="titre" /></td>
+					<td>
+						<html:link target="_blank" action="/identiteAnnonce.do?id=${list.idOffre}">
+							<bean:write name="listMotClef" property="titre" />
+						</html:link>
+					</td>
 					<td><html:link
 						action="/adminAnnulerSignalement.do?id=${listMotClef.idOffre}">
 						<img border=none src="pouce_haut.png"/>
