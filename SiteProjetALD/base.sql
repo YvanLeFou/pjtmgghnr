@@ -3,14 +3,14 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mer 27 Avril 2011 à 11:18
+-- Généré le : Lun 02 Mai 2011 à 13:08
 -- Version du serveur: 5.1.37
 -- Version de PHP: 5.2.10
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Base de données: `projetaldtest`
+-- Base de données: `projetald`
 --
 
 -- --------------------------------------------------------
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `idCategorie` int(11) NOT NULL AUTO_INCREMENT,
   `libelleCategorie` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`idCategorie`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=143 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Contenu de la table `categorie`
@@ -193,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `droit` (
   `idDroit` int(11) NOT NULL AUTO_INCREMENT,
   `libelleDroit` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`idDroit`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=79 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `droit`
@@ -222,6 +222,14 @@ CREATE TABLE IF NOT EXISTS `encherit` (
 -- Contenu de la table `encherit`
 --
 
+INSERT INTO `encherit` (`pseudo`, `idOffre`, `prix`, `date`) VALUES
+('emaneth', 3, 17, '2011-05-02 11:05:10'),
+('emaneth', 4, 5, '2011-05-02 11:04:51'),
+('Emaneth', 15, 9, '2011-04-11 13:05:00'),
+('marguf', 1, 6, '2011-04-30 17:50:07'),
+('marguf', 5, 14, '2011-05-02 11:02:24'),
+('nico', 1, 8, '2011-05-02 09:47:56'),
+('nico', 11, 35, '2011-05-02 11:02:48');
 
 -- --------------------------------------------------------
 
@@ -235,14 +243,28 @@ CREATE TABLE IF NOT EXISTS `image` (
   `idOffre` int(11) NOT NULL,
   PRIMARY KEY (`idImage`),
   KEY `FK_Image_idOffre` (`idOffre`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Contenu de la table `image`
 --
 
 INSERT INTO `image` (`idImage`, `libelleImage`, `idOffre`) VALUES
-(1, 'ImageUpload\\27 avr. 2011', 1);
+(1, 'ImageUpload\\27 avr. 2011', 1),
+(2, 'ImageUpload\\27 avr. 2011 11-46-50', 2),
+(3, 'ImageUpload\\2 mai 2011 10-27-48', 3),
+(4, 'ImageUpload\\2 mai 2011 10-30-43', 4),
+(5, 'ImageUpload\\2 mai 2011 10-32-47', 5),
+(6, 'ImageUpload\\2 mai 2011 10-35-17', 6),
+(7, 'ImageUpload\\2 mai 2011 10-37-17', 7),
+(8, 'ImageUpload\\2 mai 2011 10-44-05', 8),
+(9, 'ImageUpload\\2 mai 2011 10-46-16', 9),
+(10, 'ImageUpload\\2 mai 2011 10-48-58', 10),
+(11, 'ImageUpload\\2 mai 2011 10-52-08', 11),
+(12, 'ImageUpload\\2 mai 2011 10-53-53', 12),
+(13, 'ImageUpload\\2 mai 2011 11-10-25', 13),
+(14, 'ImageUpload\\2 mai 2011 12-41-46', 14),
+(15, 'ImageUpload\\2 mai 2011 13-02-02', 15);
 
 -- --------------------------------------------------------
 
@@ -273,11 +295,13 @@ CREATE TABLE IF NOT EXISTS `internaute` (
 --
 
 INSERT INTO `internaute` (`pseudo`, `nom`, `prenom`, `noRue`, `nomRue`, `ville`, `cp`, `email`, `telephone`, `mdp`, `idDepartement`, `idDroit`) VALUES
+('Admin', 'Guffroy', 'Marine', 8, 'rue des vignes', 'Onville', '54890', 'marguf@hotmail.com', '0383818268', 'admin', 57, 2),
 ('Babar', 'Elephant', 'Babar', 18, 'rue des bananes', 'Nancy', '54000', 'babardu54@truc.fr', '0605040302', 'babar', 52, 1),
 ('Emaneth', 'Huguin', 'Gabriel', 60, 'rue de la chapelle', 'Metz', '57000', 'dr_frankenstein@live.fr', '0606060606', 'emaneth', 55, 1),
 ('marguf', 'Guffroy', 'Marine', 8, 'rue des vignes', 'Onville', '54890', 'marguf@hotmail.com', '0698110356', 'uobjkm', 52, 1),
 ('Mickey', 'Mouse', 'Mickey', 95, 'Main Street', 'Marne la Vallée', '77777', 'mickey@disney.com', '0607060706', 'mickey', 75, 1),
-('nico', 'Reitz', 'Nicolas', 28, 'rue des foufou', 'Hayange', '57700', 'nicolas.reitz@gmx.fr', '0606060660', 'a', 55, 1);
+('nico', 'Reitz', 'Nicolas', 28, 'rue des foufou', 'Hayange', '57700', 'nicolas.reitz@gmx.fr', '0606060660', 'a', 55, 1),
+('VendeurTest', 'Université Paul Verlaine', 'TestVendeur', 1, 'Ile du Saulcy', 'Metz', '57012', 'test@mail.fr', '0102030405', 'a', 55, 1);
 
 -- --------------------------------------------------------
 
@@ -289,12 +313,22 @@ CREATE TABLE IF NOT EXISTS `motclef` (
   `idMotClef` int(11) NOT NULL AUTO_INCREMENT,
   `libelleMotClef` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idMotClef`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=73 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `motclef`
 --
 
+INSERT INTO `motclef` (`idMotClef`, `libelleMotClef`) VALUES
+(1, 'nazi'),
+(2, 'organes'),
+(3, 'craqué'),
+(4, 'cracké'),
+(5, 'pédophile'),
+(6, 'arme'),
+(7, 'drogue'),
+(8, 'lsd'),
+(10, 'cannabis');
 
 -- --------------------------------------------------------
 
@@ -326,7 +360,21 @@ CREATE TABLE IF NOT EXISTS `offre` (
 --
 
 INSERT INTO `offre` (`idOffre`, `titre`, `descriptif`, `miseAPrix`, `joignable`, `dateDepot`, `dateDebut`, `dateFin`, `suspecte`, `pseudo`, `idDepartement`, `idCategorie`) VALUES
-(1, '3 peluches diney', '3 peluches de 15 cm, neuves: minnie, dingo, mickey', 4, 0, '2011-04-27 10:48:18', '2010-12-15 00:00:00', '2011-05-09 00:00:00', 0, 'Mickey', 75, 28);
+(1, '3 peluches diney', '3 peluches de 15 cm, neuves: minnie, dingo, mickey', 8, 0, '2011-04-27 10:48:18', '2010-12-15 00:00:00', '2011-05-09 00:00:00', 0, 'Mickey', 75, 28),
+(2, 'Soupière', 'Soupière de luxe', 20, 0, '2011-04-27 11:46:50', '2010-08-08 00:00:00', '2011-04-28 00:00:00', 0, 'marguf', 55, 15),
+(3, 'Arbre à chats', 'Arbre à chat3 étages + échelles\r\nMatière velours gris', 17, 1, '2011-05-02 10:27:48', '2011-05-01 00:00:00', '2011-05-03 00:00:00', 0, 'VendeurTest', 1, 24),
+(4, 'Bougies gallets', '6 bougies en forme de gallets\r\ntaille environ 5 cm de long', 5, 0, '2011-05-02 10:30:43', '2011-03-15 00:00:00', '2011-05-06 00:00:00', 0, 'VendeurTest', 19, 15),
+(5, 'Clavier souris Hello Kitty', 'Clavier et souris hellow kitty (azerty)', 14, 0, '2011-05-02 10:32:47', '2011-05-02 00:00:00', '2011-05-05 00:00:00', 0, 'VendeurTest', 17, 8),
+(6, 'Clio', 'Clio blanche essence\r\nannée 2003', 1500, 1, '2011-05-02 10:35:17', '2010-12-08 00:00:00', '2011-06-09 00:00:00', 0, 'nico', 6, 1),
+(7, 'Parasol rond bleu et blanc', 'Parasol rond, rayé bleu et blanc', 8, 1, '2011-05-02 10:37:17', '2011-05-03 00:00:00', '2011-06-03 00:00:00', 0, 'nico', 15, 17),
+(8, 'Sims (5 jeux)', '5 jeux des sims:\r\n- deluxe edition\r\n- surprise partie\r\n- en vacances\r\n- entre chiens et chats\r\n- et plus si affinités', 50, 1, '2011-05-02 10:44:05', '2010-07-07 00:00:00', '2011-06-10 00:00:00', 0, 'emaneth', 64, 9),
+(9, 'Guitare rose', 'Guitare sèche rose', 15, 0, '2011-05-02 10:46:16', '2010-08-21 00:00:00', '2011-05-20 00:00:00', 0, 'emaneth', 95, 26),
+(10, 'Service de table 30 pièces', '6 assiettes plates\r\n6 assiettes à soupe\r\n6 assiettes à dessert\r\n6 sous tasse\r\n6 tasses', 9, 1, '2011-05-02 10:48:58', '2011-02-05 00:00:00', '2011-05-10 00:00:00', 0, 'marguf', 32, 14),
+(11, 'Commode couleur argent', 'Commode argenté:    \r\n80*100*45', 35, 0, '2011-05-02 10:52:08', '2010-11-06 00:00:00', '2011-05-09 00:00:00', 0, 'marguf', 97, 12),
+(12, 'Monopoly Simpsons', 'Monopoly version limitée Simpsons', 20, 0, '2011-05-02 10:53:53', '2010-06-06 00:00:00', '2011-06-06 00:00:00', 0, 'marguf', 67, 28),
+(13, 'Pistolet', 'L.326 Le Page ® Target DeLuxe à percussion\r\n\r\nCalibre:44	 Longueur du canon: 260mm	 Longueur Totale: 435	 mm Poids: 1.1kg', 1700, 0, '2011-05-02 11:10:25', '2010-09-09 00:00:00', '2011-07-09 00:00:00', 2, 'VendeurTest', 61, 15),
+(14, 'rêve', '30 grammes de cannabis\r\n(photo non contractuelle)', 10, 0, '2011-05-02 12:41:46', '2011-05-02 00:00:00', '2011-05-07 00:00:00', 1, 'Babar', 59, 29),
+(15, 'BD Titeuf', 'Titeuf : le sens de la vie', 9, 0, '2011-04-06 13:02:02', '2011-04-06 00:00:00', '2011-04-20 00:00:00', 0, 'marguf', 68, 23);
 
 -- --------------------------------------------------------
 
