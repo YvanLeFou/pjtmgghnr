@@ -90,6 +90,7 @@ public class Encherir extends Action {
 		if (i != null)
 		{
 			ActionMessages erreur = new ActionMessages();
+			System.out.println(o.getInternaute().getPseudo() + " ? " + i.getPseudo());
 			if (o.getInternaute().getPseudo().equalsIgnoreCase(i.getPseudo()))
 			{
 				erreur.add("enchere.internaute.identique", new ActionMessage("enchere.internaute.identique"));
