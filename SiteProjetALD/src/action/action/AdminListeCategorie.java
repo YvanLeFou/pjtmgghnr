@@ -11,9 +11,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import dao.DAOCategorie;
-import daoHibernate.DAOCategorieHibernate;
-import daoHibernate.DAOMotClefHibernate;
-import daoHibernate.DAOOffreHibernate;
 
 public class AdminListeCategorie extends Action {
 

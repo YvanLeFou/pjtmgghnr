@@ -155,7 +155,7 @@
 			<forward name="resultatRecherche" path="/resultatRecherche.jsp"></forward>
 		</action>
 		
-		<!-- mapping du lien vers la déconnexion -->
+		<!-- mapping du lien pour la suppression du compte-->
 		<action scope="request" path="/suppressionCompte" type="org.springframework.web.struts.DelegatingActionProxy" input="/index.jsp" />
 		
 		<!-- mapping du lien vers la déconnexion -->
@@ -178,8 +178,7 @@
 			path="/adminConnexion" 
 			type="org.springframework.web.struts.DelegatingActionProxy" 
 			name="formuRapide" 
-			validate="true" 
-			input="/adminAccueil.jsp">
+			validate="true">
 		</action>
 		
 		<!-- mapping du lien vers la déconnexion Administrateur -->
