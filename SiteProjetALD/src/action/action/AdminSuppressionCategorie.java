@@ -13,12 +13,20 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 
-import daoHibernate.DAOCategorieHibernate;
-import daoHibernate.DAOMotClefHibernate;
-import daoHibernate.DAOOffreHibernate;
+import dao.DAOCategorie;
 
 public class AdminSuppressionCategorie extends Action {
 
+	private DAOCategorie daoCategorie;
+
+	public DAOCategorie getDaoCategorie() {
+		return daoCategorie;
+	}
+
+	public void setDaoCategorie(DAOCategorie daoCategorie) {
+		this.daoCategorie = daoCategorie;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -31,8 +39,8 @@ public class AdminSuppressionCategorie extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 
-		Administrateur a = new Administrateur(new DAOOffreHibernate(),
-				new DAOCategorieHibernate(), new DAOMotClefHibernate());
+		Administrateur a = new Administrateur();
+		a.setCategorie(daoCategorie);
 
 		int idCategorie = Integer.parseInt(request.getParameter("id"));
 

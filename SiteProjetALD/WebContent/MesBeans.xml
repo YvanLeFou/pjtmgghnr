@@ -9,6 +9,7 @@
 	<bean id="daoRegion" class="daoHibernate.DAORegionHibernate" />
 	<bean id="daoCategorie" class="daoHibernate.DAOCategorieHibernate" />
 	<bean id="daoDroit" class="daoHibernate.DAODroitHibernate" />
+	<bean id="daoMotClef" class="daoHibernate.DAOMotClefHibernate" />
 
 	<bean name="/ajaxAction" class="action.action.AjaxAction"> 
 		<property name="daoRegion">
@@ -133,9 +134,89 @@
 		</property>
 	</bean>
 	
+	<!-- PARTIE ADMINISTRATEUR -->
+	
 	<bean name="/adminConnexion" class="action.action.AdminConnexion">
 		<property name="daoInternaute">
 			<ref bean="daoInternaute"/>
+		</property>
+	</bean>	
+		
+	<bean name="/adminChiffreAffaire" class="action.action.AdminChiffreAffaire">
+		<property name="daoOffre">
+			<ref bean="daoOffre"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminNombreAnnonces" class="action.action.AdminNombreAnnonces">
+		<property name="daoOffre">
+			<ref bean="daoOffre"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminGestionMotsClefs" class="action.action.AdminListeMotClef">
+		<property name="daoMotClef">
+			<ref bean="daoMotClef"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminSuppressionMotClef" class="action.action.AdminSuppressionMotClef">
+		<property name="daoMotClef">
+			<ref bean="daoMotClef"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminAjouterMotClef" class="action.action.AdminAjouterMotClef">
+		<property name="daoMotClef">
+			<ref bean="daoMotClef"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminModifierMotClef" class="action.action.AdminModifierMotClef">
+		<property name="daoMotClef">
+			<ref bean="daoMotClef"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminGestionCategories" class="action.action.AdminListeCategorie">
+		<property name="daoCategorie">
+			<ref bean="daoCategorie"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminSuppressionCategorie" class="action.action.AdminSuppressionCategorie">
+		<property name="daoCategorie">
+			<ref bean="daoCategorie"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminAjouterCategorie" class="action.action.AdminAjouterCategorie">
+		<property name="daoCategorie">
+			<ref bean="daoCategorie"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminModifierCategorie" class="action.action.AdminModifierCategorie">
+		<property name="daoCategorie">
+			<ref bean="daoCategorie"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminAnnoncesDouteuses" class="action.action.AdminListeAnnoncesDouteuses">
+		<property name="daoOffre">
+			<ref bean="daoOffre"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminAnnulerSignalement" class="action.action.AdminAnnulerSignalement">
+		<property name="daoOffre">
+			<ref bean="daoOffre"/>
+		</property>
+	</bean>
+	
+	<bean name="/adminValiderSignalement" class="action.action.AdminValiderSignalement">
+		<property name="daoOffre">
+			<ref bean="daoOffre"/>
 		</property>
 	</bean>
 </beans>

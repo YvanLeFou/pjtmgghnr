@@ -10,11 +10,19 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import daoHibernate.DAOCategorieHibernate;
-import daoHibernate.DAOMotClefHibernate;
-import daoHibernate.DAOOffreHibernate;
+import dao.DAOOffre;
 
 public class AdminListeAnnoncesDouteuses extends Action {
+
+	private DAOOffre daoOffre;
+	
+	public DAOOffre getDaoOffre() {
+		return daoOffre;
+	}
+
+	public void setDaoOffre(DAOOffre daoOffre) {
+		this.daoOffre = daoOffre;
+	}
 
 	/* (non-Javadoc)
 	 * @see org.apache.struts.action.Action#execute(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
@@ -23,7 +31,8 @@ public class AdminListeAnnoncesDouteuses extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		Administrateur a = new Administrateur(new DAOOffreHibernate(),new DAOCategorieHibernate(),new DAOMotClefHibernate());
+		Administrateur a = new Administrateur();
+		a.setOffre(daoOffre);
 		request.getSession().setAttribute("annoncesDouteuses", a.getAnnoncesDouteuses());
 		return mapping.findForward("adminAnnoncesDouteuses");
 	}
