@@ -132,4 +132,10 @@
 			<ref bean="daoInternaute" />
 		</property>
 	</bean>
+	
+	<bean name="/adminConnexion" class="action.action.AdminConnexion">
+		<property name="daoInternaute">
+			<ref bean="daoInternaute"/>
+		</property>
+	</bean>
 </beans>

@@ -13,22 +13,37 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 
 import action.form.ActionFormFormuRapide;
-import daoHibernate.DAOInternauteHibernate;
+import dao.DAOInternaute;
 
 public class AdminConnexion extends Action 
 {
+	private DAOInternaute daoInternaute;
+	
+	/**
+	 * @return the daoInternaute
+	 */
+	public DAOInternaute getDaoInternaute() {
+		return daoInternaute;
+	}
+	
+	/**
+	 * @param daoInternaute the daoInternaute to set
+	 */
+	public void setDaoInternaute(DAOInternaute daoInternaute) {
+		this.daoInternaute = daoInternaute;
+	}
+
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
 		ActionFormFormuRapide fm = (ActionFormFormuRapide) form;
 		
-		DAOInternauteHibernate dao = new DAOInternauteHibernate();
-		Internaute i = dao.get(fm.getPseudo());
+		Internaute i = daoInternaute.get(fm.getPseudo());
 		
 		ActionForward a = (ActionForward) mapping.findForward("adminAccueil");
 		
-		if (i != null && i.getMdp().equals(fm.getMdp()) && i.getDroit().getLibelleDroit().equals("Administrateur")) 
+		if (i != null && i.getMdp().equals(fm.getMdp()) && i.getDroit().getLibelleDroit().equals("administrateur")) 
 		{
 			request.getSession().setAttribute("pseudo", i);
 		}

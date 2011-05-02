@@ -40,7 +40,7 @@
 				<label><bean:message key="adminGestionCategories.tableau.libelle" /></label>
 						
 				<input type="hidden" name="idCategorie" value="<bean:write name="id"/>"/>
-								
+				
 				<input type="text" name="libelleCategorie" size="30" maxlength="50" value="<bean:write name="libelle"/>"/><br>
 				
 				<div id="erreur"><html:errors property="adminGestionCategories.champsVide"/></div>

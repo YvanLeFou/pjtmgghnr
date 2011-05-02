@@ -34,6 +34,9 @@ public class AdminModifierMotClef extends Action
 		
 		mc = admin.getMotclef().get(Integer.parseInt(formulaire.getIdMotClef()));
 		
+		ActionFormAdminFormuModifierMotClef forma = new ActionFormAdminFormuModifierMotClef();
+		request.setAttribute("adminModifierMotClef", forma);
+		
 		return mapping.getInputForward();
 	}
 

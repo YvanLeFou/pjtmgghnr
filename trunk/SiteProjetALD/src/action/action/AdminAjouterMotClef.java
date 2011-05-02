@@ -12,6 +12,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import action.form.ActionFormAdminFormuAjouterMotClef;
+import action.form.ActionFormAdminFormuModifierMotClef;
 import daoHibernate.DAOCategorieHibernate;
 import daoHibernate.DAOMotClefHibernate;
 import daoHibernate.DAOOffreHibernate;
@@ -28,6 +29,8 @@ public class AdminAjouterMotClef extends Action
 		MotClef mc = new MotClef(formulaire.getLibelleMotClef());
 		admin.getMotclef().save(mc);
 		
+		ActionFormAdminFormuAjouterMotClef forma = new ActionFormAdminFormuAjouterMotClef();
+		request.setAttribute("adminAjouterMotClef", forma);
 		return mapping.getInputForward();
 	}
 
