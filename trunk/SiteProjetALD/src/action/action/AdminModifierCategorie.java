@@ -34,6 +34,9 @@ public class AdminModifierCategorie extends Action
 		
 		c = admin.getCategorie().get(Integer.parseInt(formulaire.getIdCategorie()));
 		
+		ActionFormAdminFormuModifierCategorie forma = new ActionFormAdminFormuModifierCategorie();
+		request.setAttribute("adminModifierCategorie", forma);
+		
 		return mapping.getInputForward();
 	}
 
