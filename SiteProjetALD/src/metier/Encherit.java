@@ -3,7 +3,7 @@ package metier;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Encherit implements Serializable {
+public class Encherit implements Serializable, Comparable<Encherit> {
     /**
 	 * 
 	 */
@@ -69,5 +69,10 @@ public class Encherit implements Serializable {
 	public String toString() {
 		return "Encherit [internaute=" + internaute
 				+ ", offre=" + offre + ", prix=" + prix + "]";
+	}
+
+	@Override
+	public int compareTo(Encherit o) {
+		return date.compareTo(o.date);
 	}
 }

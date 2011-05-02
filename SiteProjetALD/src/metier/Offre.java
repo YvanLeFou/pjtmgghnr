@@ -24,6 +24,8 @@ public class Offre  implements Serializable{
     private Set<Image> image = new HashSet<Image>();
     private int suspecte = 0;
     private Internaute internaute = null;
+    
+    private boolean valable = true;
 
     public Offre(){
     }
@@ -165,7 +167,19 @@ public class Offre  implements Serializable{
 		this.internaute = internaute;
 	}
 	
-	
+	/**
+	 * @return the valable
+	 */
+	public boolean isValable() {
+		return valable;
+	}
+
+	/**
+	 * @param valable the valable to set
+	 */
+	public void setValable(boolean valable) {
+		this.valable = valable;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
