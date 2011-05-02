@@ -190,27 +190,27 @@
 		<!-- mapping du liens vers l'affichage des Chiffres d'Affaire -->
 		<action	scope="request" 
 			path="/adminChiffreAffaire" 
-			type="action.action.AdminChiffreAffaire">
+			type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="adminChiffreAffaire" path="/adminChiffreAffaire.jsp"></forward>
 		</action>
 						
 		<!-- mapping du liens vers l'affichage du nombre d'Annonces-->
 		<action	scope="request" 
 			path="/adminNombreAnnonces" 
-			type="action.action.AdminNombreAnnonces">
+			type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="adminNombreAnnonces" path="/adminNombreAnnonces.jsp"></forward>
 		</action>
 		
 		<!-- mapping du liens vers la gestion des mots clefs-->
 		<action	scope="request" 
 			path="/adminGestionMotsClefs"
-			type="action.action.AdminListeMotClef">
+			type="org.springframework.web.struts.DelegatingActionProxy">
 		</action>
 		
 		<!-- mapping pour l'action de suppression d'un mot clef-->
 		<action	scope="request" 
 			path="/adminSuppressionMotClef"
-			type="action.action.AdminSuppressionMotClef"
+			type="org.springframework.web.struts.DelegatingActionProxy"
 			input="/adminGestionMotsClefs.do">
 		</action>
 		
@@ -218,7 +218,7 @@
 		<action
 			scope="request" 
 			path="/adminAjouterMotClef" 
-			type="action.action.AdminAjouterMotClef" 
+			type="org.springframework.web.struts.DelegatingActionProxy" 
 			name="adminAjouterMotClef"
 			validate="true"
 			input="/adminGestionMotsClefs.do">
@@ -228,7 +228,7 @@
 		<action
 			scope="request" 
 			path="/adminModifierMotClef" 
-			type="action.action.AdminModifierMotClef" 
+			type="org.springframework.web.struts.DelegatingActionProxy" 
 			name="adminModifierMotClef"
 			validate="true"
 			input="/adminGestionMotsClefs.do">
@@ -237,13 +237,13 @@
 		<!-- mapping du liens vers la gestion des categories-->
 		<action	scope="request" 
 			path="/adminGestionCategories"
-			type="action.action.AdminListeCategorie">
+			type="org.springframework.web.struts.DelegatingActionProxy">
 		</action>
 		
 		<!-- mapping pour l'action de suppression d'une catégorie-->
 		<action	scope="request" 
 			path="/adminSuppressionCategorie"
-			type="action.action.AdminSuppressionCategorie"
+			type="org.springframework.web.struts.DelegatingActionProxy"
 			input="/adminGestionCategories.do">
 		</action>
 		
@@ -251,7 +251,7 @@
 		<action
 			scope="request" 
 			path="/adminAjouterCategorie" 
-			type="action.action.AdminAjouterCategorie"
+			type="org.springframework.web.struts.DelegatingActionProxy"
 			name="adminAjouterCategorie"
 			validate="true"
 			input="/adminGestionCategories.do">
@@ -261,30 +261,30 @@
 		<action
 			scope="request" 
 			path="/adminModifierCategorie" 
-			type="action.action.AdminModifierCategorie" 
+			type="org.springframework.web.struts.DelegatingActionProxy" 
 			name="adminModifierCategorie"
 			validate="true"
 			input="/adminGestionCategories.do">
 		</action>
 		
-		<!-- mapping du liens vers l'affichage du nombre d'Annonces-->
+		<!-- mapping du liens vers l'affichage des Annonces Douteuses-->
 		<action	scope="request" 
 			path="/adminAnnoncesDouteuses" 
-			type="action.action.AdminListeAnnoncesDouteuses">
+			type="org.springframework.web.struts.DelegatingActionProxy">
 			<forward name="adminAnnoncesDouteuses" path="/adminAnnoncesDouteuses.jsp"></forward>
 		</action>
 		
 		<!-- mapping pour l'action d'annulation d'un signalement suspect-->
 		<action	scope="request" 
 			path="/adminAnnulerSignalement"
-			type="action.action.AdminAnnulerSignalement"
+			type="org.springframework.web.struts.DelegatingActionProxy"
 			input="/adminAnnoncesDouteuses.do">
 		</action>
 		
 		<!-- mapping pour l'action de validation d'un signalement suspect-->
 		<action	scope="request" 
 			path="/adminValiderSignalement"
-			type="action.action.AdminValiderSignalement"
+			type="org.springframework.web.struts.DelegatingActionProxy"
 			input="/adminAnnoncesDouteuses.do">
 		</action>
 		

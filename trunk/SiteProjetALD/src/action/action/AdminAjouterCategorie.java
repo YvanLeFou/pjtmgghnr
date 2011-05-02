@@ -12,25 +12,34 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import action.form.ActionFormAdminFormuAjouterCategorie;
-import daoHibernate.DAOCategorieHibernate;
-import daoHibernate.DAOMotClefHibernate;
-import daoHibernate.DAOOffreHibernate;
+import dao.DAOCategorie;
 
-public class AdminAjouterCategorie extends Action 
-{
+public class AdminAjouterCategorie extends Action {
+	
+	private DAOCategorie daoCategorie;
+
+	public DAOCategorie getDaoCategorie() {
+		return daoCategorie;
+	}
+
+	public void setDaoCategorie(DAOCategorie daoCategorie) {
+		this.daoCategorie = daoCategorie;
+	}
+
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
+
 		ActionFormAdminFormuAjouterCategorie formulaire = (ActionFormAdminFormuAjouterCategorie) form;
-		
-		Administrateur admin = new Administrateur(new DAOOffreHibernate(),new DAOCategorieHibernate(),new DAOMotClefHibernate());
+
+		Administrateur admin = new Administrateur();
+		admin.setCategorie(daoCategorie);
 		Categorie c = new Categorie(formulaire.getLibelleCategorie());
 		admin.getCategorie().save(c);
-		
+
 		ActionFormAdminFormuAjouterCategorie forma = new ActionFormAdminFormuAjouterCategorie();
 		request.setAttribute("adminAjouterCategorie", forma);
-		
+
 		return mapping.getInputForward();
 	}
 

@@ -11,6 +11,9 @@ import java.util.Map;
 import dao.DAOCategorie;
 import dao.DAOMotClef;
 import dao.DAOOffre;
+import daoHibernate.DAOCategorieHibernate;
+import daoHibernate.DAOMotClefHibernate;
+import daoHibernate.DAOOffreHibernate;
 
 public class Administrateur {
 	
@@ -18,6 +21,12 @@ public class Administrateur {
 	private DAOCategorie categorie;
 	private DAOMotClef motclef;
 
+	public Administrateur(){
+		offre = new DAOOffreHibernate();
+		categorie = new DAOCategorieHibernate();
+		motclef = new DAOMotClefHibernate();
+	}
+	
 	public Administrateur(DAOOffre daoOffre, DAOCategorie daoCategorie, DAOMotClef daoMotClef){
 		offre = daoOffre;
 		categorie = daoCategorie;
@@ -49,9 +58,7 @@ public class Administrateur {
 	}
 	
 	public double getCAMois(int mois, int annee) throws Exception {
-		
-		ArrayList<Offre> offres = offre.loadAll();
-				
+					
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(annee, mois, 1);
 		Date dateDebutMois = calendar.getTime();
@@ -61,7 +68,7 @@ public class Administrateur {
 		double ca = 0.0;
 		
 		//Recherche des offres entre les date de début et de fin de mois
-		for (Offre o : offres){
+		for (Offre o : offre.loadAll()){
 		        if(o.getDateFin().after(dateDebutMois) && o.getDateFin().before(dateFinMois)){
 		        	//Recherche de l'enchère maximum
 		        	ca += o.getMiseAPrix();

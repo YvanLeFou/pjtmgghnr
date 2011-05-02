@@ -12,31 +12,42 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import action.form.ActionFormAdminFormuModifierMotClef;
-import daoHibernate.DAOCategorieHibernate;
-import daoHibernate.DAOMotClefHibernate;
-import daoHibernate.DAOOffreHibernate;
+import dao.DAOMotClef;
 
-public class AdminModifierMotClef extends Action 
-{
+public class AdminModifierMotClef extends Action {
+
+	private DAOMotClef daoMotClef;
+
+	public DAOMotClef getDaoMotClef() {
+		return daoMotClef;
+	}
+
+	public void setDaoMotClef(DAOMotClef daoMotClef) {
+		this.daoMotClef = daoMotClef;
+	}
+
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		
+
 		ActionFormAdminFormuModifierMotClef formulaire = (ActionFormAdminFormuModifierMotClef) form;
-		
-		Administrateur admin = new Administrateur(new DAOOffreHibernate(),new DAOCategorieHibernate(),new DAOMotClefHibernate());
-		
-		MotClef mc = admin.getMotclef().get(Integer.parseInt(formulaire.getIdMotClef()));
-		
+
+		Administrateur admin = new Administrateur();
+		admin.setMotclef(daoMotClef);
+
+		MotClef mc = admin.getMotclef().get(
+				Integer.parseInt(formulaire.getIdMotClef()));
+
 		mc.setLibelleMotClef(formulaire.getLibelleMotClef());
-		
+
 		admin.getMotclef().update(mc);
-		
-		mc = admin.getMotclef().get(Integer.parseInt(formulaire.getIdMotClef()));
-		
+
+		mc = admin.getMotclef()
+				.get(Integer.parseInt(formulaire.getIdMotClef()));
+
 		ActionFormAdminFormuModifierMotClef forma = new ActionFormAdminFormuModifierMotClef();
 		request.setAttribute("adminModifierMotClef", forma);
-		
+
 		return mapping.getInputForward();
 	}
 
