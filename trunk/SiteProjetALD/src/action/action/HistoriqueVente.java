@@ -43,7 +43,19 @@ public class HistoriqueVente extends Action {
 		
 		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
 		offre = daoOffre.getHistoriqueVente(i);
+		boolean affiPossible = false;
 		
+		for(int j = 0; j < offre.size(); j++)
+		{
+			offre.get(j).setValable(true);
+			if (offre.get(j).getEncherit().size() == 0)
+			{
+				offre.get(j).setValable(false);
+				affiPossible = true;
+			}
+		}
+		if (affiPossible)
+			request.setAttribute("affi", "l'objet n'a pas pu ŽtŽ vendu");
 		request.getSession().setAttribute("listRecherche", offre);
 		return mapping.findForward("resultatRecherche");
 	}

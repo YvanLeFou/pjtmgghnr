@@ -1,10 +1,12 @@
 package action.action;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import metier.Encherit;
 import metier.Internaute;
 import metier.Offre;
 
@@ -44,9 +46,27 @@ public class EnchereEncours extends Action {
 		Internaute i = (Internaute) request.getSession().getAttribute("pseudo");
 		
 		offre = daoOffre.getEnchereEncours(i);
+		boolean affiPossible = false;
+		
+		for(int j = 0 ; j < offre.size(); j++)
+		{
+			offre.get(j).setValable(true);
+			ArrayList<Encherit> ench = new ArrayList<Encherit>(offre.get(j).getEncherit());
+			Collections.sort(ench);
+			
+			if (!ench.get(ench.size()-1).getInternaute().getPseudo().equals(i.getPseudo()))
+			{
+				offre.get(j).setValable(false);
+				System.out.println(" => hors jeux");
+				affiPossible = true;
+			}
+		}
+		if (affiPossible)
+			request.setAttribute("affi", "vous n'êtes plus maître de l'enchère");
 		
 		request.getSession().setAttribute("listRecherche", offre);
+		
+		
 		return mapping.findForward("resultatRecherche");
 	}
-
 }

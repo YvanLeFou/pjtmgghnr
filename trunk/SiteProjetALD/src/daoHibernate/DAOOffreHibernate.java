@@ -176,8 +176,8 @@ public class DAOOffreHibernate extends DAOHibernate implements DAOOffre{
 				"from encherit e, offre o " +
 				"where e.idoffre = o.idoffre " +
 				"and now() between dateDebut and dateFin " + //ou e.date ?? 
-				"and e.pseudo = '" + i.getPseudo() + "' "; /*+
-				"and e.date = (select max(y.date) " +
+				"and e.pseudo = '" + i.getPseudo() + "' ";
+				/*"and e.date = (select max(y.date) " +
 				"			     from encherit y " +
 				"	             where y.idoffre = e.idoffre " +
 				"				 and e.idoffre = o.idoffre) " +

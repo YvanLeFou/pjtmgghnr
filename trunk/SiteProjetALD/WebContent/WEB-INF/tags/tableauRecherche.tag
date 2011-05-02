@@ -12,6 +12,9 @@ ${pageScope.nom}
 		<th><bean:message key="tableau.nom"/></th>
 		<th><bean:message key="tableau.date"/></th>
 		<th><bean:message key="tableau.prix"/></th>
+		<logic:present name="affi">
+			<th></th>
+		</logic:present>
 	</tr>
 	<logic:iterate id="list" name="${pageScope.nomAttribute}" >
 	<tr>
@@ -28,6 +31,12 @@ ${pageScope.nom}
 		<td><bean:write name="list" property="dateFin" format="EEEEE dd MMMM yyyy"/></td>
 		<%--<td><bean:write name="list" property="dateDepot" format="EEEEE dd MMMM yyyy HH:mm:ss"/></td> --%>
 		<td><bean:write name="list" property="miseAPrix" /></td>
+		
+		<logic:present name="affi">
+			<td>
+				<logic:equal value="false" name="list" property="valable"><bean:write name="affi"/></logic:equal>
+			</td>
+		</logic:present>
 	</tr>
 	</logic:iterate>
 </table>

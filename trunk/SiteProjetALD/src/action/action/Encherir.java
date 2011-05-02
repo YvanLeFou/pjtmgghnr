@@ -84,51 +84,37 @@ public class Encherir extends Action {
 		
 		Date timestamp = new Timestamp(new Date().getTime());
 		//System.out.println(timestamp);
-		Encherit e = new Encherit(Double.parseDouble(f.getEnchere()), timestamp, (Internaute)request.getSession().getAttribute("pseudo"), o);
-//		
-//		ArrayList<Encherit> s = daoEncherit.get(o);
-//		double ss = Double.POSITIVE_INFINITY, tmp = Double.NEGATIVE_INFINITY;
-//		for(Encherit encherit : s)
-//			if (encherit.getPrix() > tmp)
-//				tmp = encherit.getPrix();
-//		ss = tmp;
-//		
-		//System.out.println(f.getEnchere() + " sur " + f.getIdOffre());
-//		System.out.println(s + " " + f.getEnchere() + " > " + o.getMiseAPrix() + " || " + e.getPrix() + " > " + ss);
-//		if (i != null)
-//		{
-//			if ((s == null && !s.isEmpty() && e.getPrix() > o.getMiseAPrix()) || (s != null && !s.isEmpty() && e.getPrix() > ss))
-//			{
-//				daoEncherit.saveOrUpdate(e);
-//				o.setMiseAPrix(e.getPrix());
-//				daoOffre.update(o);
-//			}
-//			else
-//			{
-//				ActionMessages erreur = new ActionMessages();
-//				erreur.add("enchere.insuffisant", new ActionMessage("enchere.insuffisant"));
-//				this.addErrors(request, erreur);
-//			}
-//		}
-		
+		//Encherit e = new Encherit(Double.parseDouble(f.getEnchere()), timestamp, i, o);
+		Encherit e = daoEncherit.get(i, o);
 		System.out.println(f.getEnchere() + " > " + o.getMiseAPrix());
 		if (i != null)
 		{
-			if (e.getPrix() > o.getMiseAPrix())
+			ActionMessages erreur = new ActionMessages();
+			if (o.getInternaute().getPseudo().equalsIgnoreCase(i.getPseudo()))
 			{
-				daoEncherit.saveOrUpdate(e);
-				o.setMiseAPrix(e.getPrix());
+				erreur.add("enchere.internaute.identique", new ActionMessage("enchere.internaute.identique"));
+			}
+			else if (Double.parseDouble(f.getEnchere()) > o.getMiseAPrix())
+			{
+				if (e != null)
+				{
+					daoEncherit.delete(e);
+				}
+
+				o.setMiseAPrix(Double.parseDouble(f.getEnchere()));
 				daoOffre.update(o);
+				
+				e = new Encherit(Double.parseDouble(f.getEnchere()), timestamp, i, o);
+				daoEncherit.save(e);
 				
 				ActionFormFormuEncherir forma = new ActionFormFormuEncherir();
 				request.setAttribute("encherir", forma);
 			}
 			else
 			{
-				ActionMessages erreur = new ActionMessages();
 				erreur.add("enchere.insuffisant", new ActionMessage("enchere.insuffisant"));
-				this.addErrors(request, erreur);
 			}
+			this.addErrors(request, erreur);
 		}
 		return mapping.getInputForward();
 	}
