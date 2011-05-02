@@ -16,7 +16,7 @@
 <div id="corps"><logic:present name="pseudo" scope="session">
 	<fieldset>
 	<legend>
-		<bean:message key="adminAnnoncesDouteuses.title" /></legend>
+		<bean:message key="adminAnnoncesDouteuses.title.Signalees" /></legend>
 		<table border="1">
 			<tr>
 				<th><bean:message key="adminAnnoncesDouteuses.offre.titre" /></th>
@@ -38,6 +38,31 @@
 			</logic:iterate>
 		</table>
 	</fieldset>
+	
+	<fieldset>
+	<legend>
+		<bean:message key="adminAnnoncesDouteuses.title.MotClef" /></legend>
+		<table border="1">
+			<tr>
+				<th><bean:message key="adminAnnoncesDouteuses.offre.titre" /></th>
+				<th width=30><img border=none src="valider.png"></th>
+				<th width=30><img border=none src="supprimer.png"></th>				
+			</tr>
+			<logic:iterate id="listMotClef" name="annoncesMotClef">
+				<tr>
+					<td><bean:write name="listMotClef" property="titre" /></td>
+					<td><html:link
+						action="/adminAnnulerSignalement.do?id=${listMotClef.idOffre}">
+						<img border=none src="pouce_haut.png"/>
+					</html:link></td>
+					<td><html:link
+						action="/adminValiderSignalement.do?id=${listMotClef.idOffre}">
+						<img border=none src="pouce_bas.png">
+					</html:link></td>
+				</tr>
+			</logic:iterate>
+		</table>
+	</fieldset>	
 </logic:present></div>
 </body>
 </html>

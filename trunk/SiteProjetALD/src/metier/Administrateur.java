@@ -69,7 +69,8 @@ public class Administrateur {
 		
 		//Recherche des offres entre les date de début et de fin de mois
 		for (Offre o : offre.loadAll()){
-		        if(o.getDateFin().after(dateDebutMois) && o.getDateFin().before(dateFinMois)){
+			if(o.getEncherit().size() != 0)
+				if(o.getDateFin().after(dateDebutMois) && o.getDateFin().before(dateFinMois)){
 		        	//Recherche de l'enchère maximum
 		        	ca += o.getMiseAPrix();
 		        }
@@ -134,11 +135,26 @@ public class Administrateur {
 		return resultat;
 	}
 	
+	public ArrayList<Offre> getAnnoncesMotClef() throws Exception{
+		ArrayList<Offre> annoncesMotClef= new ArrayList<Offre>();
+		String motClef = "";
+		//On place tous les mots clefs dans une requête qui va servir pour findThem !
+		for(MotClef mc : motclef.loadAll())
+			motClef += mc.getLibelleMotClef() + " ";
+		
+		System.out.println(motClef);
+		
+		for (Offre o : offre.findThem(motClef, -1, -1, -1, -1))
+				annoncesMotClef.add(o);
+				
+		return annoncesMotClef;
+	}
+	
 	public ArrayList<Offre> getAnnoncesDouteuses() throws Exception{
 		ArrayList<Offre> annoncesDouteuses = new ArrayList<Offre>();
 		
 		for (Offre o : offre.loadAll())
-			if(o.getSuspecte() == 1)
+			if(o.getSuspecte() > 0)
 				annoncesDouteuses.add(o);
 				
 		return annoncesDouteuses;
